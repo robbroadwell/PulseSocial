@@ -11,7 +11,6 @@
 		541F4DE81ED8AA3A004C1BB1 /* PostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 541F4DE71ED8AA3A004C1BB1 /* PostView.xib */; };
 		541F4DEC1ED8AFCA004C1BB1 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F4DEB1ED8AFCA004C1BB1 /* PostView.swift */; };
 		543F63051ED8F30E00F7521D /* Containment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F63041ED8F30E00F7521D /* Containment.swift */; };
-		543F63071ED8F33200F7521D /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F63061ED8F33200F7521D /* UserLocation.swift */; };
 		545C5AD81ED5165700CE6FFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545C5AD71ED5165700CE6FFB /* AppDelegate.swift */; };
 		545C5ADA1ED5165700CE6FFB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545C5AD91ED5165700CE6FFB /* MapViewController.swift */; };
 		545C5ADD1ED5165700CE6FFB /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545C5ADB1ED5165700CE6FFB /* Map.storyboard */; };
@@ -34,7 +33,6 @@
 		541F4DE71ED8AA3A004C1BB1 /* PostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostView.xib; sourceTree = "<group>"; };
 		541F4DEB1ED8AFCA004C1BB1 /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		543F63041ED8F30E00F7521D /* Containment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Containment.swift; sourceTree = "<group>"; };
-		543F63061ED8F33200F7521D /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		545C5AD41ED5165700CE6FFB /* pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545C5AD71ED5165700CE6FFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		545C5AD91ED5165700CE6FFB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +64,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E69C1931FCF7DB3008E72E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				545C5ADB1ED5165700CE6FFB /* Map.storyboard */,
+				548DED981ED7B59C0072CC2C /* Login.storyboard */,
+				545C5AE01ED5165700CE6FFB /* LaunchScreen.storyboard */,
+				54C7D3D71EEDD014000F58D0 /* NumberedAnnotationView.swift */,
+				54C7D3D91EEDD152000F58D0 /* ScorePointAnnotation.swift */,
+				541F4DE71ED8AA3A004C1BB1 /* PostView.xib */,
+				541F4DEB1ED8AFCA004C1BB1 /* PostView.swift */,
+				54DC4C9B1EE7367E00C93ABB /* TextEntryView.xib */,
+				54DC4C9D1EE7368B00C93ABB /* TextEntryView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0E69C1941FCF7DBE008E72E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0E69C1951FCF7DC2008E72E8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0E69C1961FCF7F5F008E72E8 /* Helpers */,
+				548DED961ED7B5550072CC2C /* LoginViewController.swift */,
+				541F4DE31ED877E9004C1BB1 /* BaseViewController.swift */,
+				545C5AD91ED5165700CE6FFB /* MapViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0E69C1961FCF7F5F008E72E8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				548DEDDD1ED7E55B0072CC2C /* Hash.swift */,
+				543F63041ED8F30E00F7521D /* Containment.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		545C5ACB1ED5165700CE6FFB = {
 			isa = PBXGroup;
 			children = (
@@ -88,24 +129,12 @@
 			isa = PBXGroup;
 			children = (
 				545C5AD71ED5165700CE6FFB /* AppDelegate.swift */,
-				541F4DE31ED877E9004C1BB1 /* BaseViewController.swift */,
-				545C5ADB1ED5165700CE6FFB /* Map.storyboard */,
-				545C5AD91ED5165700CE6FFB /* MapViewController.swift */,
-				548DED981ED7B59C0072CC2C /* Login.storyboard */,
-				548DED961ED7B5550072CC2C /* LoginViewController.swift */,
 				546FC1D21EE72BBE00C41B8C /* GoogleService-Info.plist */,
-				545C5ADE1ED5165700CE6FFB /* Assets.xcassets */,
-				54C7D3D71EEDD014000F58D0 /* NumberedAnnotationView.swift */,
-				54C7D3D91EEDD152000F58D0 /* ScorePointAnnotation.swift */,
-				545C5AE01ED5165700CE6FFB /* LaunchScreen.storyboard */,
 				545C5AE31ED5165700CE6FFB /* Info.plist */,
-				548DEDDD1ED7E55B0072CC2C /* Hash.swift */,
-				541F4DE71ED8AA3A004C1BB1 /* PostView.xib */,
-				541F4DEB1ED8AFCA004C1BB1 /* PostView.swift */,
-				54DC4C9B1EE7367E00C93ABB /* TextEntryView.xib */,
-				54DC4C9D1EE7368B00C93ABB /* TextEntryView.swift */,
-				543F63041ED8F30E00F7521D /* Containment.swift */,
-				543F63061ED8F33200F7521D /* UserLocation.swift */,
+				545C5ADE1ED5165700CE6FFB /* Assets.xcassets */,
+				0E69C1941FCF7DBE008E72E8 /* Model */,
+				0E69C1931FCF7DB3008E72E8 /* View */,
+				0E69C1951FCF7DC2008E72E8 /* Controller */,
 			);
 			path = pulse;
 			sourceTree = "<group>";
@@ -162,7 +191,7 @@
 				TargetAttributes = {
 					545C5AD31ED5165700CE6FFB = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7L366TN5Y6;
+						DevelopmentTeam = K8N3R74ABR;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -262,7 +291,6 @@
 				54C7D3D81EEDD014000F58D0 /* NumberedAnnotationView.swift in Sources */,
 				545C5ADA1ED5165700CE6FFB /* MapViewController.swift in Sources */,
 				541F4DEC1ED8AFCA004C1BB1 /* PostView.swift in Sources */,
-				543F63071ED8F33200F7521D /* UserLocation.swift in Sources */,
 				545C5AD81ED5165700CE6FFB /* AppDelegate.swift in Sources */,
 				54DC4C9E1EE7368B00C93ABB /* TextEntryView.swift in Sources */,
 				543F63051ED8F30E00F7521D /* Containment.swift in Sources */,
@@ -387,12 +415,15 @@
 			baseConfigurationReference = 38DBB766CB84F5025C217475 /* Pods-pulse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7L366TN5Y6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K8N3R74ABR;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robbroadwell.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -402,12 +433,15 @@
 			baseConfigurationReference = 9EDFC03E38294585E935493D /* Pods-pulse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7L366TN5Y6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K8N3R74ABR;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robbroadwell.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

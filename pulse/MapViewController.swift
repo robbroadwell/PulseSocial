@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-import RxSwift
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
@@ -142,7 +141,6 @@ extension MapViewController: UIImagePickerControllerDelegate {
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate {
     
     fileprivate let viewModel = ViewModel()
-    private let disposeBag = DisposeBag()
     
     @IBOutlet weak var map: PulseMap!
     @IBOutlet weak var containerView: UIView!
@@ -220,7 +218,6 @@ class ViewModel {
     
     let showScoreOnPins = true
     
-    let hash = Hash()
     var map: Map?
     
     var firebase: DatabaseReference!
@@ -313,7 +310,7 @@ extension ViewModel {
     
     func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String) {
         
-        let key = hash.generate()
+        let key = Hash.generate()
         let uid = Auth.auth().currentUser?.uid
         
         var imageData = Data()

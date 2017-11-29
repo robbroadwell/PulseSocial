@@ -10,7 +10,7 @@ import Foundation
 
 class Hash {
     
-    func generate(length: Int = 8) -> String {
+    static func generate(length: Int = 8) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
