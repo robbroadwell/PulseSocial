@@ -14,7 +14,7 @@ class PulseMap: MKMapView{
     
     let user = UserLocation()
     
-    public func addPin(key: String, location: CLLocation) {
+    func addPin(key: String, location: CLLocation) {
         if !pinExists(withKey: key) {
             
             let coordinate = location.coordinate
@@ -25,7 +25,7 @@ class PulseMap: MKMapView{
         }
     }
     
-    public func removePin(key: String) {
+    func removePin(key: String) {
         for annotation in self.annotations {
             if let title = annotation.title {
                 if title == key {
@@ -46,7 +46,7 @@ class PulseMap: MKMapView{
         return false
     }
     
-    public func removeOffscreenPins() {
+    func removeOffscreenPins() {
         DispatchQueue.global(qos: .default).async {
             let visible = self.annotations(in: self.visibleMapRect)
             for annotation in self.annotations {
@@ -57,17 +57,17 @@ class PulseMap: MKMapView{
         }
     }
     
-    public func moveToUserLocation() {
+    func moveToUserLocation() {
         let center = CLLocationCoordinate2D(latitude: (user.currentLatitude()), longitude: (user.currentLongitude()))
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         self.setRegion(region, animated: true)
     }
     
-    public func currentMapRegion() -> MKCoordinateRegion {
+    func currentMapRegion() -> MKCoordinateRegion {
         return self.region
     }
     
-    public func currentUserLocation() -> CLLocationCoordinate2D {
+    func currentUserLocation() -> CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: user.currentLatitude(), longitude: user.currentLongitude())
     }
 }

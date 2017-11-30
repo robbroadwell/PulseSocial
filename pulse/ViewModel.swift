@@ -111,8 +111,11 @@ class ViewModel {
             
         }
     }
+}
+
+extension ViewModel {
     
-    func uploadImage(key: String, data: Data, completionHandler: @escaping (String) -> ()) {
+    fileprivate func uploadImage(key: String, data: Data, completionHandler: @escaping (String) -> ()) {
         
         let thisImageRef = self.imagesRef.child(key)
         let metaData = StorageMetadata()
@@ -127,7 +130,7 @@ class ViewModel {
         }
     }
     
-    func createPost(key: String, message: String, imageURL: String, uid: String) {
+    fileprivate func createPost(key: String, message: String, imageURL: String, uid: String) {
         let post = postsRef.child(key)
         post.setValue(["message": message,
                        "timestamp": NSDate().timeIntervalSince1970,
@@ -136,13 +139,14 @@ class ViewModel {
                        "user": uid])
     }
     
-    func createGeoPost(key: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    fileprivate func createGeoPost(key: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         geoFire.setLocation(CLLocation(latitude: latitude, longitude: longitude), forKey: key)
     }
     
-    func createUserPost(key: String, uid: String) {
+    fileprivate func createUserPost(key: String, uid: String) {
         let user = userPostsRef.child(uid)
         let userPost = user.child(key)
         userPost.setValue(["score": 0])
     }
+    
 }

@@ -13,6 +13,8 @@ import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
+    let annotationIdentifier = "AnnotationIdentifier"
+    
     let viewModel = ViewModel()
     
     @IBOutlet weak var map: PulseMap!
@@ -20,8 +22,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
-    
-    let annotationIdentifier = "AnnotationIdentifier"
     
     @IBAction func handleAdd(_ sender: Any) {
         
@@ -35,7 +35,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         super.viewDidLoad()
         
         containerView.alpha = 0
-        createAuthStateListener() // handles authentication state
+        createAuthStateListener()
         
         map.delegate = self
         map.showsUserLocation = true
@@ -58,7 +58,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
-        
     }
     
     func addPost(_ notification: NSNotification) {
@@ -118,19 +117,12 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         hidePost()
     }
     
-    func updateMapRegion() {
-        DispatchQueue.global(qos: .default).async {
-            self.viewModel.updateMapRegion(to: self.map.currentMapRegion())
-        }
-    }
-    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        updateMapRegion()
+        viewModel.updateMapRegion(to: map.currentMapRegion())
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        updateMapRegion()
+        viewModel.updateMapRegion(to: map.currentMapRegion())
     }
-
+    
 }
-
