@@ -38,15 +38,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func submitButtonWasPressed(_ sender: Any) {
-        print(usernameTextField.text ?? "unable to cast username as string")
-        print(passwordTextField.text ?? "unable to cast password as string")
         
         if activeMode == .login {
-            attemptLogin()
+            login()
         }
         
         if activeMode == .register {
-            attemptRegister()
+            register()
         }
     }
     
@@ -72,19 +70,25 @@ class LoginViewController: UIViewController {
         
     }
     
-    func attemptLogin() {
-        print("attempting login with \(usernameTextField.text) // \(passwordTextField.text)")
-        
-        Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
+    func login() {
+        if let email = usernameTextField.text,
+            let password = passwordTextField.text {
             
+            print("# LOGIN - Attempting login with \(email) / \(password).")
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                print("# LOGIN - Logged in...")
+            }
         }
     }
     
-    func attemptRegister() {
-        print("attempting register with \(usernameTextField.text) // \(passwordTextField.text)")
-        
-        Auth.auth().createUser(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
+    func register() {
+        if let email = usernameTextField.text,
+            let password = passwordTextField.text {
             
+            print("# REGISTER - Attempting register with \(email) / \(password).")
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                print("# REGISTER - Logged in...")
+            }
         }
     }
     
