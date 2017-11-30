@@ -19,7 +19,7 @@ extension MapViewController {
         postView.comment.alpha = 0
         self.containerView.animateIn()
         
-        viewModel.getPost(fromKey: key) { (post) in
+        firebase.getPost(fromKey: key) { (post) in
             postView.comment.text = post.comment
             UIView.animate(withDuration: 0.2, animations: {
                 postView.comment.alpha = 1

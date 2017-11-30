@@ -8,7 +8,6 @@
 
 import Foundation
 import MapKit
-import CoreLocation
 
 class PulseMap: MKMapView{
     
