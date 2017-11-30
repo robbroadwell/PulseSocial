@@ -8,12 +8,9 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
-    
-    let annotationIdentifier = "AnnotationIdentifier"
     
     let firebase = Firebase()
     
@@ -82,7 +79,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
             return nil
         }
         
-        let annotationView = NumberedAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+        let annotationView = NumberedAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
         annotationView.canShowCallout = true
         
         if let custom = annotation as? ScorePointAnnotation {

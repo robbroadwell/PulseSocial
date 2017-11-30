@@ -8,8 +8,6 @@
 
 import Foundation
 import Firebase
-import FirebaseDatabase
-import FirebaseStorage
 import GeoFire
 
 extension Firebase {
