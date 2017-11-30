@@ -35,7 +35,7 @@ extension MapViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textEntryView?.textField.resignFirstResponder()
-        viewModel.newPost(atLocation: map.currentUserLocation(), withImage: (textEntryView?.imageView.image)!, withComment: textField.text!)
+        firebase.newPost(atLocation: map.currentUserLocation(), withImage: (textEntryView?.imageView.image)!, withComment: textField.text!)
         containerView.animateOut()
         return true
     }

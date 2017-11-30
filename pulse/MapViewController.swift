@@ -15,7 +15,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     let annotationIdentifier = "AnnotationIdentifier"
     
-    let viewModel = ViewModel()
+    let firebase = Firebase()
     
     @IBOutlet weak var map: PulseMap!
     @IBOutlet weak var containerView: UIView!
@@ -24,7 +24,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     var imagePicker: UIImagePickerController!
     
     @IBAction func handleAdd(_ sender: Any) {
-        
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
@@ -107,22 +106,16 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         }
     }
     
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        for view in views {
-            view.canShowCallout = false
-        }
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         hidePost()
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        viewModel.updateMapRegion(to: map.currentMapRegion())
+        firebase.updateMapRegion(to: map.currentMapRegion())
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        viewModel.updateMapRegion(to: map.currentMapRegion())
+        firebase.updateMapRegion(to: map.currentMapRegion())
     }
     
 }
