@@ -16,17 +16,18 @@ class ViewModel {
     
     let showScoreOnPins = false
     
-    var map: Map?
-    
+    // Realtime Database
     var firebase: DatabaseReference!
     var postsRef: DatabaseReference!
     var geoPostsRef: DatabaseReference!
     var userPostsRef: DatabaseReference!
     
+    // Cloud Storage
     var storage = Storage.storage()
     var storageRef: StorageReference!
     var imagesRef: StorageReference!
     
+    // Geofire
     var geoFire: GeoFire!
     var regionQuery: GFRegionQuery?
     
@@ -48,6 +49,37 @@ class ViewModel {
         imagesRef = storageRef.child("images")
     }
     
+    func updateMapRegion(to region: MKCoordinateRegion) {
+        
+        if regionQuery == nil {
+            
+            // Update region on GeoFire query
+            regionQuery = geoFire.query(with: region)
+            
+            // Create listener for posts entering the screen region
+            regionQuery?.observe(.keyEntered, with: { (key, location) in // observer of new post objects in region
+                if let key = key,
+                    let location = location {
+                    
+                    let dict: [String : Any] = ["key": key, "location": location]
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
+                }
+            })
+            
+            // Create listener for posts leaving the screen region
+            regionQuery?.observe(.keyExited, with: { (key, location) in // observer of deletion of post objects in region
+                if let key = key {
+                    
+                    let dict: [String : Any] = ["key": key]
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removePost"), object: nil, userInfo: dict)
+                }
+            })
+            
+        } else {
+            regionQuery?.region = region // update the screen region
+        }
+    }
+    
     func getPost(fromKey key: String, completionHandler: @escaping (Post) -> ()) {
         postsRef.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -62,56 +94,6 @@ class ViewModel {
             print(error.localizedDescription)
         }
     }
-    
-    func updateMapRegion(to region: MKCoordinateRegion) {
-        
-        if regionQuery == nil {
-            
-            // Update region on GeoFire query
-            regionQuery = geoFire.query(with: region)
-            
-            // Create listener for posts entering the screen region
-            regionQuery?.observe(.keyEntered, with: { (key, location) in // observer of new post objects in region
-                if let key = key,
-                    let location = location {
-                    
-                    self.addPin(key: key, location: location)
-                }
-                
-            })
-            
-            // Create listener for posts leaving the screen region
-            regionQuery?.observe(.keyExited, with: { (key, location) in // observer of deletion of post objects in region
-                if let key = key {
-                    self.map?.removePin(key: key)
-                }
-            })
-            
-        } else {
-            regionQuery?.region = region // update the screen region
-        }
-    }
-    
-    func addPin(key: String, location: CLLocation) {
-        if showScoreOnPins {
-            getPost(fromKey: key, completionHandler: { (post) in
-                self.map?.addPin(key: key, location: location, score: post.score)
-            })
-            
-        } else {
-            map?.addPin(key: key, location: location)
-        }
-    }
-}
-
-//  ViewModel methods that allow the user to create a new post
-//
-//  - upload images to Firebase Storage
-//  - store latitude & longitude of post (GeoPost)
-//  - create data post for image and message
-//  - create user post for associating user with post
-//
-extension ViewModel {
     
     func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String) {
         
@@ -137,7 +119,7 @@ extension ViewModel {
         metaData.contentType = "image/jpg"
         
         thisImageRef.putData(data, metadata: metaData) { metadata, error in
-            if let error = error {
+            if error != nil {
                 print("there was an error uploading the file")
             } else {
                 completionHandler(metadata!.downloadURL()!.absoluteString)

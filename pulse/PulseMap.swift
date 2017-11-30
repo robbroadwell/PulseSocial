@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 import CoreLocation
 
-class PulseMap: MKMapView, Map {
+class PulseMap: MKMapView{
     
     let user = UserLocation()
     
@@ -20,18 +20,6 @@ class PulseMap: MKMapView, Map {
             let coordinate = location.coordinate
             let annotation = MKPointAnnotation()
             annotation.title = key
-            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            self.addAnnotation(annotation)
-        }
-    }
-    
-    public func addPin(key: String, location: CLLocation, score: Int) {
-        if !pinExists(withKey: key) {
-            
-            let coordinate = location.coordinate
-            let annotation = ScorePointAnnotation()
-            annotation.title = key
-            annotation.score = score
             annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
             self.addAnnotation(annotation)
         }

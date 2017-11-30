@@ -11,7 +11,72 @@ import MapKit
 import CoreLocation
 import SDWebImage
 
-extension MapViewController: MKMapViewDelegate {
+class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
+    
+    let viewModel = ViewModel()
+    
+    @IBOutlet weak var map: PulseMap!
+    @IBOutlet weak var containerView: UIView!
+    
+    var textEntryView: TextEntryView?
+    var imagePicker: UIImagePickerController!
+    
+    let annotationIdentifier = "AnnotationIdentifier"
+    
+    @IBAction func handleAdd(_ sender: Any) {
+        
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        containerView.alpha = 0
+        createAuthStateListener() // handles authentication state
+        
+        map.delegate = self
+        map.showsUserLocation = true
+        map.showsTraffic = true
+        map.showsBuildings = true
+        map.showsPointsOfInterest = true
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.addPost(_:)), name: NSNotification.Name(rawValue: "addPost"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.removePost(_:)), name: NSNotification.Name(rawValue: "removePost"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateLocation(_:)), name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "addPost"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+        
+    }
+    
+    func addPost(_ notification: NSNotification) {
+        if let key = notification.userInfo?["key"] as? String,
+            let location = notification.userInfo?["location"] as? CLLocation {
+            map.addPin(key: key, location: location)
+        }
+    }
+    
+    func removePost(_ notification: NSNotification) {
+        if let key = notification.userInfo?["key"] as? String {
+            map.removePin(key: key)
+        }
+    }
+    
+    func updateLocation(_ notification: NSNotification) {            
+        map.moveToUserLocation()
+    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -66,66 +131,6 @@ extension MapViewController: MKMapViewDelegate {
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         updateMapRegion()
     }
-}
-
-class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate {
-    
-    let viewModel = ViewModel()
-    
-    @IBOutlet weak var map: PulseMap!
-    @IBOutlet weak var containerView: UIView!
-    
-    var textEntryView: TextEntryView?
-    var imagePicker: UIImagePickerController!
-    
-    let annotationIdentifier = "AnnotationIdentifier"
-    
-    @IBAction func handleAdd(_ sender: Any) {
-        
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        containerView.alpha = 0
-        createAuthStateListener() // handles authentication state
-        
-        map.delegate = self
-        map.showsUserLocation = true
-        map.showsTraffic = true
-        map.showsBuildings = true
-        map.showsPointsOfInterest = true
-        
-        viewModel.map = self.map // interface for new posts listener to notify map
-        map.user.map = self.map // interface for user tracking to notify map to update
-        
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
 
 }
 
-struct Post {
-    var comment: String
-    var imageURL: String
-    var score: Int
-}
-
-protocol Map : class {
-    func addPin(key: String, location: CLLocation)
-    func addPin(key: String, location: CLLocation, score: Int)
-    func removePin(key: String)
-    func moveToUserLocation()
-}

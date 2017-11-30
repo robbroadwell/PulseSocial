@@ -11,7 +11,6 @@ import CoreLocation
 
 class UserLocation: NSObject, CLLocationManagerDelegate {
     
-    var map: Map?
     var launchLocationSet = false
     
     override init() {
@@ -32,8 +31,10 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last! as CLLocation!
         if !launchLocationSet {
-            map?.moveToUserLocation()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateLocation"), object: nil, userInfo: nil)
             launchLocationSet = true
+            
         }
     }
     
