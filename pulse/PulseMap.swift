@@ -14,7 +14,18 @@ class PulseMap: MKMapView, Map {
     
     let user = UserLocation()
     
-    func addPin(key: String, location: CLLocation, score: Int) {
+    public func addPin(key: String, location: CLLocation) {
+        if !pinExists(withKey: key) {
+            
+            let coordinate = location.coordinate
+            let annotation = MKPointAnnotation()
+            annotation.title = key
+            annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            self.addAnnotation(annotation)
+        }
+    }
+    
+    public func addPin(key: String, location: CLLocation, score: Int) {
         if !pinExists(withKey: key) {
             
             let coordinate = location.coordinate
@@ -26,7 +37,7 @@ class PulseMap: MKMapView, Map {
         }
     }
     
-    func removePin(key: String) {
+    public func removePin(key: String) {
         for annotation in self.annotations {
             if let title = annotation.title {
                 if title == key {
@@ -47,7 +58,7 @@ class PulseMap: MKMapView, Map {
         return false
     }
     
-    func removeOffscreenPins() {
+    public func removeOffscreenPins() {
         DispatchQueue.global(qos: .default).async {
             let visible = self.annotations(in: self.visibleMapRect)
             for annotation in self.annotations {
@@ -58,17 +69,17 @@ class PulseMap: MKMapView, Map {
         }
     }
     
-    func moveToUserLocation() {
+    public func moveToUserLocation() {
         let center = CLLocationCoordinate2D(latitude: (user.currentLatitude()), longitude: (user.currentLongitude()))
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         self.setRegion(region, animated: true)
     }
     
-    func currentMapRegion() -> MKCoordinateRegion {
+    public func currentMapRegion() -> MKCoordinateRegion {
         return self.region
     }
     
-    func currentUserLocation() -> CLLocationCoordinate2D {
+    public func currentUserLocation() -> CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: user.currentLatitude(), longitude: user.currentLongitude())
     }
 }

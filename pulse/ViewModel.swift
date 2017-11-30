@@ -14,7 +14,7 @@ import GeoFire
 
 class ViewModel {
     
-    let showScoreOnPins = true
+    let showScoreOnPins = false
     
     var map: Map?
     
@@ -99,7 +99,7 @@ class ViewModel {
             })
             
         } else {
-            map?.addPin(key: key, location: location, score: 0)
+            map?.addPin(key: key, location: location)
         }
     }
 }

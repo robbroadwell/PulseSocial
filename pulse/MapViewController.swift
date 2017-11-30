@@ -19,37 +19,23 @@ extension MapViewController: MKMapViewDelegate {
             return nil
         }
         
-        var annotationView: MKAnnotationView?
-        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
-            annotationView = dequeuedAnnotationView
-            annotationView?.annotation = annotation
-        }
-        else {
-            annotationView = NumberedAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-        }
+        let annotationView = NumberedAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+        annotationView.canShowCallout = true
         
-        if let annotationView = annotationView as? NumberedAnnotationView {
-            // Configure your annotation view here
-            annotationView.canShowCallout = true
-            
-            if let custom = annotation as? ScorePointAnnotation {
-                annotationView.scoreLabel.text = String(custom.score)
-            }
-            
+        if let custom = annotation as? ScorePointAnnotation {
+            annotationView.scoreLabel.text = String(custom.score)
         }
         
         return annotationView
+        
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if let annotation = view.annotation {
-            if annotation.isKind(of: MKUserLocation.self) {
-                print("selected MKUserLocation annotation")
-            } else {
+            if !annotation.isKind(of: MKUserLocation.self) {
                 if let optional = annotation.title,
                     let key = optional {
-                    print("selected \(key)")
                     showPost(withKey: key)
                     mapView.deselectAnnotation(view.annotation, animated: false)
                 }
@@ -58,7 +44,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        for var view in views {
+        for view in views {
             view.canShowCallout = false
         }
     }
@@ -79,25 +65,6 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         updateMapRegion()
-    }
-}
-
-extension MapViewController: UIImagePickerControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        showTextEntry(withImage: image)
-    }
-    
-    func showTextEntry(withImage image: UIImage) {
-        textEntryView = TextEntryView.instanceFromNib()
-        textEntryView?.imageView.image = image
-        containerView.contain(view: textEntryView!)
-        containerView.animateIn()
-        textEntryView?.clipsToBounds = true
-        textEntryView?.textField.becomeFirstResponder()
-        textEntryView?.textField.delegate = self
     }
 }
 
@@ -150,32 +117,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
 
 }
 
-extension MapViewController {
-    
-    func showPost(withKey key: String) {
-        let postView = PostView.instanceFromNib()
-        containerView.contain(view: postView)
-        postView.clipsToBounds = true
-        postView.comment.alpha = 0
-        self.containerView.animateIn()
-        
-        viewModel.getPost(fromKey: key) { (post) in
-            postView.comment.text = post.comment
-            UIView.animate(withDuration: 0.2, animations: {
-                postView.comment.alpha = 1
-            })
-            postView.imageView.setShowActivityIndicator(true)
-            postView.imageView.setIndicatorStyle(.gray)
-            postView.imageView.sd_setImage(with: URL(string: post.imageURL))
-        }
-    }
-    
-    func hidePost() {
-        containerView.animateOut()
-    }
-    
-}
-
 struct Post {
     var comment: String
     var imageURL: String
@@ -183,6 +124,7 @@ struct Post {
 }
 
 protocol Map : class {
+    func addPin(key: String, location: CLLocation)
     func addPin(key: String, location: CLLocation, score: Int)
     func removePin(key: String)
     func moveToUserLocation()
