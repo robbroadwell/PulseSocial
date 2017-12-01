@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  pulse
 //
 //  Created by Rob Broadwell on 5/23/17.

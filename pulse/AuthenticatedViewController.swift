@@ -1,5 +1,5 @@
 //
-//  BaseViewController.swift
+//  AuthenticatedViewController.swift
 //  pulse
 //
 //  Created by Rob Broadwell on 5/26/17.
