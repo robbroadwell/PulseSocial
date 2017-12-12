@@ -19,8 +19,13 @@ class NumberedAnnotationView: MKAnnotationView {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
         self.frame = CGRect(x: 0, y: 0, width: 30, height: 30) // TODO: Adjust based on score
+    
         let pin = ScorePin.instanceFromNib()
-        pin.label.text = annotation?.subtitle!
+        
+        if let custom = annotation as? MKPostAnnotation {
+            pin.label.text = String(custom.post.score)
+        }
+        
         self.contain(view: pin)
     }
     

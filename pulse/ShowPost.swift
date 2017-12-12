@@ -11,7 +11,7 @@ import UIKit
 
 extension MapViewController {
     
-    func showPost(withKey key: String) {
+    func show(_ post: Post) {
         
         let postView = PostView.instanceFromNib()
         containerView.contain(view: postView)
@@ -24,11 +24,8 @@ extension MapViewController {
             self.view.layoutIfNeeded()
         }
         
-        firebase.getPost(fromKey: key) { (post) in
-//            postView.comment.text = post.comment
-            postView.imageView.setIndicatorStyle(.gray)
-            postView.imageView.sd_setImage(with: URL(string: post.imageURL))
-        }
+        postView.imageView.setIndicatorStyle(.gray)
+        postView.imageView.sd_setImage(with: URL(string: post.imageURL))
         
         isShowingPost = true
     }

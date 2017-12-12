@@ -61,8 +61,11 @@ class Firebase {
                 if let key = key,
                     let location = location {
                     
-                    let dict: [String : Any] = ["key": key, "location": location]
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
+                    self.getPost(fromKey: key, completionHandler: { (post) in
+                        let dict: [String : Any] = ["key": key, "location": location, "post": post]
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
+                    })
+                    
                 }
             })
             

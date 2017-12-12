@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E41408D1FE05D9C00EB800D /* PostAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41408C1FE05D9C00EB800D /* PostAnnotation.swift */; };
 		0E69C1981FCF81CB008E72E8 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1971FCF81CB008E72E8 /* Keyboard.swift */; };
 		0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1991FCF8292008E72E8 /* UserLocation.swift */; };
 		0E69C19C1FCF8393008E72E8 /* PulseMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19B1FCF8393008E72E8 /* PulseMap.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E41408C1FE05D9C00EB800D /* PostAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnnotation.swift; sourceTree = "<group>"; };
 		0E69C1971FCF81CB008E72E8 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		0E69C1991FCF8292008E72E8 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		0E69C19B1FCF8393008E72E8 /* PulseMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseMap.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				0E69C19D1FCF83F4008E72E8 /* Firebase.swift */,
 				0E69C1A81FCFCF32008E72E8 /* NewPost.swift */,
 				0E69C1AA1FCFCF94008E72E8 /* GetPost.swift */,
+				0E41408C1FE05D9C00EB800D /* PostAnnotation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			files = (
 				0E69C19C1FCF8393008E72E8 /* PulseMap.swift in Sources */,
 				541F4DE41ED877E9004C1BB1 /* AuthenticatedViewController.swift in Sources */,
+				0E41408D1FE05D9C00EB800D /* PostAnnotation.swift in Sources */,
 				548DED971ED7B5550072CC2C /* LoginViewController.swift in Sources */,
 				548DEDDE1ED7E55B0072CC2C /* Hash.swift in Sources */,
 				0E69C1A51FCF8FCC008E72E8 /* Post.swift in Sources */,

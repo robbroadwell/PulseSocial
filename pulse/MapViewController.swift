@@ -104,8 +104,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func addPost(_ notification: NSNotification) {
         if let key = notification.userInfo?["key"] as? String,
-            let location = notification.userInfo?["location"] as? CLLocation {
-            map.addPin(key: key, location: location)
+            let location = notification.userInfo?["location"] as? CLLocation,
+            let post = notification.userInfo?["post"] as? Post {
+
+            map.addPin(key: key, location: location, post: post)
         }
     }
     
@@ -140,9 +142,9 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         
         if let annotation = view.annotation {
             if !annotation.isKind(of: MKUserLocation.self) {
-                if let optional = annotation.title,
-                    let key = optional {
-                    showPost(withKey: key)
+                if let custom = annotation as? MKPostAnnotation,
+                    let post = custom.post {
+                    show(post)
                     mapView.deselectAnnotation(view.annotation, animated: false)
                 }
             }
