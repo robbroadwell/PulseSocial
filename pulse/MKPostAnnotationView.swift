@@ -1,9 +1,9 @@
 //
-//  PropertyCustomCalloutAnnotationView.swift
-//  iOS-v5
+//  MKPostAnnotationView.swift
+//  pulse
 //
-//  Created by Rob on 4/5/17.
-//  Copyright © 2017 booj. All rights reserved.
+//  Created by Rob Broadwell on 5/26/17.
+//  Copyright © 2017 Rob Broadwell LTD. All rights reserved.
 //
 
 import UIKit
@@ -13,7 +13,7 @@ import MapKit
  
  This is a MKAnnotationView that will resize to fit a annotationBackground. This is crucial if the annotation view is going to have a custom callout because otherwise any touches inside the custom callout will not be recognized as withing the annotation view but rather only on the underlying view.
  */
-class NumberedAnnotationView: MKAnnotationView {
+class MKPostAnnotationView: MKAnnotationView {
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)

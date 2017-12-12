@@ -117,10 +117,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         }
     }
     
-    func showPost(_ sender: UITapGestureRecognizer) {
-        print(sender)
-    }
-    
     func updateLocation(_ notification: NSNotification) {            
         map.moveToUserLocation()
     }
@@ -131,7 +127,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
             return nil
         }
         
-        let annotationView = NumberedAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
+        let annotationView = MKPostAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
         annotationView.canShowCallout = true
 
         return annotationView
@@ -141,11 +137,11 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if let annotation = view.annotation {
+            mapView.deselectAnnotation(view.annotation, animated: false)
             if !annotation.isKind(of: MKUserLocation.self) {
                 if let custom = annotation as? MKPostAnnotation,
                     let post = custom.post {
                     show(post)
-                    mapView.deselectAnnotation(view.annotation, animated: false)
                 }
             }
         }

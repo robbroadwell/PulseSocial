@@ -33,8 +33,7 @@
 		548DED971ED7B5550072CC2C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DED961ED7B5550072CC2C /* LoginViewController.swift */; };
 		548DED991ED7B59C0072CC2C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 548DED981ED7B59C0072CC2C /* Login.storyboard */; };
 		548DEDDE1ED7E55B0072CC2C /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DEDDD1ED7E55B0072CC2C /* Hash.swift */; };
-		54C7D3D81EEDD014000F58D0 /* NumberedAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C7D3D71EEDD014000F58D0 /* NumberedAnnotationView.swift */; };
-		54C7D3DA1EEDD152000F58D0 /* ScorePointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C7D3D91EEDD152000F58D0 /* ScorePointAnnotation.swift */; };
+		54C7D3D81EEDD014000F58D0 /* MKPostAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C7D3D71EEDD014000F58D0 /* MKPostAnnotationView.swift */; };
 		54DC4C9C1EE7367E00C93ABB /* TextEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54DC4C9B1EE7367E00C93ABB /* TextEntryView.xib */; };
 		54DC4C9E1EE7368B00C93ABB /* TextEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC4C9D1EE7368B00C93ABB /* TextEntryView.swift */; };
 		E4F3DDCC3131FB2A3C86E1BF /* Pods_pulse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96FCCFB11162BBE0454D2791 /* Pods_pulse.framework */; };
@@ -70,8 +69,7 @@
 		548DED961ED7B5550072CC2C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		548DED981ED7B59C0072CC2C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		548DEDDD1ED7E55B0072CC2C /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
-		54C7D3D71EEDD014000F58D0 /* NumberedAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberedAnnotationView.swift; sourceTree = "<group>"; };
-		54C7D3D91EEDD152000F58D0 /* ScorePointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScorePointAnnotation.swift; sourceTree = "<group>"; };
+		54C7D3D71EEDD014000F58D0 /* MKPostAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKPostAnnotationView.swift; sourceTree = "<group>"; };
 		54DC4C9B1EE7367E00C93ABB /* TextEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextEntryView.xib; sourceTree = "<group>"; };
 		54DC4C9D1EE7368B00C93ABB /* TextEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEntryView.swift; sourceTree = "<group>"; };
 		96FCCFB11162BBE0454D2791 /* Pods_pulse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pulse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +94,7 @@
 				545C5AE01ED5165700CE6FFB /* LaunchScreen.storyboard */,
 				548DED981ED7B59C0072CC2C /* Login.storyboard */,
 				545C5ADB1ED5165700CE6FFB /* Map.storyboard */,
+				54C7D3D71EEDD014000F58D0 /* MKPostAnnotationView.swift */,
 				541F4DE71ED8AA3A004C1BB1 /* PostView.xib */,
 				541F4DEB1ED8AFCA004C1BB1 /* PostView.swift */,
 				0EAB28901FE04A220080C95C /* ScorePin.xib */,
@@ -156,8 +155,6 @@
 		0EAB28941FE04AEF0080C95C /* Refactor */ = {
 			isa = PBXGroup;
 			children = (
-				54C7D3D71EEDD014000F58D0 /* NumberedAnnotationView.swift */,
-				54C7D3D91EEDD152000F58D0 /* ScorePointAnnotation.swift */,
 				54DC4C9B1EE7367E00C93ABB /* TextEntryView.xib */,
 				54DC4C9D1EE7368B00C93ABB /* TextEntryView.swift */,
 			);
@@ -347,9 +344,8 @@
 				548DEDDE1ED7E55B0072CC2C /* Hash.swift in Sources */,
 				0E69C1A51FCF8FCC008E72E8 /* Post.swift in Sources */,
 				0E69C1981FCF81CB008E72E8 /* Keyboard.swift in Sources */,
-				54C7D3DA1EEDD152000F58D0 /* ScorePointAnnotation.swift in Sources */,
 				0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */,
-				54C7D3D81EEDD014000F58D0 /* NumberedAnnotationView.swift in Sources */,
+				54C7D3D81EEDD014000F58D0 /* MKPostAnnotationView.swift in Sources */,
 				545C5ADA1ED5165700CE6FFB /* MapViewController.swift in Sources */,
 				541F4DEC1ED8AFCA004C1BB1 /* PostView.swift in Sources */,
 				0E69C1AB1FCFCF94008E72E8 /* GetPost.swift in Sources */,
