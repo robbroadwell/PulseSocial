@@ -16,6 +16,7 @@
 		0E69C1A51FCF8FCC008E72E8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A41FCF8FCC008E72E8 /* Post.swift */; };
 		0E69C1A91FCFCF32008E72E8 /* NewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A81FCFCF32008E72E8 /* NewPost.swift */; };
 		0E69C1AB1FCFCF94008E72E8 /* GetPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1AA1FCFCF94008E72E8 /* GetPost.swift */; };
+		0EAB288F1FDF803D0080C95C /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB288E1FDF803D0080C95C /* Screen.swift */; };
 		541F4DE41ED877E9004C1BB1 /* AuthenticatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F4DE31ED877E9004C1BB1 /* AuthenticatedViewController.swift */; };
 		541F4DE81ED8AA3A004C1BB1 /* PostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 541F4DE71ED8AA3A004C1BB1 /* PostView.xib */; };
 		541F4DEC1ED8AFCA004C1BB1 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F4DEB1ED8AFCA004C1BB1 /* PostView.swift */; };
@@ -46,6 +47,7 @@
 		0E69C1A41FCF8FCC008E72E8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0E69C1A81FCFCF32008E72E8 /* NewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPost.swift; sourceTree = "<group>"; };
 		0E69C1AA1FCFCF94008E72E8 /* GetPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPost.swift; sourceTree = "<group>"; };
+		0EAB288E1FDF803D0080C95C /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		38DBB766CB84F5025C217475 /* Pods-pulse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pulse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pulse/Pods-pulse.debug.xcconfig"; sourceTree = "<group>"; };
 		541F4DE31ED877E9004C1BB1 /* AuthenticatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedViewController.swift; sourceTree = "<group>"; };
 		541F4DE71ED8AA3A004C1BB1 /* PostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostView.xib; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				548DEDDD1ED7E55B0072CC2C /* Hash.swift */,
 				543F63041ED8F30E00F7521D /* Containment.swift */,
 				0E69C1971FCF81CB008E72E8 /* Keyboard.swift */,
+				0EAB288E1FDF803D0080C95C /* Screen.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				545C5AD81ED5165700CE6FFB /* AppDelegate.swift in Sources */,
 				0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */,
 				0E69C1A11FCF89DE008E72E8 /* ShowPost.swift in Sources */,
+				0EAB288F1FDF803D0080C95C /* Screen.swift in Sources */,
 				0E69C1A31FCF8A39008E72E8 /* ImagePicker.swift in Sources */,
 				54DC4C9E1EE7368B00C93ABB /* TextEntryView.swift in Sources */,
 				0E69C1A91FCFCF32008E72E8 /* NewPost.swift in Sources */,

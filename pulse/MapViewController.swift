@@ -12,6 +12,8 @@ import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
+    var isShowingPost = false
+    
 //    var cardOriginalCenter: CGPoint!
 //    var cardDownOffset: CGFloat!
 //    var cardUp: CGPoint!
@@ -24,6 +26,8 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     @IBOutlet weak var map: PulseMap!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     
 //    @IBAction func favoriteButtonTouchUpInside(_ sender: UIButton) {
 //        print("favorite")
@@ -40,6 +44,8 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         super.viewDidLoad()
         
         createAuthStateListener()
+        containerViewTopConstraint.constant = screenHeight
+        containerViewHeightConstraint.constant = screenHeight
 //        createPanGestureRecognizer()
 //        setCardConstants()
         
@@ -144,7 +150,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        hidePost()
+        if isShowingPost {
+            hidePost()
+            isShowingPost = false
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
