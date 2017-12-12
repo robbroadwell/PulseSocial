@@ -14,10 +14,10 @@ extension MapViewController {
     func showPost(withKey key: String) {
         
         let postView = PostView.instanceFromNib()
-        containerView.contain(view: postView)
+//        containerView.contain(view: postView)
         postView.clipsToBounds = true
         postView.comment.alpha = 0
-        self.containerView.animateIn()
+//        self.containerView.animateIn()
         
         firebase.getPost(fromKey: key) { (post) in
             postView.comment.text = post.comment
@@ -31,7 +31,7 @@ extension MapViewController {
     }
     
     func hidePost() {
-        containerView.animateOut()
+//        containerView.animateOut()
     }
     
 }
