@@ -20,8 +20,8 @@ extension MapViewController: UIImagePickerControllerDelegate {
     func showTextEntry(withImage image: UIImage) {
         textEntryView = TextEntryView.instanceFromNib()
         textEntryView?.imageView.image = image
-        containerView.contain(view: textEntryView!)
-        containerView.animateIn()
+//        containerView.contain(view: textEntryView!)
+//        containerView.animateIn()
         textEntryView?.clipsToBounds = true
         textEntryView?.textField.becomeFirstResponder()
         textEntryView?.textField.delegate = self
