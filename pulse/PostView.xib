@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,30 +16,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cpq-g6-OtF">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ma-ON-5qk">
-                    <rect key="frame" x="20" y="567" width="335" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="K1D-9G-uFC"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9HD-vs-xUe"/>
-                <constraint firstAttribute="trailing" secondItem="7ma-ON-5qk" secondAttribute="trailing" constant="20" id="Cht-vy-ywU"/>
-                <constraint firstAttribute="bottom" secondItem="7ma-ON-5qk" secondAttribute="bottom" id="DYd-Ny-ne9"/>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="F96-B9-H4K"/>
-                <constraint firstItem="7ma-ON-5qk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="KIp-81-jee"/>
+                <constraint firstAttribute="bottom" secondItem="cpq-g6-OtF" secondAttribute="bottom" id="enO-wS-7nZ"/>
                 <constraint firstAttribute="trailing" secondItem="cpq-g6-OtF" secondAttribute="trailing" id="niC-3v-31x"/>
-                <constraint firstItem="7ma-ON-5qk" firstAttribute="top" secondItem="cpq-g6-OtF" secondAttribute="bottom" id="ybc-57-HJZ"/>
             </constraints>
             <connections>
-                <outlet property="comment" destination="7ma-ON-5qk" id="Skb-SK-4c7"/>
                 <outlet property="imageView" destination="cpq-g6-OtF" id="wUx-J6-Oom"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="109.5"/>

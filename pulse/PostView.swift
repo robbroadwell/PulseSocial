@@ -11,7 +11,6 @@ import UIKit
 class PostView: UIView {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var comment: UILabel!
     
     class func instanceFromNib() -> PostView {
         return UINib(nibName: "PostView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PostView

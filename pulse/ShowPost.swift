@@ -25,7 +25,7 @@ extension MapViewController {
         }
         
         firebase.getPost(fromKey: key) { (post) in
-            postView.comment.text = post.comment
+//            postView.comment.text = post.comment
             postView.imageView.setIndicatorStyle(.gray)
             postView.imageView.sd_setImage(with: URL(string: post.imageURL))
         }
