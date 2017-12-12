@@ -19,6 +19,7 @@ class PulseMap: MKMapView{
             let coordinate = location.coordinate
             let annotation = MKPointAnnotation()
             annotation.title = key
+            annotation.subtitle = "1"
             annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
             self.addAnnotation(annotation)
         }

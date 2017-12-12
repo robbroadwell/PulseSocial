@@ -15,17 +15,13 @@ import MapKit
  */
 class NumberedAnnotationView: MKAnnotationView {
     
-    let scoreLabel = UILabel()
-    var annotationBackground = UIView()
-    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        self.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
-        scoreLabel.textColor = .white
-        scoreLabel.font = UIFont.systemFont(ofSize: 18)
-        self.contain(view: scoreLabel)
-        self.backgroundColor = .red
+        self.frame = CGRect(x: 0, y: 0, width: 30, height: 30) // TODO: Adjust based on score
+        let pin = ScorePin.instanceFromNib()
+        pin.label.text = annotation?.subtitle!
+        self.contain(view: pin)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -115,6 +115,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         }
     }
     
+    func showPost(_ sender: UITapGestureRecognizer) {
+        print(sender)
+    }
+    
     func updateLocation(_ notification: NSNotification) {            
         map.moveToUserLocation()
     }
@@ -127,11 +131,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         
         let annotationView = NumberedAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
         annotationView.canShowCallout = true
-        
-        if let custom = annotation as? ScorePointAnnotation {
-            annotationView.scoreLabel.text = String(custom.score)
-        }
-        
+
         return annotationView
         
     }
