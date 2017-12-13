@@ -18,13 +18,16 @@ class MKPostAnnotationView: MKAnnotationView {
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        self.frame = CGRect(x: 0, y: 0, width: 30, height: 30) // TODO: Adjust based on score
-    
-        let pin = ScorePin.instanceFromNib()
+        guard let postAnnotation = annotation as? MKPostAnnotation,
+            let post = postAnnotation.post else { return }
         
-        if let custom = annotation as? MKPostAnnotation {
-            pin.label.text = String(custom.post.score)
-        }
+        let pin = ScorePin.instanceFromNib()
+        let radius = CGFloat(15)
+        let score = String(post.score)
+        
+        frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
+        pin.radius = radius
+        pin.label.text = score
         
         self.contain(view: pin)
     }

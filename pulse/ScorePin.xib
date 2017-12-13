@@ -62,7 +62,13 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="inside" destination="Zlo-y6-Zve" id="Plb-1q-ypF"/>
+                <outlet property="insideHeight" destination="jzK-MA-yUe" id="bUc-g4-5Ey"/>
+                <outlet property="insideWidth" destination="d2T-cS-Oz8" id="nCW-5j-z37"/>
                 <outlet property="label" destination="neh-Bk-Y70" id="aET-c8-YVa"/>
+                <outlet property="outside" destination="qfX-ho-ym0" id="uUL-B6-eBw"/>
+                <outlet property="outsideHeight" destination="pqA-ho-IJ7" id="Yc1-xW-dOU"/>
+                <outlet property="outsideWidth" destination="5rh-Pe-LxD" id="tm9-DU-Nzm"/>
             </connections>
             <point key="canvasLocation" x="-148" y="343"/>
         </view>

@@ -26,11 +26,11 @@
                   moduleName = "pulse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/ShowPost.swift"
-                  timestampString = "534796730.985458"
+                  timestampString = "534816017.23353"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
                   offsetFromSymbolStart = "360">
                </Location>
                <Location
@@ -41,11 +41,11 @@
                   moduleName = "pulse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/ShowPost.swift"
-                  timestampString = "534796730.987373"
+                  timestampString = "534816017.235622"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
                   offsetFromSymbolStart = "168">
                </Location>
             </Locations>
