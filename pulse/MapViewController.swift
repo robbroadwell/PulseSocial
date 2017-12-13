@@ -12,10 +12,12 @@ import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
-    var cardOriginalCenter: CGPoint!
-    var cardDownOffset: CGFloat!
-    var cardUp: CGPoint!
-    var cardDown: CGPoint!
+    var isShowingPost = false
+    
+//    var cardOriginalCenter: CGPoint!
+//    var cardDownOffset: CGFloat!
+//    var cardUp: CGPoint!
+//    var cardDown: CGPoint!
     
     let firebase = Firebase()
     
@@ -23,11 +25,13 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var map: PulseMap!
-    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     
-    @IBAction func favoriteButtonTouchUpInside(_ sender: UIButton) {
-        print("favorite")
-    }
+//    @IBAction func favoriteButtonTouchUpInside(_ sender: UIButton) {
+//        print("favorite")
+//    }
     
     @IBAction func cameraButtonTouchUpInside(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()
@@ -40,45 +44,47 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         super.viewDidLoad()
         
         createAuthStateListener()
-        createPanGestureRecognizer()
-        setCardConstants()
+        containerViewTopConstraint.constant = screenHeight
+        containerViewHeightConstraint.constant = screenHeight
+//        createPanGestureRecognizer()
+//        setCardConstants()
         
         map.delegate = self
         map.showsUserLocation = false
     }
     
-    func setCardConstants() {
-        cardDownOffset = 120
-        cardUp = cardView.center
-        cardDown = CGPoint(x: cardView.center.x, y: cardView.center.y + cardDownOffset)
-    }
+//    func setCardConstants() {
+//        cardDownOffset = 120
+//        cardUp = cardView.center
+//        cardDown = CGPoint(x: cardView.center.x, y: cardView.center.y + cardDownOffset)
+//    }
+//
+//    func createPanGestureRecognizer() {
+//        let selector = #selector(didPan(_:))
+//        let pan = UIPanGestureRecognizer(target: self, action: selector)
+//        cardView.addGestureRecognizer(pan)
+//    }
     
-    func createPanGestureRecognizer() {
-        let selector = #selector(didPan(_:))
-        let pan = UIPanGestureRecognizer(target: self, action: selector)
-        cardView.addGestureRecognizer(pan)
-    }
-    
-    func didPan(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: view)
-        print("translation \(translation)")
-        
-        if sender.state == UIGestureRecognizerState.began {
-            cardOriginalCenter = cardView.center
-        } else if sender.state == UIGestureRecognizerState.changed {
-            cardView.center = CGPoint(x: cardOriginalCenter.x, y: cardOriginalCenter.y + translation.y)
-        } else if sender.state == UIGestureRecognizerState.ended {
-            if sender.velocity(in: self.view).y > 0 {
-                UIView.animate(withDuration: 0.3, animations: { () -> Void in
-                    self.cardView.center = self.cardDown
-                })
-            } else {
-                UIView.animate(withDuration: 0.3, animations: { () -> Void in
-                    self.cardView.center = self.cardUp
-                })
-            }
-        }
-    }
+//    func didPan(_ sender: UIPanGestureRecognizer) {
+//        let translation = sender.translation(in: view)
+//        print("translation \(translation)")
+//
+//        if sender.state == UIGestureRecognizerState.began {
+//            cardOriginalCenter = cardView.center
+//        } else if sender.state == UIGestureRecognizerState.changed {
+//            cardView.center = CGPoint(x: cardOriginalCenter.x, y: cardOriginalCenter.y + translation.y)
+//        } else if sender.state == UIGestureRecognizerState.ended {
+//            if sender.velocity(in: self.view).y > 0 {
+//                UIView.animate(withDuration: 0.3, animations: { () -> Void in
+//                    self.cardView.center = self.cardDown
+//                })
+//            } else {
+//                UIView.animate(withDuration: 0.3, animations: { () -> Void in
+//                    self.cardView.center = self.cardUp
+//                })
+//            }
+//        }
+//    }
 
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -98,8 +104,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func addPost(_ notification: NSNotification) {
         if let key = notification.userInfo?["key"] as? String,
-            let location = notification.userInfo?["location"] as? CLLocation {
-            map.addPin(key: key, location: location)
+            let location = notification.userInfo?["location"] as? CLLocation,
+            let post = notification.userInfo?["post"] as? Post {
+
+            map.addPin(key: key, location: location, post: post)
         }
     }
     
@@ -119,13 +127,9 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
             return nil
         }
         
-        let annotationView = NumberedAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
+        let annotationView = MKPostAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
         annotationView.canShowCallout = true
-        
-        if let custom = annotation as? ScorePointAnnotation {
-            annotationView.scoreLabel.text = String(custom.score)
-        }
-        
+
         return annotationView
         
     }
@@ -133,18 +137,21 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if let annotation = view.annotation {
+            mapView.deselectAnnotation(view.annotation, animated: false)
             if !annotation.isKind(of: MKUserLocation.self) {
-                if let optional = annotation.title,
-                    let key = optional {
-                    showPost(withKey: key)
-                    mapView.deselectAnnotation(view.annotation, animated: false)
+                if let custom = annotation as? MKPostAnnotation,
+                    let post = custom.post {
+                    show(post)
                 }
             }
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        hidePost()
+        if isShowingPost {
+            hidePost()
+            isShowingPost = false
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

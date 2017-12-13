@@ -24,16 +24,4 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
     
-    
-    func animateIn() {
-        UIView.animate(withDuration: 0.25) {
-            self.alpha = 1
-        }
-    }
-    
-    func animateOut() {
-        UIView.animate(withDuration: 0.25) {
-            self.alpha = 0
-        }
-    }
 }

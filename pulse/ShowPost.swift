@@ -11,27 +11,31 @@ import UIKit
 
 extension MapViewController {
     
-    func showPost(withKey key: String) {
+    func show(_ post: Post) {
         
         let postView = PostView.instanceFromNib()
-//        containerView.contain(view: postView)
+        containerView.contain(view: postView)
         postView.clipsToBounds = true
-        postView.comment.alpha = 0
-//        self.containerView.animateIn()
+        postView.imageView.setShowActivityIndicator(true)
         
-        firebase.getPost(fromKey: key) { (post) in
-            postView.comment.text = post.comment
-            UIView.animate(withDuration: 0.2, animations: {
-                postView.comment.alpha = 1
-            })
-            postView.imageView.setShowActivityIndicator(true)
-            postView.imageView.setIndicatorStyle(.gray)
-            postView.imageView.sd_setImage(with: URL(string: post.imageURL))
+        containerViewTopConstraint.constant = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
+        
+        postView.imageView.setIndicatorStyle(.gray)
+        postView.imageView.sd_setImage(with: URL(string: post.imageURL))
+        
+        isShowingPost = true
     }
     
     func hidePost() {
-//        containerView.animateOut()
+        containerViewTopConstraint.constant = screenHeight
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
 }
