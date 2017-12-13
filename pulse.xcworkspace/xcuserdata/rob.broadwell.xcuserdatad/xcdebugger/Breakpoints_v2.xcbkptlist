@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/ShowPost.swift"
-            timestampString = "534798173.696236"
+            timestampString = "534879097.710166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "hidePost()"
-            landmarkType = "7">
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "MapViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/MapViewController.swift"
-            timestampString = "534814143.968869"
+            timestampString = "534879097.710243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "mapView(_:didSelect:)"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

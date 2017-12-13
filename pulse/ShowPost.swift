@@ -14,18 +14,16 @@ extension MapViewController {
     func show(_ post: Post) {
         
         let postView = PostView.instanceFromNib()
-        containerView.contain(view: postView)
         postView.clipsToBounds = true
         postView.imageView.setShowActivityIndicator(true)
+        postView.post = post
         
+        containerView.contain(view: postView)
         containerViewTopConstraint.constant = 0
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
-        
-        postView.imageView.setIndicatorStyle(.gray)
-        postView.imageView.sd_setImage(with: URL(string: post.imageURL))
         
         isShowingPost = true
     }

@@ -19,22 +19,23 @@ class MKPostAnnotationView: MKAnnotationView {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
         guard let postAnnotation = annotation as? MKPostAnnotation,
-            let post = postAnnotation.post else { return }
+            let _ = postAnnotation.post else { return }
         
         let pin = ScorePin.instanceFromNib()
-        var radius: CGFloat!
-        let score = String(post.score)
+        pin.label.isHidden = true
         
-        if (post.score <= 1) {
-            radius = CGFloat(5)
-            pin.label.isHidden = true
-        } else if (post.score < 100) {
-            radius = CGFloat(10)
-            pin.label.text = score
-        } else {
-            radius = CGFloat(15)
-            pin.label.text = score
-        }
+        let radius = CGFloat(5)
+        
+//        if (post.score <= 1) {
+//            radius = CGFloat(5)
+//            pin.label.isHidden = true
+//        } else if (post.score < 100) {
+//            radius = CGFloat(10)
+//            pin.label.text = score
+//        } else {
+//            radius = CGFloat(15)
+//            pin.label.text = score
+//        }
         
         frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
         pin.radius = radius

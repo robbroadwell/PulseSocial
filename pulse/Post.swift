@@ -9,6 +9,7 @@
 import Foundation
 
 struct Post {
+    var key: String
     var comment: String
     var imageURL: String
     var score: Int

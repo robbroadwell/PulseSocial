@@ -92,6 +92,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.addObserver(self, selector: #selector(self.addPost(_:)), name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removePost(_:)), name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateLocation(_:)), name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.upvote(_:)), name: NSNotification.Name(rawValue: "upvote"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -100,6 +101,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "upvote"), object: nil)
     }
     
     func addPost(_ notification: NSNotification) {
@@ -119,6 +121,12 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func updateLocation(_ notification: NSNotification) {            
         map.moveToUserLocation()
+    }
+    
+    func upvote(_ notification: NSNotification) {
+        if let key = notification.userInfo?["key"] as? String {
+            firebase.upvote(key: key)
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

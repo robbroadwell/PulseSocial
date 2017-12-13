@@ -10,7 +10,19 @@ import UIKit
 
 class PostView: UIView {
     
+    var post: Post! {
+        didSet {
+            imageView.setIndicatorStyle(.gray)
+            imageView.sd_setImage(with: URL(string: post.imageURL))
+        }
+    }
+    
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBAction func upvote(_ sender: Any) {
+        let dict: [String : Any] = ["key": post.key]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "upvote"), object: nil, userInfo: dict)
+    }
     
     class func instanceFromNib() -> PostView {
         return UINib(nibName: "PostView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PostView

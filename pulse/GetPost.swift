@@ -18,11 +18,22 @@ extension Firebase {
             let comment = value?["message"] as? String ?? ""
             let score = value?["score"] as? Int ?? 1
             
-            completionHandler(Post(comment: comment, imageURL: imageURL, score: score))
+            completionHandler(Post(key: key, comment: comment, imageURL: imageURL, score: score))
             
         }) { (error) in
             print(error.localizedDescription)
         }
     }
-
+    
+    func getScore(fromKey key: String, completionHandler: @escaping (Int) -> ()) {
+        postsRef.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let score = value?["score"] as? Int ?? 1
+            completionHandler(score)
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
 }
