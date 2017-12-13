@@ -21,8 +21,7 @@ class PulseMap: MKMapView{
             annotation.title = key
             annotation.post = post
             annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            
-            // TODO: Animate in annotation
+
             self.addAnnotation(annotation)
         }
     }

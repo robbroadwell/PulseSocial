@@ -13,4 +13,5 @@ struct Post {
     var comment: String
     var imageURL: String
     var score: Int
+    var timestamp: String
 }

@@ -18,8 +18,6 @@ class ScorePin: UIView {
     @IBOutlet weak var outsideWidth: NSLayoutConstraint!
     @IBOutlet weak var outsideHeight: NSLayoutConstraint!
     
-    
-    
     var radius: CGFloat = 0 {
         didSet {
             inside.layer.cornerRadius = radius

@@ -18,6 +18,10 @@ extension MapViewController {
         postView.imageView.setShowActivityIndicator(true)
         postView.post = post
         
+        firebase.isFavorite(key: post.key) { (bool) in
+            postView.favorite = bool
+        }
+        
         containerView.contain(view: postView)
         containerViewTopConstraint.constant = 0
         

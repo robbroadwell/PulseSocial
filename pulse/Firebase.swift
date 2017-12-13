@@ -21,6 +21,7 @@ class Firebase {
     var postsRef: DatabaseReference!
     var geoPostsRef: DatabaseReference!
     var userPostsRef: DatabaseReference!
+    var userFavoritesRef: DatabaseReference!
     
     // Cloud Storage
     var storage = Storage.storage()
@@ -41,6 +42,7 @@ class Firebase {
         postsRef = firebase.child("posts")
         geoPostsRef = firebase.child("geoPosts")
         userPostsRef = firebase.child("userPosts")
+        userFavoritesRef = firebase.child("userFavorites")
         geoFire = GeoFire(firebaseRef: geoPostsRef)
     }
     

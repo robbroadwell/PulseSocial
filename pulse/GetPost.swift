@@ -17,8 +17,9 @@ extension Firebase {
             let imageURL = value?["image"] as? String ?? ""
             let comment = value?["message"] as? String ?? ""
             let score = value?["score"] as? Int ?? 1
+            let timestamp = value?["timestamp"] as? String ?? ""
             
-            completionHandler(Post(key: key, comment: comment, imageURL: imageURL, score: score))
+            completionHandler(Post(key: key, comment: comment, imageURL: imageURL, score: score, timestamp: timestamp))
             
         }) { (error) in
             print(error.localizedDescription)

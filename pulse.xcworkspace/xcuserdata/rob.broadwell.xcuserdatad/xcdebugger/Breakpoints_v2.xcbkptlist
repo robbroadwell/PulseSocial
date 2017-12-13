@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/ShowPost.swift"
-            timestampString = "534879097.710166"
+            timestampString = "534881939.191358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "MapViewController"
-            landmarkType = "21">
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "hidePost()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -26,11 +26,11 @@
                   moduleName = "pulse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/ShowPost.swift"
-                  timestampString = "534816017.23353"
+                  timestampString = "534881811.818629"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
                   offsetFromSymbolStart = "360">
                </Location>
                <Location
@@ -41,30 +41,14 @@
                   moduleName = "pulse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/ShowPost.swift"
-                  timestampString = "534816017.235622"
+                  timestampString = "534881811.82012"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
                   offsetFromSymbolStart = "168">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "pulse/MapViewController.swift"
-            timestampString = "534879097.710243"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "mapView(_:viewFor:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

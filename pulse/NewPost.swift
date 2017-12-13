@@ -15,16 +15,15 @@ extension Firebase {
     func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String) {
         
         let key = Hash.generate()
-        let uid = Auth.auth().currentUser?.uid
         
         var imageData = Data()
         imageData = UIImageJPEGRepresentation(image, 0)!
         
         uploadImage(key: key, data: imageData) { (imageURL) in
             
-            self.createPost(key: key, message: comment, imageURL: imageURL, uid: uid!)
+            self.createPost(key: key, message: comment, imageURL: imageURL)
             self.createGeoPost(key: key, latitude: coordinate.latitude, longitude: coordinate.longitude)
-            self.createUserPost(key: key, uid: uid!)
+            self.createUserPost(key: key)
             
         }
     }
@@ -44,10 +43,10 @@ extension Firebase {
         }
     }
     
-    private func createPost(key: String, message: String, imageURL: String, uid: String) {
+    private func createPost(key: String, message: String, imageURL: String) {
         let post = postsRef.child(key)
         post.setValue(["message": message,
-                       "timestamp": NSDate().timeIntervalSince1970,
+                       "timestamp": Timestamp,
                        "score": 1,
                        "image": imageURL,
                        "user": uid])
@@ -57,7 +56,7 @@ extension Firebase {
         geoFire.setLocation(CLLocation(latitude: latitude, longitude: longitude), forKey: key)
     }
     
-    private func createUserPost(key: String, uid: String) {
+    private func createUserPost(key: String) {
         let user = userPostsRef.child(uid)
         let userPost = user.child(key)
         userPost.setValue(["score": 0])
