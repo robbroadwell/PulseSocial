@@ -8,6 +8,6 @@
 
 import Foundation
 
-var Timestamp: TimeInterval {
+var timestamp: TimeInterval {
     return NSDate().timeIntervalSince1970
 }

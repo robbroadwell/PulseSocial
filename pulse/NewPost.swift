@@ -46,7 +46,7 @@ extension Firebase {
     private func createPost(key: String, message: String, imageURL: String) {
         let post = postsRef.child(key)
         post.setValue(["message": message,
-                       "timestamp": Timestamp,
+                       "timestamp": timestamp,
                        "score": 1,
                        "image": imageURL,
                        "user": uid])

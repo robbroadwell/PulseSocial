@@ -21,7 +21,7 @@ extension Firebase {
             // associate the favorite with this user
             let favorites = self.userFavoritesRef.child(uid)
             let child = favorites.child(key)
-            child.setValue(["timestamp": Timestamp])
+            child.setValue(["timestamp": timestamp])
         }
     }
     

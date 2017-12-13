@@ -9,6 +9,6 @@
 import Foundation
 import Firebase
 
-var uid: String {
+public var uid: String {
     return Auth.auth().currentUser!.uid
 }
