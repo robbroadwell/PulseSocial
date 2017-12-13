@@ -22,12 +22,22 @@ class MKPostAnnotationView: MKAnnotationView {
             let post = postAnnotation.post else { return }
         
         let pin = ScorePin.instanceFromNib()
-        let radius = CGFloat(15)
+        var radius: CGFloat!
         let score = String(post.score)
+        
+        if (post.score <= 1) {
+            radius = CGFloat(5)
+            pin.label.isHidden = true
+        } else if (post.score < 100) {
+            radius = CGFloat(10)
+            pin.label.text = score
+        } else {
+            radius = CGFloat(15)
+            pin.label.text = score
+        }
         
         frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
         pin.radius = radius
-        pin.label.text = score
         
         self.contain(view: pin)
     }
