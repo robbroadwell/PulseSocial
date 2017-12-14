@@ -10,7 +10,6 @@ import Foundation
 
 class PostViewModel {
     
-    let firebase = Firebase()
     var delegate: PostViewDelegate?
     
     var key: String

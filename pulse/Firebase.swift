@@ -12,6 +12,8 @@ import FirebaseDatabase
 import FirebaseStorage
 import GeoFire
 
+let firebase = Firebase()
+
 class Firebase {
     
     var posts = [String : PostViewModel]()
@@ -69,7 +71,6 @@ class Firebase {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
                     
                     self.posts[key] = PostViewModel(key: key)
-                    
                 }
             })
             

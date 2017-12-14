@@ -12,7 +12,6 @@ import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
-    let firebase = Firebase()
     let user = UserLocation()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
