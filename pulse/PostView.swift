@@ -8,22 +8,13 @@
 
 import UIKit
 
+protocol PostViewDelegate {
+    func updateUI()
+}
+
 class PostView: UIView, PostViewDelegate {
     
-    class func instanceFromNib() -> PostView {
-        return UINib(nibName: "PostView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PostView
-    }
-    
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var upvoteButton: UIButton!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    
-    var viewModel: PostViewModel! 
-    
-    @IBAction func upvoteWasPressed(_ sender: Any) {
-        viewModel.upvote()
-    }
+    var viewModel: PostViewModel!
     
     func updateUI() {
         imageView.setIndicatorStyle(.gray)
@@ -31,9 +22,17 @@ class PostView: UIView, PostViewDelegate {
         scoreLabel.text = String(viewModel.score!)
         timeLabel.text = viewModel.time
     }
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var upvoteButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBAction func upvoteWasPressed(_ sender: Any) {
+        viewModel.upvote()
+    }
 
-}
-
-protocol PostViewDelegate {
-    func updateUI()
+    class func instanceFromNib() -> PostView {
+        return UINib(nibName: "PostView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PostView
+    }
 }

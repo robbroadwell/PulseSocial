@@ -13,11 +13,12 @@ import SDWebImage
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
     let firebase = Firebase()
+    let user = UserLocation()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
     var isShowingPost = false
     
-    @IBOutlet weak var map: PulseMap!
+    @IBOutlet weak var mapView: PulseMapView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
@@ -36,8 +37,8 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         containerViewTopConstraint.constant = screenHeight
         containerViewHeightConstraint.constant = screenHeight
         
-        map.delegate = self
-        map.showsUserLocation = false
+        mapView.delegate = self
+        mapView.showsUserLocation = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,18 +61,21 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         if let key = notification.userInfo?["key"] as? String,
             let location = notification.userInfo?["location"] as? CLLocation {
             
-            map.addPin(key: key, location: location)
+            mapView.addPin(key: key, location: location)
         }
     }
     
     func removePost(_ notification: NSNotification) {
         if let key = notification.userInfo?["key"] as? String {
-            map.removePin(key: key)
+            
+            mapView.removePin(key: key)
         }
     }
     
-    func updateLocation(_ notification: NSNotification) {            
-        map.moveToUserLocation()
+    func updateLocation(_ notification: NSNotification) {
+        if mapView != nil {
+            mapView.moveTo(location: user.currentLocation)
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -138,11 +142,11 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        firebase.update(mapRegion: map.currentMapRegion())
+        firebase.update(mapRegion: mapView.region)
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        firebase.update(mapRegion: map.currentMapRegion())
+        firebase.update(mapRegion: mapView.region)
     }
     
 }
