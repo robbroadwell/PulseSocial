@@ -100,28 +100,34 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if let annotation = view.annotation {
-            mapView.deselectAnnotation(view.annotation, animated: false)
+            mapView.deselectAnnotation(annotation, animated: false)
+            
             if !annotation.isKind(of: MKUserLocation.self) {
                 if let custom = annotation as? MKPointAnnotation,
                     let key = custom.title {
                     
-                    let postView = PostView.instanceFromNib()
-                    postView.clipsToBounds = true
-                    postView.imageView.setShowActivityIndicator(true)
-                    postView.viewModel = firebase.posts[key]
-                    postView.viewModel.delegate = postView
-                    
-                    containerView.contain(view: postView)
-                    containerViewTopConstraint.constant = 0
-                    
-                    UIView.animate(withDuration: 0.3) {
-                        self.view.layoutIfNeeded()
-                    }
-                    
-                    isShowingPost = true
+                    showPost(for: key)
                 }
             }
         }
+    }
+    
+    func showPost(for key: String) {
+        
+        let postView = PostView.instanceFromNib()
+        postView.viewModel = firebase.posts[key]
+        postView.viewModel.delegate = postView
+        postView.clipsToBounds = true
+        postView.imageView.setShowActivityIndicator(true)
+        
+        containerView.contain(view: postView)
+        containerViewTopConstraint.constant = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        
+        isShowingPost = true
     }
     
     func hidePost() {

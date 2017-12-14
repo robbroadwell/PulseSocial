@@ -12,7 +12,6 @@
 		0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1991FCF8292008E72E8 /* UserLocation.swift */; };
 		0E69C19C1FCF8393008E72E8 /* PulseMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19B1FCF8393008E72E8 /* PulseMap.swift */; };
 		0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19D1FCF83F4008E72E8 /* Firebase.swift */; };
-		0E69C1A11FCF89DE008E72E8 /* ShowPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A01FCF89DE008E72E8 /* ShowPost.swift */; };
 		0E69C1A31FCF8A39008E72E8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A21FCF8A39008E72E8 /* ImagePicker.swift */; };
 		0EAB288F1FDF803D0080C95C /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB288E1FDF803D0080C95C /* Screen.swift */; };
 		0EAB28911FE04A220080C95C /* ScorePin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB28901FE04A220080C95C /* ScorePin.xib */; };
@@ -44,7 +43,6 @@
 		0E69C1991FCF8292008E72E8 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		0E69C19B1FCF8393008E72E8 /* PulseMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseMap.swift; sourceTree = "<group>"; };
 		0E69C19D1FCF83F4008E72E8 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
-		0E69C1A01FCF89DE008E72E8 /* ShowPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPost.swift; sourceTree = "<group>"; };
 		0E69C1A21FCF8A39008E72E8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0EAB288E1FDF803D0080C95C /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		0EAB28901FE04A220080C95C /* ScorePin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScorePin.xib; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				545C5AD91ED5165700CE6FFB /* MapViewController.swift */,
 				0E69C1991FCF8292008E72E8 /* UserLocation.swift */,
 				0E69C19B1FCF8393008E72E8 /* PulseMap.swift */,
-				0E69C1A01FCF89DE008E72E8 /* ShowPost.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -339,7 +336,6 @@
 				541F4DEC1ED8AFCA004C1BB1 /* PostView.swift in Sources */,
 				545C5AD81ED5165700CE6FFB /* AppDelegate.swift in Sources */,
 				0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */,
-				0E69C1A11FCF89DE008E72E8 /* ShowPost.swift in Sources */,
 				0EAB28931FE04A300080C95C /* ScorePin.swift in Sources */,
 				0EAB288F1FDF803D0080C95C /* Screen.swift in Sources */,
 				0ED129161FE19CE4006E8BC5 /* UID.swift in Sources */,
