@@ -11,6 +11,7 @@ import Foundation
 class PostViewModel {
     
     let firebase = Firebase()
+    var delegate: PostViewDelegate?
     
     var key: String
     var imageURL: String?
@@ -35,6 +36,8 @@ class PostViewModel {
             self.user = value?["user"] as? String ?? ""
             self.message = value?["message"] as? String ?? ""
             
+            self.delegate?.updateUI()
+            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -49,15 +52,6 @@ class PostViewModel {
         let child = favorites.child(key)
         child.setValue(["timestamp": timestamp])
     }
-
-//    func downvote() {
-//        let post = firebase.postsRef.child(key)
-//        post.updateChildValues(["score": score! - 1])
-//
-//        let favorites = firebase.userFavoritesRef.child(uid)
-//        let child = favorites.child(key)
-//        child.setValue(["timestamp": timestamp])
-//    }
     
 }
 

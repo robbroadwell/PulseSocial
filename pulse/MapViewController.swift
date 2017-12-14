@@ -80,7 +80,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func upvote(_ notification: NSNotification) {
         if let key = notification.userInfo?["key"] as? String {
-            firebase.upvote(key: key)
+//            firebase.upvote(key: key)
         }
     }
     
@@ -108,7 +108,8 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
                     let postView = PostView.instanceFromNib()
                     postView.clipsToBounds = true
                     postView.imageView.setShowActivityIndicator(true)
-                    postView.post = firebase.posts[key]
+                    postView.viewModel = firebase.posts[key]
+                    postView.viewModel.delegate = postView
                     
                     containerView.contain(view: postView)
                     containerViewTopConstraint.constant = 0

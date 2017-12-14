@@ -8,21 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0E1BB7021FE2326300F8F7B5 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */; };
-		0E1BB7041FE2347C00F8F7B5 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BB7031FE2347C00F8F7B5 /* MapViewModel.swift */; };
-		0E41408D1FE05D9C00EB800D /* PostAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41408C1FE05D9C00EB800D /* PostAnnotation.swift */; };
 		0E69C1981FCF81CB008E72E8 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1971FCF81CB008E72E8 /* Keyboard.swift */; };
 		0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1991FCF8292008E72E8 /* UserLocation.swift */; };
 		0E69C19C1FCF8393008E72E8 /* PulseMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19B1FCF8393008E72E8 /* PulseMap.swift */; };
 		0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19D1FCF83F4008E72E8 /* Firebase.swift */; };
 		0E69C1A11FCF89DE008E72E8 /* ShowPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A01FCF89DE008E72E8 /* ShowPost.swift */; };
 		0E69C1A31FCF8A39008E72E8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A21FCF8A39008E72E8 /* ImagePicker.swift */; };
-		0E69C1A51FCF8FCC008E72E8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A41FCF8FCC008E72E8 /* Post.swift */; };
-		0E69C1A91FCFCF32008E72E8 /* NewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A81FCFCF32008E72E8 /* NewPost.swift */; };
-		0E69C1AB1FCFCF94008E72E8 /* GetPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1AA1FCFCF94008E72E8 /* GetPost.swift */; };
 		0EAB288F1FDF803D0080C95C /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB288E1FDF803D0080C95C /* Screen.swift */; };
 		0EAB28911FE04A220080C95C /* ScorePin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB28901FE04A220080C95C /* ScorePin.xib */; };
 		0EAB28931FE04A300080C95C /* ScorePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB28921FE04A300080C95C /* ScorePin.swift */; };
-		0ED129141FE193B8006E8BC5 /* Upvote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED129131FE193B8006E8BC5 /* Upvote.swift */; };
 		0ED129161FE19CE4006E8BC5 /* UID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED129151FE19CE4006E8BC5 /* UID.swift */; };
 		0ED129181FE19F61006E8BC5 /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED129171FE19F61006E8BC5 /* Timestamp.swift */; };
 		541F4DE41ED877E9004C1BB1 /* AuthenticatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F4DE31ED877E9004C1BB1 /* AuthenticatedViewController.swift */; };
@@ -46,21 +40,15 @@
 
 /* Begin PBXFileReference section */
 		0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
-		0E1BB7031FE2347C00F8F7B5 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		0E41408C1FE05D9C00EB800D /* PostAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnnotation.swift; sourceTree = "<group>"; };
 		0E69C1971FCF81CB008E72E8 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		0E69C1991FCF8292008E72E8 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		0E69C19B1FCF8393008E72E8 /* PulseMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseMap.swift; sourceTree = "<group>"; };
 		0E69C19D1FCF83F4008E72E8 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		0E69C1A01FCF89DE008E72E8 /* ShowPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPost.swift; sourceTree = "<group>"; };
 		0E69C1A21FCF8A39008E72E8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		0E69C1A41FCF8FCC008E72E8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		0E69C1A81FCFCF32008E72E8 /* NewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPost.swift; sourceTree = "<group>"; };
-		0E69C1AA1FCFCF94008E72E8 /* GetPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPost.swift; sourceTree = "<group>"; };
 		0EAB288E1FDF803D0080C95C /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		0EAB28901FE04A220080C95C /* ScorePin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScorePin.xib; sourceTree = "<group>"; };
 		0EAB28921FE04A300080C95C /* ScorePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePin.swift; sourceTree = "<group>"; };
-		0ED129131FE193B8006E8BC5 /* Upvote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upvote.swift; sourceTree = "<group>"; };
 		0ED129151FE19CE4006E8BC5 /* UID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UID.swift; sourceTree = "<group>"; };
 		0ED129171FE19F61006E8BC5 /* Timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
 		38DBB766CB84F5025C217475 /* Pods-pulse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pulse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pulse/Pods-pulse.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,12 +106,8 @@
 		0E69C1941FCF7DBE008E72E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0E69C1A41FCF8FCC008E72E8 /* Post.swift */,
+				0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */,
 				0E69C19D1FCF83F4008E72E8 /* Firebase.swift */,
-				0E69C1A81FCFCF32008E72E8 /* NewPost.swift */,
-				0E69C1AA1FCFCF94008E72E8 /* GetPost.swift */,
-				0E41408C1FE05D9C00EB800D /* PostAnnotation.swift */,
-				0ED129131FE193B8006E8BC5 /* Upvote.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -167,15 +151,6 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
-		0EAB28941FE04AEF0080C95C /* Refactor */ = {
-			isa = PBXGroup;
-			children = (
-				0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */,
-				0E1BB7031FE2347C00F8F7B5 /* MapViewModel.swift */,
-			);
-			name = Refactor;
-			sourceTree = "<group>";
-		};
 		545C5ACB1ED5165700CE6FFB = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +172,6 @@
 		545C5AD61ED5165700CE6FFB /* pulse */ = {
 			isa = PBXGroup;
 			children = (
-				0EAB28941FE04AEF0080C95C /* Refactor */,
 				0E69C19F1FCF8487008E72E8 /* Common */,
 				0E69C1941FCF7DBE008E72E8 /* Model */,
 				0E69C1931FCF7DB3008E72E8 /* View */,
@@ -355,28 +329,22 @@
 				0E1BB7021FE2326300F8F7B5 /* PostViewModel.swift in Sources */,
 				0E69C19C1FCF8393008E72E8 /* PulseMap.swift in Sources */,
 				541F4DE41ED877E9004C1BB1 /* AuthenticatedViewController.swift in Sources */,
-				0E41408D1FE05D9C00EB800D /* PostAnnotation.swift in Sources */,
 				548DED971ED7B5550072CC2C /* LoginViewController.swift in Sources */,
 				548DEDDE1ED7E55B0072CC2C /* Hash.swift in Sources */,
-				0E69C1A51FCF8FCC008E72E8 /* Post.swift in Sources */,
 				0ED129181FE19F61006E8BC5 /* Timestamp.swift in Sources */,
-				0ED129141FE193B8006E8BC5 /* Upvote.swift in Sources */,
 				0E69C1981FCF81CB008E72E8 /* Keyboard.swift in Sources */,
 				0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */,
 				54C7D3D81EEDD014000F58D0 /* MKPostAnnotationView.swift in Sources */,
 				545C5ADA1ED5165700CE6FFB /* MapViewController.swift in Sources */,
 				541F4DEC1ED8AFCA004C1BB1 /* PostView.swift in Sources */,
-				0E69C1AB1FCFCF94008E72E8 /* GetPost.swift in Sources */,
 				545C5AD81ED5165700CE6FFB /* AppDelegate.swift in Sources */,
 				0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */,
-				0E1BB7041FE2347C00F8F7B5 /* MapViewModel.swift in Sources */,
 				0E69C1A11FCF89DE008E72E8 /* ShowPost.swift in Sources */,
 				0EAB28931FE04A300080C95C /* ScorePin.swift in Sources */,
 				0EAB288F1FDF803D0080C95C /* Screen.swift in Sources */,
 				0ED129161FE19CE4006E8BC5 /* UID.swift in Sources */,
 				0E69C1A31FCF8A39008E72E8 /* ImagePicker.swift in Sources */,
 				54DC4C9E1EE7368B00C93ABB /* TextEntryView.swift in Sources */,
-				0E69C1A91FCFCF32008E72E8 /* NewPost.swift in Sources */,
 				543F63051ED8F30E00F7521D /* Containment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostView: UIView {
+class PostView: UIView, PostViewDelegate {
     
     class func instanceFromNib() -> PostView {
         return UINib(nibName: "PostView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PostView
@@ -19,7 +19,7 @@ class PostView: UIView {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var post: PostViewModel! {
+    var viewModel: PostViewModel! {
         didSet {
             updateUI()
         }
@@ -27,18 +27,13 @@ class PostView: UIView {
     
     func updateUI() {
         imageView.setIndicatorStyle(.gray)
-        imageView.sd_setImage(with: URL(string: post.imageURL!))
-        scoreLabel.text = String(post.score!)
-        timeLabel.text = post.timestamp
+        imageView.sd_setImage(with: URL(string: viewModel.imageURL!))
+        scoreLabel.text = String(viewModel.score!)
+        timeLabel.text = viewModel.timestamp
     }
-    
-//    @IBAction func upvote(_ sender: Any) {
-//        if !favorite {
-//            let dict: [String : Any] = ["key": post.key]
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "upvote"), object: nil, userInfo: dict)
-//            scoreLabel.text = String(post.score + 1) // temporary hack... need listeners
-//            favorite = true
-//        }
-//    }
 
+}
+
+protocol PostViewDelegate {
+    func updateUI()
 }
