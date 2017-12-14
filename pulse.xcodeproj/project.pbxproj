@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1BB7021FE2326300F8F7B5 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */; };
+		0E1BB7041FE2347C00F8F7B5 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BB7031FE2347C00F8F7B5 /* MapViewModel.swift */; };
 		0E41408D1FE05D9C00EB800D /* PostAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41408C1FE05D9C00EB800D /* PostAnnotation.swift */; };
 		0E69C1981FCF81CB008E72E8 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1971FCF81CB008E72E8 /* Keyboard.swift */; };
 		0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1991FCF8292008E72E8 /* UserLocation.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		0E1BB7031FE2347C00F8F7B5 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		0E41408C1FE05D9C00EB800D /* PostAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnnotation.swift; sourceTree = "<group>"; };
 		0E69C1971FCF81CB008E72E8 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		0E69C1991FCF8292008E72E8 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 		0E69C1931FCF7DB3008E72E8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				54DC4C9B1EE7367E00C93ABB /* TextEntryView.xib */,
+				54DC4C9D1EE7368B00C93ABB /* TextEntryView.swift */,
 				545C5AE01ED5165700CE6FFB /* LaunchScreen.storyboard */,
 				548DED981ED7B59C0072CC2C /* Login.storyboard */,
 				545C5ADB1ED5165700CE6FFB /* Map.storyboard */,
@@ -164,8 +170,8 @@
 		0EAB28941FE04AEF0080C95C /* Refactor */ = {
 			isa = PBXGroup;
 			children = (
-				54DC4C9B1EE7367E00C93ABB /* TextEntryView.xib */,
-				54DC4C9D1EE7368B00C93ABB /* TextEntryView.swift */,
+				0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */,
+				0E1BB7031FE2347C00F8F7B5 /* MapViewModel.swift */,
 			);
 			name = Refactor;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E1BB7021FE2326300F8F7B5 /* PostViewModel.swift in Sources */,
 				0E69C19C1FCF8393008E72E8 /* PulseMap.swift in Sources */,
 				541F4DE41ED877E9004C1BB1 /* AuthenticatedViewController.swift in Sources */,
 				0E41408D1FE05D9C00EB800D /* PostAnnotation.swift in Sources */,
@@ -362,6 +369,7 @@
 				0E69C1AB1FCFCF94008E72E8 /* GetPost.swift in Sources */,
 				545C5AD81ED5165700CE6FFB /* AppDelegate.swift in Sources */,
 				0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */,
+				0E1BB7041FE2347C00F8F7B5 /* MapViewModel.swift in Sources */,
 				0E69C1A11FCF89DE008E72E8 /* ShowPost.swift in Sources */,
 				0EAB28931FE04A300080C95C /* ScorePin.swift in Sources */,
 				0EAB288F1FDF803D0080C95C /* Screen.swift in Sources */,

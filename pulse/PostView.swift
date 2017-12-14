@@ -19,32 +19,26 @@ class PostView: UIView {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var favorite: Bool = false {
+    var post: PostViewModel! {
         didSet {
-            if favorite {
-                upvoteButton.setImage(#imageLiteral(resourceName: "favorite"), for: .normal)
-            } else {
-                upvoteButton.setImage(#imageLiteral(resourceName: "ic_favorite_border"), for: .normal)
-            }
+            updateUI()
         }
     }
     
-    var post: Post! {
-        didSet {
-            imageView.setIndicatorStyle(.gray)
-            imageView.sd_setImage(with: URL(string: post.imageURL))
-            scoreLabel.text = String(post.score)
-            timeLabel.text = post.timestamp
-        }
+    func updateUI() {
+        imageView.setIndicatorStyle(.gray)
+        imageView.sd_setImage(with: URL(string: post.imageURL!))
+        scoreLabel.text = String(post.score!)
+        timeLabel.text = post.timestamp
     }
     
-    @IBAction func upvote(_ sender: Any) {
-        if !favorite {
-            let dict: [String : Any] = ["key": post.key]
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "upvote"), object: nil, userInfo: dict)
-            scoreLabel.text = String(post.score + 1) // temporary hack... need listeners
-            favorite = true
-        }
-    }
+//    @IBAction func upvote(_ sender: Any) {
+//        if !favorite {
+//            let dict: [String : Any] = ["key": post.key]
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "upvote"), object: nil, userInfo: dict)
+//            scoreLabel.text = String(post.score + 1) // temporary hack... need listeners
+//            favorite = true
+//        }
+//    }
 
 }

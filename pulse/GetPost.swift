@@ -11,7 +11,7 @@ import Foundation
 extension Firebase {
 
     func getPost(fromKey key: String, completionHandler: @escaping (Post) -> ()) {
-        postsRef.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+        postsRef.child(key).observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             
             let imageURL = value?["image"] as? String ?? ""
@@ -27,7 +27,7 @@ extension Firebase {
     }
     
     func getScore(fromKey key: String, completionHandler: @escaping (Int) -> ()) {
-        postsRef.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+        postsRef.child(key).observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let score = value?["score"] as? Int ?? 1
             completionHandler(score)

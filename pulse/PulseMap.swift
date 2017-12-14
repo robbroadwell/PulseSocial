@@ -13,13 +13,12 @@ class PulseMap: MKMapView{
     
     let user = UserLocation()
     
-    func addPin(key: String, location: CLLocation, post: Post) {
+    func addPin(key: String, location: CLLocation) {
         if !pinExists(withKey: key) {
             
             let coordinate = location.coordinate
-            let annotation = MKPostAnnotation()
+            let annotation = MKPointAnnotation()
             annotation.title = key
-            annotation.post = post
             annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
 
             self.addAnnotation(annotation)

@@ -18,9 +18,6 @@ class MKPostAnnotationView: MKAnnotationView {
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        guard let postAnnotation = annotation as? MKPostAnnotation,
-            let _ = postAnnotation.post else { return }
-        
         let pin = ScorePin.instanceFromNib()
         pin.label.isHidden = true
         
