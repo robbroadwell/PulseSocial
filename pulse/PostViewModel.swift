@@ -53,6 +53,10 @@ class PostViewModel {
         child.setValue(["timestamp": timestamp])
     }
     
+    deinit {
+        firebase.postsRef.child(key).removeAllObservers()
+    }
+    
 }
 
 
