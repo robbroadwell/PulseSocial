@@ -18,8 +18,9 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         setupLocationManager()
     }
     
+    public var currentLocation: CLLocation!
+    
     private var locationManager = CLLocationManager()
-    private var currentLocation: CLLocation = CLLocation()
     
     private func setupLocationManager() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest

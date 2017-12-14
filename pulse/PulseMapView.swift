@@ -9,20 +9,16 @@
 import Foundation
 import MapKit
 
-class PulseMap: MKMapView{
+class PulseMapView: MKMapView {
     
-    let user = UserLocation()
-    
-    func addPin(key: String, location: CLLocation, post: Post) {
+    func addPin(key: String, location: CLLocation) {
         if !pinExists(withKey: key) {
             
             let coordinate = location.coordinate
-            let annotation = MKPostAnnotation()
+            let annotation = MKPointAnnotation()
             annotation.title = key
-            annotation.post = post
             annotation.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            
-            // TODO: Animate in annotation
+
             self.addAnnotation(annotation)
         }
     }
@@ -59,17 +55,13 @@ class PulseMap: MKMapView{
         }
     }
     
-    func moveToUserLocation() {
-        let center = CLLocationCoordinate2D(latitude: (user.currentLatitude()), longitude: (user.currentLongitude()))
+    func moveTo(location: CLLocation) {
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         self.setRegion(region, animated: true)
     }
     
     func currentMapRegion() -> MKCoordinateRegion {
         return self.region
-    }
-    
-    func currentUserLocation() -> CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: user.currentLatitude(), longitude: user.currentLongitude())
     }
 }

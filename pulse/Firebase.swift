@@ -14,13 +14,14 @@ import GeoFire
 
 class Firebase {
     
-    let showScoreOnPins = false
+    var posts = [String : PostViewModel]()
     
     // Realtime Database
-    var firebase: DatabaseReference!
+    var firebaseRef: DatabaseReference!
     var postsRef: DatabaseReference!
     var geoPostsRef: DatabaseReference!
     var userPostsRef: DatabaseReference!
+    var userFavoritesRef: DatabaseReference!
     
     // Cloud Storage
     var storage = Storage.storage()
@@ -37,10 +38,11 @@ class Firebase {
     }
     
     private func initializeRealtimeDatabase() {
-        firebase = Database.database().reference()
-        postsRef = firebase.child("posts")
-        geoPostsRef = firebase.child("geoPosts")
-        userPostsRef = firebase.child("userPosts")
+        firebaseRef = Database.database().reference()
+        postsRef = firebaseRef.child("posts")
+        geoPostsRef = firebaseRef.child("geoPosts")
+        userPostsRef = firebaseRef.child("userPosts")
+        userFavoritesRef = firebaseRef.child("userFavorites")
         geoFire = GeoFire(firebaseRef: geoPostsRef)
     }
     
@@ -49,23 +51,24 @@ class Firebase {
         imagesRef = storageRef.child("images")
     }
     
-    func updateMapRegion(to region: MKCoordinateRegion) {
+    // MARK: - Update Region
+    
+    func update(mapRegion: MKCoordinateRegion) {
         
         if regionQuery == nil {
             
             // Update region on GeoFire query
-            regionQuery = geoFire.query(with: region)
+            regionQuery = geoFire.query(with: mapRegion)
             
             // Create listener for posts entering the screen region
             regionQuery?.observe(.keyEntered, with: { (key, location) in // observer of new post objects in region
                 if let key = key,
                     let location = location {
                     
-                    // get the full post
-                    self.getPost(fromKey: key, completionHandler: { (post) in
-                        let dict: [String : Any] = ["key": key, "location": location, "post": post]
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
-                    })
+                    let dict: [String : Any] = ["key": key, "location": location]
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
+                    
+                    self.posts[key] = PostViewModel(key: key)
                     
                 }
             })
@@ -76,11 +79,66 @@ class Firebase {
                     
                     let dict: [String : Any] = ["key": key]
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removePost"), object: nil, userInfo: dict)
+                    
+                    self.posts.removeValue(forKey: key)
                 }
             })
             
         } else {
-            regionQuery?.region = region // update the screen region
+            regionQuery?.region = mapRegion // update the screen region
         }
     }
+    
+    // MARK: - Create Post
+    
+    func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String) {
+        
+        let key = Hash.generate()
+        
+        var imageData = Data()
+        imageData = UIImageJPEGRepresentation(image, 0)!
+        
+        uploadImage(key: key, data: imageData) { (imageURL) in
+            
+            self.createPost(key: key, message: comment, imageURL: imageURL)
+            self.createGeoPost(key: key, latitude: coordinate.latitude, longitude: coordinate.longitude)
+            self.createUserPost(key: key)
+            
+        }
+    }
+    
+    private func uploadImage(key: String, data: Data, completionHandler: @escaping (String) -> ()) {
+        
+        let thisImageRef = self.imagesRef.child(key)
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        thisImageRef.putData(data, metadata: metaData) { metadata, error in
+            if error != nil {
+                print("there was an error uploading the file")
+            } else {
+                completionHandler(metadata!.downloadURL()!.absoluteString)
+            }
+        }
+    }
+    
+    private func createPost(key: String, message: String, imageURL: String) {
+        let post = postsRef.child(key)
+        post.setValue(["message": message,
+                       "time": timestamp,
+                       "score": 1,
+                       "image": imageURL,
+                       "user": uid])
+    }
+    
+    private func createGeoPost(key: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        geoFire.setLocation(CLLocation(latitude: latitude, longitude: longitude), forKey: key)
+    }
+    
+    private func createUserPost(key: String) {
+        let user = userPostsRef.child(uid)
+        let userPost = user.child(key)
+        userPost.setValue(["score": 0])
+    }
+    
 }

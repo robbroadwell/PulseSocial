@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BYh-Dp-cvI" customClass="PulseMap" customModule="pulse" customModuleProvider="target">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BYh-Dp-cvI" customClass="PulseMapView" customModule="pulse" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiD-VL-CAZ" userLabel="Count Label">
@@ -85,7 +85,7 @@
                         <outlet property="containerView" destination="pKq-GJ-5PO" id="2GN-0Z-J5y"/>
                         <outlet property="containerViewHeightConstraint" destination="mGx-PO-wzO" id="QdE-oV-aqJ"/>
                         <outlet property="containerViewTopConstraint" destination="dVn-lZ-HvG" id="aKH-vE-hwp"/>
-                        <outlet property="map" destination="BYh-Dp-cvI" id="lPV-8g-eNw"/>
+                        <outlet property="mapView" destination="BYh-Dp-cvI" id="VRX-ja-aNv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
