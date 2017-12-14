@@ -125,7 +125,7 @@ class Firebase {
     private func createPost(key: String, message: String, imageURL: String) {
         let post = postsRef.child(key)
         post.setValue(["message": message,
-                       "timestamp": timestamp,
+                       "time": timestamp,
                        "score": 1,
                        "image": imageURL,
                        "user": uid])

@@ -104,8 +104,8 @@
 		0E69C1941FCF7DBE008E72E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */,
 				0E69C19D1FCF83F4008E72E8 /* Firebase.swift */,
+				0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

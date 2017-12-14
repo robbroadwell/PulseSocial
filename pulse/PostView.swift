@@ -19,17 +19,17 @@ class PostView: UIView, PostViewDelegate {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var viewModel: PostViewModel! {
-        didSet {
-            updateUI()
-        }
+    var viewModel: PostViewModel! 
+    
+    @IBAction func upvoteWasPressed(_ sender: Any) {
+        viewModel.upvote()
     }
     
     func updateUI() {
         imageView.setIndicatorStyle(.gray)
         imageView.sd_setImage(with: URL(string: viewModel.imageURL!))
         scoreLabel.text = String(viewModel.score!)
-        timeLabel.text = viewModel.timestamp
+        timeLabel.text = viewModel.time
     }
 
 }

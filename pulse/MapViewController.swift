@@ -12,12 +12,10 @@ import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
-    var isShowingPost = false
-    
     let firebase = Firebase()
-    
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
+    var isShowingPost = false
     
     @IBOutlet weak var map: PulseMap!
     @IBOutlet weak var containerView: UIView!
@@ -99,6 +97,8 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
                     let key = custom.title {
                     
                     showPost(for: key)
+                    isShowingPost = true
+                    
                 }
             }
         }
@@ -109,6 +109,8 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         let postView = PostView.instanceFromNib()
         postView.viewModel = firebase.posts[key]
         postView.viewModel.delegate = postView
+        
+        postView.updateUI()
         postView.clipsToBounds = true
         postView.imageView.setShowActivityIndicator(true)
         
@@ -118,8 +120,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
-        
-        isShowingPost = true
     }
     
     func hidePost() {
