@@ -15,12 +15,9 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     let user = UserLocation()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
-    var isShowingPost = false
     
     @IBOutlet weak var mapView: PulseMapView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func cameraButtonTouchUpInside(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()
@@ -33,8 +30,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         super.viewDidLoad()
         
         createAuthStateListener()
-        containerViewTopConstraint.constant = screenHeight
-        containerViewHeightConstraint.constant = screenHeight
         
         mapView.delegate = self
         mapView.showsUserLocation = false
@@ -100,7 +95,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
                     let key = custom.title {
                     
                     showPost(for: key)
-                    isShowingPost = true
                     
                 }
             }
@@ -109,24 +103,39 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func showPost(for key: String) {
         
-        let postView = PostView.instanceFromNib()
-        postView.viewModel = firebase.posts[key]
-        postView.viewModel.delegate = postView
+        guard firebase.posts.count > 0 else { return }
         
-        postView.updateUI()
-        postView.clipsToBounds = true
-        postView.imageView.setShowActivityIndicator(true)
+        var frame: CGRect = CGRect(x: 0,
+                                   y: 0,
+                                   width: scrollView.frame.width,
+                                   height: scrollView.frame.height)
         
-        containerView.contain(view: postView)
-        containerViewTopConstraint.constant = 0
-        
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+        for (_, viewModel) in firebase.posts {
+            let postView = PostView.instanceFromNib()
+            
+            postView.viewModel = viewModel
+            postView.viewModel.delegate = postView
+            postView.updateUI()
+            postView.clipsToBounds = true
+            postView.imageView.setShowActivityIndicator(true)
+            postView.frame = frame
+            
+            frame.origin.x = frame.origin.x + frame.width
+            
+            scrollView.addSubview(postView)
         }
+        
+        let content = CGRect(x: 0, y: 0,
+                             width: scrollView.frame.width * CGFloat(firebase.posts.count),
+                             height: scrollView.frame.height)
+        
+        scrollView.contentSize = content.size
+        scrollView.isUserInteractionEnabled = true
+        scrollView.isPagingEnabled = true
     }
     
+    
     func hidePost() {
-        containerViewTopConstraint.constant = screenHeight
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -134,10 +143,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isShowingPost {
-            hidePost()
-            isShowingPost = false
-        }
+        
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
