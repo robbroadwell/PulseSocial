@@ -12,12 +12,17 @@ import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
+    var onMap = true
+    
     let user = UserLocation()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var mapView: PulseMapView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var accountButton: UIButton!
+    @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var cameraButton: UIButton!
     
     @IBAction func cameraButtonTouchUpInside(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()
@@ -130,20 +135,44 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
                              height: scrollView.frame.height)
         
         scrollView.contentSize = content.size
-        scrollView.isUserInteractionEnabled = true
-        scrollView.isPagingEnabled = true
-    }
+        scrollView.scrollTo(direction: .left, animated: false)
+        scrollView.isHidden = false
+        
+        mapView.isUserInteractionEnabled = false
+        
+        accountButton.isHidden = true
+        accountLabel.isHidden = true
+        cameraButton.isHidden = true
     
+        onMap = false
+        
+    }
     
     func hidePost() {
         
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+        if !onMap {
+            
+            scrollView.isHidden = true
+
+            mapView.isUserInteractionEnabled = true
+            
+            accountButton.isHidden = false
+            accountLabel.isHidden = false
+            cameraButton.isHidden = false
+            
+            onMap = true
+        
+        }
+        
+        for subview in scrollView.subviews {
+            subview.removeFromSuperview()
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        if !onMap {
+            hidePost()
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

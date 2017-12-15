@@ -56,8 +56,8 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="account"/>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-dA-Z5P">
-                                <rect key="frame" x="0.0" y="75" width="375" height="592"/>
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-dA-Z5P">
+                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,10 +75,13 @@
                             <constraint firstItem="SiD-VL-CAZ" firstAttribute="centerY" secondItem="4BG-Kr-59q" secondAttribute="centerY" id="maz-gy-GGg"/>
                             <constraint firstItem="BYh-Dp-cvI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ra5-td-HgD"/>
                             <constraint firstItem="4BG-Kr-59q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="xsd-ZY-fq5"/>
-                            <constraint firstItem="pfv-dA-Z5P" firstAttribute="top" secondItem="09W-DY-jAU" secondAttribute="bottom" constant="15" id="yfa-2R-7Qo"/>
+                            <constraint firstItem="pfv-dA-Z5P" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="150" id="yfa-2R-7Qo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accountButton" destination="4BG-Kr-59q" id="0ZT-bv-Fhs"/>
+                        <outlet property="accountLabel" destination="SiD-VL-CAZ" id="62a-rE-wfE"/>
+                        <outlet property="cameraButton" destination="09W-DY-jAU" id="Ppo-1V-B6s"/>
                         <outlet property="mapView" destination="BYh-Dp-cvI" id="VRX-ja-aNv"/>
                         <outlet property="scrollView" destination="pfv-dA-Z5P" id="DbL-jF-jkd"/>
                     </connections>
