@@ -12,8 +12,6 @@ import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
-    var onMap = true
-    
     let user = UserLocation()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
@@ -45,6 +43,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.addPost(_:)), name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removePost(_:)), name: NSNotification.Name(rawValue: "removePost"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hidePost(_:)), name: NSNotification.Name(rawValue: "hidePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateLocation(_:)), name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
     }
     
@@ -69,6 +68,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
             
             mapView.removePin(key: key)
         }
+    }
+    
+    func hidePost(_ notification: NSNotification) {
+        hidePost()
     }
     
     func updateLocation(_ notification: NSNotification) {
@@ -137,32 +140,12 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         scrollView.contentSize = content.size
         scrollView.scrollTo(direction: .left, animated: false)
         scrollView.isHidden = false
-        
-        mapView.isUserInteractionEnabled = false
-        
-        accountButton.isHidden = true
-        accountLabel.isHidden = true
-        cameraButton.isHidden = true
-    
-        onMap = false
-        
+  
     }
     
     func hidePost() {
-        
-        if !onMap {
-            
-            scrollView.isHidden = true
 
-            mapView.isUserInteractionEnabled = true
-            
-            accountButton.isHidden = false
-            accountLabel.isHidden = false
-            cameraButton.isHidden = false
-            
-            onMap = true
-        
-        }
+        scrollView.isHidden = true
         
         for subview in scrollView.subviews {
             subview.removeFromSuperview()
@@ -170,9 +153,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !onMap {
-            hidePost()
-        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

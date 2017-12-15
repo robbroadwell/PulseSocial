@@ -10,6 +10,7 @@
 		0E1066851FE24CA8008775E8 /* Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1066841FE24CA8008775E8 /* Public.swift */; };
 		0E1BB7021FE2326300F8F7B5 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */; };
 		0E49A6F51FE35D93004BB37E /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49A6F41FE35D93004BB37E /* ScrollView.swift */; };
+		0E49A6F71FE37A6D004BB37E /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */; };
 		0E69C1981FCF81CB008E72E8 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1971FCF81CB008E72E8 /* Keyboard.swift */; };
 		0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1991FCF8292008E72E8 /* UserLocation.swift */; };
 		0E69C19C1FCF8393008E72E8 /* PulseMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19B1FCF8393008E72E8 /* PulseMapView.swift */; };
@@ -40,6 +41,7 @@
 		0E1066841FE24CA8008775E8 /* Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public.swift; sourceTree = "<group>"; };
 		0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		0E49A6F41FE35D93004BB37E /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 		0E69C1971FCF81CB008E72E8 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		0E69C1991FCF8292008E72E8 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		0E69C19B1FCF8393008E72E8 /* PulseMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseMapView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				543F63041ED8F30E00F7521D /* Containment.swift */,
 				0E69C1A21FCF8A39008E72E8 /* ImagePicker.swift */,
 				0E69C1971FCF81CB008E72E8 /* Keyboard.swift */,
+				0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				548DEDDE1ED7E55B0072CC2C /* Hash.swift in Sources */,
 				0E69C1981FCF81CB008E72E8 /* Keyboard.swift in Sources */,
 				0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */,
+				0E49A6F71FE37A6D004BB37E /* TimeAgo.swift in Sources */,
 				54C7D3D81EEDD014000F58D0 /* MKPostAnnotationView.swift in Sources */,
 				545C5ADA1ED5165700CE6FFB /* MapViewController.swift in Sources */,
 				541F4DEC1ED8AFCA004C1BB1 /* PostView.swift in Sources */,

@@ -20,7 +20,7 @@ class PostView: UIView, PostViewDelegate {
         imageView.setIndicatorStyle(.gray)
         imageView.sd_setImage(with: URL(string: viewModel.imageURL!))
         scoreLabel.text = String(viewModel.score!)
-        timeLabel.text = viewModel.time
+        timeLabel.text = timeAgoSinceDate(unix: viewModel.time!)
     }
     
     @IBOutlet weak var imageView: UIImageView!
@@ -28,10 +28,14 @@ class PostView: UIView, PostViewDelegate {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    @IBAction func upvoteWasPressed(_ sender: Any) {
+    @IBAction func upvoteWasPressed(_ sender: UIButton) {
         viewModel.upvote()
     }
-
+    
+    @IBAction func closeWasPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidePost"), object: nil, userInfo: nil)
+    }
+    
     class func instanceFromNib() -> PostView {
         return UINib(nibName: "PostView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PostView
     }

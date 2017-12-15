@@ -15,7 +15,7 @@ class PostViewModel {
     var key: String
     var imageURL: String?
     var score: Int?
-    var time: String?
+    var time: Float?
     var user: String?
     var message: String?
     
@@ -31,7 +31,7 @@ class PostViewModel {
             
             self.imageURL = value?["image"] as? String ?? ""
             self.score = value?["score"] as? Int ?? 1
-            self.time = value?["time"] as? String ?? ""
+            self.time = value?["time"] as? Float ?? 1.0
             self.user = value?["user"] as? String ?? ""
             self.message = value?["message"] as? String ?? ""
             

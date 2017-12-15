@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/MapViewController.swift"
-            timestampString = "534996559.206267"
+            timestampString = "535002366.430284"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "showPost(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -35,14 +35,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "pulse/MapViewController.swift"
-            timestampString = "534996559.206334"
+            filePath = "pulse/PostView.swift"
+            timestampString = "535002366.430369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "showPost(for:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "updateUI()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pulse/PostViewModel.swift"
+            timestampString = "535002366.430415"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "createObserver()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in pulse.PostViewModel.createObserver() -&gt; ()"
+                  moduleName = "pulse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostViewModel.swift"
+                  timestampString = "535001615.391634"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "5648">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #5 : @autoclosure () throws -&gt; Swift.String in closure #1 (__ObjC.DataSnapshot) -&gt; () in pulse.PostViewModel.createObserver() -&gt; ()"
+                  moduleName = "pulse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostViewModel.swift"
+                  timestampString = "535001615.396167"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
