@@ -12,16 +12,15 @@ import SDWebImage
 
 class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
-    let firebase = Firebase()
     let user = UserLocation()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
-    var isShowingPost = false
     
     @IBOutlet weak var mapView: PulseMapView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var accountButton: UIButton!
+    @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var cameraButton: UIButton!
     
     @IBAction func cameraButtonTouchUpInside(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()
@@ -34,8 +33,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         super.viewDidLoad()
         
         createAuthStateListener()
-        containerViewTopConstraint.constant = screenHeight
-        containerViewHeightConstraint.constant = screenHeight
         
         mapView.delegate = self
         mapView.showsUserLocation = false
@@ -46,6 +43,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.addPost(_:)), name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removePost(_:)), name: NSNotification.Name(rawValue: "removePost"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hidePost(_:)), name: NSNotification.Name(rawValue: "hidePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateLocation(_:)), name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
     }
     
@@ -70,6 +68,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
             
             mapView.removePin(key: key)
         }
+    }
+    
+    func hidePost(_ notification: NSNotification) {
+        hidePost()
     }
     
     func updateLocation(_ notification: NSNotification) {
@@ -101,7 +103,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
                     let key = custom.title {
                     
                     showPost(for: key)
-                    isShowingPost = true
                     
                 }
             }
@@ -110,35 +111,48 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func showPost(for key: String) {
         
-        let postView = PostView.instanceFromNib()
-        postView.viewModel = firebase.posts[key]
-        postView.viewModel.delegate = postView
+        guard firebase.posts.count > 0 else { return }
         
-        postView.updateUI()
-        postView.clipsToBounds = true
-        postView.imageView.setShowActivityIndicator(true)
+        var frame: CGRect = CGRect(x: 0,
+                                   y: 0,
+                                   width: scrollView.frame.width,
+                                   height: scrollView.frame.height)
         
-        containerView.contain(view: postView)
-        containerViewTopConstraint.constant = 0
-        
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+        for (_, viewModel) in firebase.posts {
+            let postView = PostView.instanceFromNib()
+            
+            postView.viewModel = viewModel
+            postView.viewModel.delegate = postView
+            postView.updateUI()
+            postView.clipsToBounds = true
+            postView.imageView.setShowActivityIndicator(true)
+            postView.frame = frame
+            
+            frame.origin.x = frame.origin.x + frame.width
+            
+            scrollView.addSubview(postView)
         }
+        
+        let content = CGRect(x: 0, y: 0,
+                             width: scrollView.frame.width * CGFloat(firebase.posts.count),
+                             height: scrollView.frame.height)
+        
+        scrollView.contentSize = content.size
+        scrollView.scrollTo(direction: .left, animated: false)
+        scrollView.isHidden = false
+  
     }
     
     func hidePost() {
-        containerViewTopConstraint.constant = screenHeight
+
+        scrollView.isHidden = true
         
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+        for subview in scrollView.subviews {
+            subview.removeFromSuperview()
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isShowingPost {
-            hidePost()
-            isShowingPost = false
-        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

@@ -10,15 +10,15 @@ import Foundation
 
 class PostViewModel {
     
-    let firebase = Firebase()
     var delegate: PostViewDelegate?
     
     var key: String
-    var imageURL: String?
     var score: Int?
-    var time: String?
+    var time: Float?
+    var imageURL: String?
     var user: String?
     var message: String?
+    var isFavorite: Bool?
     
     init(key: String) {
         self.key = key
@@ -30,11 +30,12 @@ class PostViewModel {
         firebase.postsRef.child(key).observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             
-            self.imageURL = value?["image"] as? String ?? ""
             self.score = value?["score"] as? Int ?? 1
-            self.time = value?["time"] as? String ?? ""
+            self.time = value?["time"] as? Float ?? 1.0
+            self.imageURL = value?["image"] as? String ?? ""
             self.user = value?["user"] as? String ?? ""
             self.message = value?["message"] as? String ?? ""
+            self.isFavorite = self.checkIsFavorite(from: value?["favoritedBy"] as? NSDictionary)
             
             self.delegate?.updateUI()
             
@@ -44,13 +45,29 @@ class PostViewModel {
         
     }
     
-    func upvote() {
+    func favorite() {
+        
         let post = firebase.postsRef.child(key)
+        let child = post.child("favoritedBy")
+        
+        if let fav = isFavorite {
+            if fav {
+                post.updateChildValues(["score": score! - 1])
+                child.child(uid).removeValue()
+                return
+            }
+        }
+        
         post.updateChildValues(["score": score! + 1])
-
-        let favorites = firebase.userFavoritesRef.child(uid)
-        let child = favorites.child(key)
-        child.setValue(["time": timestamp])
+        child.child(uid).setValue(["time": timestamp])
+    }
+    
+    func checkIsFavorite(from dictionary: NSDictionary?) -> Bool {
+        if let dict = dictionary,
+            let _ = dict[uid] {
+            return true
+        }
+        return false
     }
     
     deinit {
