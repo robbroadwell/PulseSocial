@@ -17,10 +17,16 @@ class PostView: UIView, PostViewDelegate {
     var viewModel: PostViewModel!
     
     func updateUI() {
-        imageView.setIndicatorStyle(.gray)
-        imageView.sd_setImage(with: URL(string: viewModel.imageURL!))
-        scoreLabel.text = String(viewModel.score!)
-        timeLabel.text = timeAgoSinceDate(unix: viewModel.time!)
+        
+        guard let score = viewModel.score,
+            let imageURL = viewModel.imageURL,
+            let time = viewModel.time,
+            let favorite = viewModel.isFavorite else { return }
+        
+        imageView.sd_setImage(with: URL(string: imageURL))
+        timeLabel.text = timeAgoSinceDate(unix: time)
+        scoreLabel.text = String(score)
+        upvoteButton.setImage(favorite ? #imageLiteral(resourceName: "favorite") : #imageLiteral(resourceName: "ic_favorite_border"), for: .normal)
     }
     
     @IBOutlet weak var imageView: UIImageView!
@@ -29,7 +35,7 @@ class PostView: UIView, PostViewDelegate {
     @IBOutlet weak var scoreLabel: UILabel!
     
     @IBAction func upvoteWasPressed(_ sender: UIButton) {
-        viewModel.upvote()
+        viewModel.favorite()
     }
     
     @IBAction func closeWasPressed(_ sender: UIButton) {
