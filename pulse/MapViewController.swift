@@ -118,19 +118,28 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
                                    width: scrollView.frame.width,
                                    height: scrollView.frame.height)
         
-        for (_, viewModel) in firebase.posts {
+        func createPostView(for viewModel: PostViewModel) {
             let postView = PostView.instanceFromNib()
             
             postView.viewModel = viewModel
             postView.viewModel.delegate = postView
             postView.updateUI()
             postView.clipsToBounds = true
-            postView.imageView.setShowActivityIndicator(true)
             postView.frame = frame
             
             frame.origin.x = frame.origin.x + frame.width
             
             scrollView.addSubview(postView)
+        }
+        
+        if let first = firebase.posts[key] {
+            createPostView(for: first)
+        }
+        
+        for (this, viewModel) in firebase.posts {
+            if this != key {
+                createPostView(for: viewModel)
+            }
         }
         
         let content = CGRect(x: 0, y: 0,
