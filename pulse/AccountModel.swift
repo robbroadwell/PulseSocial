@@ -8,10 +8,11 @@
 
 import Foundation
 
+var accountModel: AccountModel?
+
 class AccountModel {
     
     var score: Int!
-    var delegate: AccountDelegate?
     
     init() {
         createObserver()
@@ -24,7 +25,7 @@ class AccountModel {
             
             self.score = self.getUserScore(from: value)
             
-            self.delegate?.updateUI()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateScore"), object: nil, userInfo: nil)
             
         }) { (error) in
             print(error.localizedDescription)

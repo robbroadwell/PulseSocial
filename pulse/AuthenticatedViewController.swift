@@ -21,7 +21,7 @@ class AuthenticatedViewController: UIViewController {
                 let vc = storyboard.instantiateViewController(withIdentifier: "loginVC")
                 self.present(vc, animated: true, completion: nil)
             } else {
-                
+                accountModel = AccountModel()
             }
         }
     }

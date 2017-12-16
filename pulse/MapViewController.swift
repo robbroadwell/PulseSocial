@@ -10,14 +10,9 @@ import UIKit
 import MapKit
 import SDWebImage
 
-protocol AccountDelegate {
-    func updateUI()
-}
-
-class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate, AccountDelegate {
+class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
     let user = UserLocation()
-    let accountModel = AccountModel()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
     
@@ -38,7 +33,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         super.viewDidLoad()
         
         createAuthStateListener()
-        accountModel.delegate = self
         mapView.delegate = self
         mapView.showsUserLocation = false
     }
@@ -50,6 +44,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.addObserver(self, selector: #selector(self.removePost(_:)), name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.hidePost(_:)), name: NSNotification.Name(rawValue: "hidePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateLocation(_:)), name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateScore(_:)), name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,10 +53,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
-    }
-    
-    func updateUI() {
-        accountLabel.text = String(accountModel.score)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
     func addPost(_ notification: NSNotification) {
@@ -87,6 +79,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         if mapView != nil {
             mapView.moveTo(location: user.currentLocation)
         }
+    }
+    
+    func updateScore(_ notification: NSNotification) {
+        accountLabel.text = String(accountModel!.score)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
