@@ -137,7 +137,7 @@ class Firebase {
     private func createUserPost(key: String) {
         let user = usersRef.child(uid).child("posts")
         let post = user.child(key)
-        post.setValue(["time": timestamp])
+        post.setValue(["score": 1])
     }
     
 }
