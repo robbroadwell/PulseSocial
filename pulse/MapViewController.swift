@@ -10,9 +10,14 @@ import UIKit
 import MapKit
 import SDWebImage
 
-class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
+protocol AccountDelegate {
+    func updateUI()
+}
+
+class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate, AccountDelegate {
     
     let user = UserLocation()
+    let accountModel = AccountModel()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
     
@@ -33,7 +38,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         super.viewDidLoad()
         
         createAuthStateListener()
-        
+        accountModel.delegate = self
         mapView.delegate = self
         mapView.showsUserLocation = false
     }
@@ -53,6 +58,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+    }
+    
+    func updateUI() {
+        accountLabel.text = String(accountModel.score)
     }
     
     func addPost(_ notification: NSNotification) {
