@@ -47,19 +47,26 @@ class PostViewModel {
     
     func favorite() {
         
-        let post = firebase.postsRef.child(key)
-        let child = post.child("favoritedBy")
+        let postRef = firebase.postsRef.child(key)
+        let userRef = firebase.usersRef.child(user!).child("posts").child(key)
+        let favoritesRef = firebase.usersRef.child(uid).child("favorites").child(key)
+        let favoritedByRef = postRef.child("favoritedBy").child(uid)
         
         if let fav = isFavorite {
             if fav {
-                post.updateChildValues(["score": score! - 1])
-                child.child(uid).removeValue()
+                postRef.updateChildValues(["score": score! - 1])
+                userRef.updateChildValues(["score": score! - 1])
+                favoritesRef.removeValue()
+                favoritedByRef.removeValue()
                 return
             }
         }
         
-        post.updateChildValues(["score": score! + 1])
-        child.child(uid).setValue(["time": timestamp])
+        postRef.updateChildValues(["score": score! + 1])
+        userRef.updateChildValues(["score": score! + 1])
+        favoritesRef.setValue(["time": timestamp])
+        favoritedByRef.setValue(["time": timestamp])
+        
     }
     
     func checkIsFavorite(from dictionary: NSDictionary?) -> Bool {

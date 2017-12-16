@@ -22,8 +22,7 @@ class Firebase {
     var firebaseRef: DatabaseReference!
     var postsRef: DatabaseReference!
     var geoPostsRef: DatabaseReference!
-    var userPostsRef: DatabaseReference!
-    var userFavoritesRef: DatabaseReference!
+    var usersRef: DatabaseReference!
     
     // Cloud Storage
     var storage = Storage.storage()
@@ -43,8 +42,7 @@ class Firebase {
         firebaseRef = Database.database().reference()
         postsRef = firebaseRef.child("posts")
         geoPostsRef = firebaseRef.child("geoPosts")
-        userPostsRef = firebaseRef.child("userPosts")
-        userFavoritesRef = firebaseRef.child("userFavorites")
+        usersRef = firebaseRef.child("users")
         geoFire = GeoFire(firebaseRef: geoPostsRef)
     }
     
@@ -137,9 +135,9 @@ class Firebase {
     }
     
     private func createUserPost(key: String) {
-        let user = userPostsRef.child(uid)
-        let userPost = user.child(key)
-        userPost.setValue(["score": 0])
+        let user = usersRef.child(uid).child("posts")
+        let post = user.child(key)
+        post.setValue(["score": 1])
     }
     
 }
