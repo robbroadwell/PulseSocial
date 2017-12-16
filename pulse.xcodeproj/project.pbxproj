@@ -11,6 +11,7 @@
 		0E1BB7021FE2326300F8F7B5 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */; };
 		0E49A6F51FE35D93004BB37E /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49A6F41FE35D93004BB37E /* ScrollView.swift */; };
 		0E49A6F71FE37A6D004BB37E /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */; };
+		0E622B651FE5BFF9004DE2CB /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E622B641FE5BFF9004DE2CB /* AccountModel.swift */; };
 		0E69C1981FCF81CB008E72E8 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1971FCF81CB008E72E8 /* Keyboard.swift */; };
 		0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1991FCF8292008E72E8 /* UserLocation.swift */; };
 		0E69C19C1FCF8393008E72E8 /* PulseMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19B1FCF8393008E72E8 /* PulseMapView.swift */; };
@@ -42,6 +43,7 @@
 		0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		0E49A6F41FE35D93004BB37E /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
+		0E622B641FE5BFF9004DE2CB /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		0E69C1971FCF81CB008E72E8 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		0E69C1991FCF8292008E72E8 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		0E69C19B1FCF8393008E72E8 /* PulseMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseMapView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				0E69C19D1FCF83F4008E72E8 /* Firebase.swift */,
 				0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */,
+				0E622B641FE5BFF9004DE2CB /* AccountModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				54DC4C9E1EE7368B00C93ABB /* TextEntryView.swift in Sources */,
 				543F63051ED8F30E00F7521D /* Containment.swift in Sources */,
 				0E49A6F51FE35D93004BB37E /* ScrollView.swift in Sources */,
+				0E622B651FE5BFF9004DE2CB /* AccountModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

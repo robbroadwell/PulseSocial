@@ -14,16 +14,8 @@ extension MapViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        showTextEntry(withImage: image)
+        firebase.newPost(atLocation: user.currentLocation.coordinate, withImage: image, withComment: "")
+        mapView.moveTo(location: user.currentLocation, animated: true, spanDelta: 0.001)
     }
-    
-    func showTextEntry(withImage image: UIImage) {
-        textEntryView = TextEntryView.instanceFromNib()
-        textEntryView?.imageView.image = image
-//        containerView.contain(view: textEntryView!)
-//        containerView.animateIn()
-        textEntryView?.clipsToBounds = true
-        textEntryView?.textField.becomeFirstResponder()
-        textEntryView?.textField.delegate = self
-    }
+
 }
