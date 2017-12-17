@@ -21,6 +21,11 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     @IBOutlet weak var accountButton: UIButton!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var resultsButton: UIView!
+    @IBOutlet weak var resultsCountLabel: UILabel!
+    @IBOutlet weak var resultsLabel: UILabel!
+    @IBOutlet weak var resultsActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var pastTwentyFourLabel: UILabel!
     
     @IBAction func cameraButtonTouchUpInside(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()
@@ -33,6 +38,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         super.viewDidLoad()
         
         createAuthStateListener()
+        createResultsButton()
         mapView.delegate = self
         mapView.showsUserLocation = false
     }
@@ -57,7 +63,20 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
+    func createResultsButton() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showAllPosts(_:)))
+        resultsButton.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func setResultsView(isMoving: Bool) {
+        resultsActivityIndicator.isHidden = !isMoving
+        resultsLabel.isHidden = isMoving
+        resultsCountLabel.isHidden = isMoving
+        pastTwentyFourLabel.isHidden = isMoving
+    }
+    
     func addPost(_ notification: NSNotification) {
+        resultsCountLabel.text = String(firebase.posts.count)
         if let key = notification.userInfo?["key"] as? String,
             let location = notification.userInfo?["location"] as? CLLocation {
             
@@ -66,6 +85,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     }
     
     func removePost(_ notification: NSNotification) {
+        resultsCountLabel.text = String(firebase.posts.count)
         if let key = notification.userInfo?["key"] as? String {
             
             mapView.removePin(key: key)
@@ -115,7 +135,11 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         }
     }
     
-    func showPost(for key: String) {
+    @objc func showAllPosts(_ sender: UITapGestureRecognizer) {
+        showPost(for: nil)
+    }
+    
+    func showPost(for key: String?) {
         
         guard firebase.posts.count > 0 else { return }
         
@@ -138,7 +162,8 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
             scrollView.addSubview(postView)
         }
         
-        if let first = firebase.posts[key] {
+        if let key = key,
+            let first = firebase.posts[key] {
             createPostView(for: first)
         }
         
@@ -172,6 +197,11 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         firebase.update(mapRegion: mapView.region)
+        setResultsView(isMoving: false)
+    }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        setResultsView(isMoving: true)
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
