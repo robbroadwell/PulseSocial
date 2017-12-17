@@ -63,18 +63,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
-    func createResultsButton() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showAllPosts(_:)))
-        resultsButton.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    func setResultsView(isMoving: Bool) {
-        resultsActivityIndicator.isHidden = !isMoving
-        resultsLabel.isHidden = isMoving
-        resultsCountLabel.isHidden = isMoving
-        pastTwentyFourLabel.isHidden = isMoving
-    }
-    
     func addPost(_ notification: NSNotification) {
         resultsCountLabel.text = String(firebase.posts.count)
         if let key = notification.userInfo?["key"] as? String,
@@ -195,6 +183,10 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
     
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        firebase.update(mapRegion: mapView.region)
+    }
+    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         firebase.update(mapRegion: mapView.region)
         setResultsView(isMoving: false)
@@ -204,8 +196,16 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         setResultsView(isMoving: true)
     }
     
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        firebase.update(mapRegion: mapView.region)
+    func createResultsButton() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showAllPosts(_:)))
+        resultsButton.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func setResultsView(isMoving: Bool) {
+        resultsActivityIndicator.isHidden = !isMoving
+        resultsLabel.isHidden = isMoving
+        resultsCountLabel.isHidden = isMoving
+        pastTwentyFourLabel.isHidden = isMoving
     }
     
 }
