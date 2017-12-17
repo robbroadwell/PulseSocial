@@ -41,6 +41,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         createResultsButton()
         mapView.delegate = self
         mapView.showsUserLocation = false
+        mapView.isRotateEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +65,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     }
     
     func addPost(_ notification: NSNotification) {
-        resultsCountLabel.text = String(firebase.posts.count)
+        setResultsCount()
         if let key = notification.userInfo?["key"] as? String,
             let location = notification.userInfo?["location"] as? CLLocation {
             
@@ -73,7 +74,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     }
     
     func removePost(_ notification: NSNotification) {
-        resultsCountLabel.text = String(firebase.posts.count)
+        setResultsCount()
         if let key = notification.userInfo?["key"] as? String {
             
             mapView.removePin(key: key)
@@ -189,11 +190,13 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         firebase.update(mapRegion: mapView.region)
-        setResultsView(isMoving: false)
+        setResultsCount()
+        showHideResultsViews(isMoving: false)
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        setResultsView(isMoving: true)
+        setResultsCount()
+        showHideResultsViews(isMoving: true)
     }
     
     func createResultsButton() {
@@ -201,11 +204,21 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
         resultsButton.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func setResultsView(isMoving: Bool) {
+    func showHideResultsViews(isMoving: Bool) {
         resultsActivityIndicator.isHidden = !isMoving
         resultsLabel.isHidden = isMoving
         resultsCountLabel.isHidden = isMoving
         pastTwentyFourLabel.isHidden = isMoving
+    }
+    
+    func setResultsCount() {
+        resultsCountLabel.text = String(firebase.posts.count)
+        
+        if firebase.posts.count != 0 {
+            pastTwentyFourLabel.text = "from the past 24 hours"
+        } else {
+            pastTwentyFourLabel.text = "try moving the map"
+        }
     }
     
 }
