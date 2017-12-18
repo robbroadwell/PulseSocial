@@ -190,10 +190,12 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     }
     
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.loadingView.alpha = 0
-        }) { (true) in
-            self.loadingView.isHidden = true
+        if fullyRendered {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.loadingView.alpha = 0
+            }) { (true) in
+                self.loadingView.isHidden = true
+            }
         }
     }
     
