@@ -18,6 +18,7 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     @IBOutlet weak var mapView: PulseMapView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var accountButton: UIButton!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var cameraButton: UIButton!
@@ -186,6 +187,14 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         firebase.update(mapRegion: mapView.region)
+    }
+    
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.loadingView.alpha = 0
+        }) { (true) in
+            self.loadingView.isHidden = true
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
