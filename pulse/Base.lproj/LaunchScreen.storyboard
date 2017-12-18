@@ -20,7 +20,18 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5B7-In-8vm">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5B7-In-8vm" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="N07-5L-122"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="5B7-In-8vm" secondAttribute="bottom" id="eQz-jb-Y9Q"/>
+                            <constraint firstItem="5B7-In-8vm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="mdY-wh-Ija"/>
+                            <constraint firstAttribute="trailing" secondItem="5B7-In-8vm" secondAttribute="trailing" id="tP4-Q0-4aX"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
