@@ -87,9 +87,9 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         guard firebase.posts.count > 0 else { return }
         
         var frame: CGRect = CGRect(x: 10,
-                                   y: 10,
+                                   y: 20,
                                    width: scrollView.frame.width - 20,
-                                   height: scrollView.frame.height - 20)
+                                   height: scrollView.frame.height - 40)
         
         func createPostView(for viewModel: PostViewModel) {
             let postView = PostView.instanceFromNib()
