@@ -21,9 +21,13 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var cameraButton: UIImageView!
+    @IBOutlet weak var cameraCloseButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var cameraPreview: UIView!
+    @IBOutlet weak var cameraPreviewImage: UIImageView!
     
     var captureSession: AVCaptureSession?
+    var cameraOutput = AVCapturePhotoOutput()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
     // MARK: - LIFECYCLE
@@ -219,20 +223,83 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     func cameraButtonTouchUpInside() {
-        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        do {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-            captureSession = AVCaptureSession()
-            captureSession?.addInput(input)
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-            videoPreviewLayer?.frame = view.layer.bounds
-            cameraView.layer.addSublayer(videoPreviewLayer!)
-            captureSession?.startRunning()
+        
+        if !cameraView.isHidden {
+            snapPhoto()
+            
+        } else {
+            setupCamera()
             cameraView.isHidden = false
-        } catch {
-            print(error)
+            cameraCloseButton.isHidden = false
         }
     }
+    @IBAction func cameraCloseButtonTouchUpInside(_ sender: UIButton) {
+        cameraView.isHidden = true
+        cameraCloseButton.isHidden = true
+    }
     
+    @IBAction func previewCloseTouchUpInside(_ sender: UIButton) {
+        cameraPreview.isHidden = true
+    }
+    
+    @IBAction func previewSendTouchUpInside(_ sender: UIButton) {
+        firebase.newPost(atLocation: (userLocation?.currentLocation.coordinate)!, withImage: cameraPreviewImage.image!, withComment: "")
+        cameraView.isHidden = true
+        cameraCloseButton.isHidden = true
+        cameraPreview.isHidden = true
+    }
+}
+
+extension MapViewController: AVCapturePhotoCaptureDelegate {
+    
+    
+    
+    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        
+        if let error = error {
+            print(error.localizedDescription)
+        }
+        
+        if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
+            if let image = UIImage(data: dataImage) {
+                cameraPreview.isHidden = false
+                cameraPreviewImage.image = image
+            }
+
+        }
+        
+    }
+    
+    func snapPhoto() {
+        
+        let settings = AVCapturePhotoSettings()
+        let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
+        let previewFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
+                             kCVPixelBufferWidthKey as String: 160,
+                             kCVPixelBufferHeightKey as String: 160]
+        settings.previewPhotoFormat = previewFormat
+        self.cameraOutput.capturePhoto(with: settings, delegate: self)
+    
+    }
+
+    func setupCamera() {
+        
+        if captureSession == nil {
+            let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+            do {
+                let input = try AVCaptureDeviceInput(device: captureDevice)
+                captureSession = AVCaptureSession()
+                captureSession?.addInput(input)
+                captureSession?.addOutput(cameraOutput)
+                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+                videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+                videoPreviewLayer?.frame = view.layer.bounds
+                cameraView.layer.addSublayer(videoPreviewLayer!)
+                captureSession?.startRunning()
+                
+            } catch {
+                print(error)
+            }
+        }
+    }
 }

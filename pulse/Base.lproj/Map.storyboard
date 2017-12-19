@@ -72,6 +72,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYd-KO-tzJ" userLabel="Camera Close Button">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Btw-7c-exC"/>
+                                    <constraint firstAttribute="height" constant="30" id="Eiu-z3-Z0r"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="cameraCloseButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="02z-by-OBS"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-button" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-Nj-XEg">
                                 <rect key="frame" x="137.5" y="517" width="100" height="100"/>
                                 <constraints>
@@ -79,6 +91,49 @@
                                     <constraint firstAttribute="width" constant="100" id="btM-Qj-98S"/>
                                 </constraints>
                             </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69o-DW-BEz" userLabel="Camera Preview">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xRN-ti-1pO" userLabel="Camera Preview Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLG-Jv-7oz" userLabel="Preview Close Button">
+                                        <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Iab-b3-FV4"/>
+                                            <constraint firstAttribute="height" constant="30" id="fda-9y-Wmd"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="ic_close"/>
+                                        <connections>
+                                            <action selector="previewCloseTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6gR-jV-aZM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urz-jS-kGx" userLabel="Preview Send Button">
+                                        <rect key="frame" x="305" y="597" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="1Cc-7Q-m1y"/>
+                                            <constraint firstAttribute="width" constant="50" id="LA9-rG-U87"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="ic_send"/>
+                                        <connections>
+                                            <action selector="previewSendTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k7U-5b-5Zq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xRN-ti-1pO" firstAttribute="leading" secondItem="69o-DW-BEz" secondAttribute="leading" id="IJN-2G-jMH"/>
+                                    <constraint firstItem="zLG-Jv-7oz" firstAttribute="leading" secondItem="69o-DW-BEz" secondAttribute="leading" constant="20" id="IT8-SA-hYF"/>
+                                    <constraint firstItem="zLG-Jv-7oz" firstAttribute="top" secondItem="69o-DW-BEz" secondAttribute="top" constant="20" id="R2J-VC-eMa"/>
+                                    <constraint firstAttribute="bottom" secondItem="urz-jS-kGx" secondAttribute="bottom" constant="20" id="SMa-Gn-UER"/>
+                                    <constraint firstAttribute="trailing" secondItem="xRN-ti-1pO" secondAttribute="trailing" id="TU8-KU-iSU"/>
+                                    <constraint firstAttribute="bottom" secondItem="xRN-ti-1pO" secondAttribute="bottom" id="Tyw-br-0dK"/>
+                                    <constraint firstItem="xRN-ti-1pO" firstAttribute="top" secondItem="69o-DW-BEz" secondAttribute="top" id="U9b-T2-iba"/>
+                                    <constraint firstAttribute="trailing" secondItem="urz-jS-kGx" secondAttribute="trailing" constant="20" id="hWQ-Il-nHp"/>
+                                </constraints>
+                            </view>
                             <scrollView hidden="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-dA-Z5P">
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                             </scrollView>
@@ -89,6 +144,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="69o-DW-BEz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0si-ml-bTf"/>
                             <constraint firstAttribute="trailing" secondItem="yzO-ui-8rf" secondAttribute="trailing" id="16p-lF-7xX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BYh-Dp-cvI" secondAttribute="bottom" id="2R7-tQ-NQY"/>
                             <constraint firstItem="9th-0b-4Gw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="69S-ke-2wk"/>
@@ -97,8 +153,10 @@
                             <constraint firstItem="pfv-dA-Z5P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GYi-Eg-0m4"/>
                             <constraint firstItem="3Ho-Nj-XEg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jfi-Nn-84j"/>
                             <constraint firstAttribute="trailing" secondItem="9th-0b-4Gw" secondAttribute="trailing" id="JjD-7r-H63"/>
+                            <constraint firstItem="kYd-KO-tzJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="KRc-NM-0zy"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pfv-dA-Z5P" secondAttribute="bottom" id="Lf1-Vy-rHa"/>
                             <constraint firstAttribute="bottom" secondItem="yzO-ui-8rf" secondAttribute="bottom" id="PCS-F0-DM8"/>
+                            <constraint firstItem="69o-DW-BEz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Rak-wH-TGl"/>
                             <constraint firstItem="BYh-Dp-cvI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Yyz-1g-wLg"/>
                             <constraint firstAttribute="trailing" secondItem="pfv-dA-Z5P" secondAttribute="trailing" id="ZX0-Xu-Iz6"/>
                             <constraint firstAttribute="trailing" secondItem="BYh-Dp-cvI" secondAttribute="trailing" id="bep-gE-ndF"/>
@@ -107,14 +165,20 @@
                             <constraint firstAttribute="bottom" secondItem="3Ho-Nj-XEg" secondAttribute="bottom" constant="50" id="eLK-IH-Aj7"/>
                             <constraint firstItem="9th-0b-4Gw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f5f-DQ-wKq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iXU-bB-qma" secondAttribute="bottom" id="gBm-hc-T6Z"/>
+                            <constraint firstAttribute="trailing" secondItem="69o-DW-BEz" secondAttribute="trailing" id="gxu-J6-lRS"/>
+                            <constraint firstAttribute="bottom" secondItem="69o-DW-BEz" secondAttribute="bottom" id="kbK-tj-QCc"/>
                             <constraint firstItem="BYh-Dp-cvI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ra5-td-HgD"/>
                             <constraint firstItem="iXU-bB-qma" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="scX-IN-aA4"/>
                             <constraint firstItem="pfv-dA-Z5P" firstAttribute="top" secondItem="9th-0b-4Gw" secondAttribute="bottom" id="yfa-2R-7Qo"/>
+                            <constraint firstItem="kYd-KO-tzJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="z5E-hU-5dK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="Ahe-5F-LRE" id="zu6-n7-RDM"/>
                         <outlet property="cameraButton" destination="3Ho-Nj-XEg" id="UZt-6N-HPr"/>
+                        <outlet property="cameraCloseButton" destination="kYd-KO-tzJ" id="Uk0-vt-SLb"/>
+                        <outlet property="cameraPreview" destination="69o-DW-BEz" id="Plc-7g-k7I"/>
+                        <outlet property="cameraPreviewImage" destination="xRN-ti-1pO" id="DzO-So-HzU"/>
                         <outlet property="cameraView" destination="yzO-ui-8rf" id="jDx-vb-kzh"/>
                         <outlet property="countLabel" destination="rBH-fN-yhT" id="Ukz-ce-F81"/>
                         <outlet property="headerView" destination="9th-0b-4Gw" id="uy0-BS-aja"/>
@@ -131,6 +195,8 @@
     </scenes>
     <resources>
         <image name="camera-button" width="188" height="188"/>
+        <image name="ic_close" width="24" height="24"/>
+        <image name="ic_send" width="24" height="24"/>
         <image name="pulse-icon" width="379" height="225"/>
     </resources>
 </document>
