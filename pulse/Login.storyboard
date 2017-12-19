@@ -49,7 +49,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="REGISTER"/>
                                         <connections>
-                                            <segue destination="6Az-QI-3tG" kind="show" animates="NO" id="UlY-il-j51"/>
+                                            <segue destination="cju-gx-5CI" kind="show" animates="NO" id="As0-xZ-773"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yB-YO-3c2" userLabel="Login Button">
@@ -236,69 +236,120 @@
             <point key="canvasLocation" x="1068.8" y="-98.050974512743636"/>
         </scene>
         <!--Register View Controller-->
-        <scene sceneID="Y0i-MG-dFs">
+        <scene sceneID="4xi-Nh-cDB">
             <objects>
-                <viewController id="t9n-Dc-oUP" customClass="RegisterViewController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="o9O-cG-adh" customClass="RegisterViewController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8vH-hN-8qr"/>
-                        <viewControllerLayoutGuide type="bottom" id="MrR-d7-6oZ"/>
+                        <viewControllerLayoutGuide type="top" id="qcJ-iz-Pnq"/>
+                        <viewControllerLayoutGuide type="bottom" id="EzX-vQ-OVD"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oPE-ua-yqs">
+                    <view key="view" contentMode="scaleToFill" id="PJf-Iw-TuO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGISTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKN-j8-df3">
-                                <rect key="frame" x="139" y="114" width="96" height="27.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGISTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ci-fL-OBo" userLabel="Login Title Label">
+                                <rect key="frame" x="139.5" y="94" width="96" height="27.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USERNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZH-rr-ziK" userLabel="Username Label">
+                                <rect key="frame" x="56" y="150" width="65" height="16.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iv5-D9-4i0" userLabel="Username TextField">
+                                <rect key="frame" x="56" y="171.5" width="263" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0lr-Ye-1LF"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" smartInsertDeleteType="no" textContentType="username"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84h-C8-bWJ" userLabel="Password Label">
+                                <rect key="frame" x="56" y="220.5" width="66.5" height="16.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="coe-jd-8jP" userLabel="Password TextField">
+                                <rect key="frame" x="56" y="241.5" width="263" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ioG-7i-dLC"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CML-6a-jDW">
+                                <rect key="frame" x="112" y="587" width="150" height="50"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Wbv-fn-J5z"/>
+                                    <constraint firstAttribute="width" constant="150" id="tkm-WA-SyD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="registerButtonTouchUpInside:" destination="o9O-cG-adh" eventType="touchUpInside" id="nAg-OR-8NX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FKN-j8-df3" firstAttribute="top" secondItem="8vH-hN-8qr" secondAttribute="bottom" constant="50" id="A0N-ir-wOZ"/>
-                            <constraint firstItem="FKN-j8-df3" firstAttribute="centerX" secondItem="oPE-ua-yqs" secondAttribute="centerX" id="I90-9j-gbk"/>
+                            <constraint firstItem="3ci-fL-OBo" firstAttribute="centerX" secondItem="PJf-Iw-TuO" secondAttribute="centerX" id="13J-YN-uQm"/>
+                            <constraint firstItem="3ci-fL-OBo" firstAttribute="top" secondItem="qcJ-iz-Pnq" secondAttribute="bottom" constant="30" id="1H8-vm-JuS"/>
+                            <constraint firstItem="Iv5-D9-4i0" firstAttribute="top" secondItem="3ci-fL-OBo" secondAttribute="bottom" constant="50" id="4zE-06-56b"/>
+                            <constraint firstItem="CML-6a-jDW" firstAttribute="centerX" secondItem="PJf-Iw-TuO" secondAttribute="centerX" id="DEC-8l-wej"/>
+                            <constraint firstItem="coe-jd-8jP" firstAttribute="top" secondItem="Iv5-D9-4i0" secondAttribute="bottom" constant="40" id="EXM-IE-m9F"/>
+                            <constraint firstItem="EzX-vQ-OVD" firstAttribute="top" secondItem="CML-6a-jDW" secondAttribute="bottom" constant="30" id="L7Q-FX-5Tg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="coe-jd-8jP" secondAttribute="trailing" constant="40" id="LjH-fm-AcU"/>
+                            <constraint firstItem="84h-C8-bWJ" firstAttribute="leading" secondItem="coe-jd-8jP" secondAttribute="leading" id="LtA-YY-qHE"/>
+                            <constraint firstItem="Iv5-D9-4i0" firstAttribute="leading" secondItem="PJf-Iw-TuO" secondAttribute="leadingMargin" constant="40" id="UQb-3G-aCO"/>
+                            <constraint firstItem="dZH-rr-ziK" firstAttribute="leading" secondItem="Iv5-D9-4i0" secondAttribute="leading" id="hKO-4n-fQL"/>
+                            <constraint firstItem="coe-jd-8jP" firstAttribute="leading" secondItem="PJf-Iw-TuO" secondAttribute="leadingMargin" constant="40" id="jcw-RR-ACU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Iv5-D9-4i0" secondAttribute="trailing" constant="40" id="oyV-cX-gc8"/>
+                            <constraint firstItem="Iv5-D9-4i0" firstAttribute="top" secondItem="dZH-rr-ziK" secondAttribute="bottom" constant="5" id="r2b-3h-ywl"/>
+                            <constraint firstItem="coe-jd-8jP" firstAttribute="top" secondItem="84h-C8-bWJ" secondAttribute="bottom" constant="4.5" id="vJc-0g-hms"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ruS-vG-inM">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_keyboard_arrow_left" id="x7Y-j5-KZM">
+                    <navigationItem key="navigationItem" id="1hu-Gh-SxC">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_keyboard_arrow_left" id="rxQ-7Z-OKF" userLabel="Back">
                             <connections>
-                                <action selector="pop:" destination="t9n-Dc-oUP" id="CFF-CP-027"/>
+                                <action selector="pop:" destination="o9O-cG-adh" id="Chi-hQ-Lnr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="passwordTextField" destination="coe-jd-8jP" id="DVe-vR-vgw"/>
+                        <outlet property="registerButton" destination="CML-6a-jDW" id="INJ-xd-ndD"/>
+                        <outlet property="registerButtonBottonConstraint" destination="L7Q-FX-5Tg" id="4fI-2M-Nqq"/>
+                        <outlet property="usernameTextField" destination="Iv5-D9-4i0" id="TpN-SG-wba"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="niF-pa-4IW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSN-qr-Cbq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1734" y="625"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="k67-Lq-hq0">
+        <scene sceneID="D0b-mY-6me">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Az-QI-3tG" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cju-gx-5CI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dHr-Wf-ENO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AcB-g9-X5k">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="t9n-Dc-oUP" kind="relationship" relationship="rootViewController" id="cKO-yq-lYq"/>
+                        <segue destination="o9O-cG-adh" kind="relationship" relationship="rootViewController" id="4il-JG-VAd"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3xl-3b-ljg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YmK-Tl-f4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1068" y="625"/>
         </scene>
