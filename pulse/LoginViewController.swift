@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -24,7 +25,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginTouchUpInside(_ sender: UIButton) {
-        
+        if textEntered {
+            login()
+        }
     }
     
     override func viewDidLoad() {
@@ -46,6 +49,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func login() {
+        if let email = usernameTextField.text,
+            let password = passwordTextField.text {
+            
+            print("# LOGIN - Attempting login with \(email) / \(password).")
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                print("# LOGIN - Logged in...")
+            }
+        }
     }
     
     func keyboardWillShowNotification(_ notification: NSNotification) {
@@ -77,10 +91,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange() {
-        if usernameTextField.text != "" && passwordTextField.text != "" {
+        if textEntered {
             loginButton.backgroundColor = UIColor.red
         } else {
             loginButton.backgroundColor = UIColor.lightGray
+        }
+    }
+    
+    var textEntered: Bool {
+        if usernameTextField.text != "" && passwordTextField.text != "" {
+            return true
+        } else {
+            return false
         }
     }
     

@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handle!)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
