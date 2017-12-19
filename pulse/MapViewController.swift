@@ -9,35 +9,25 @@
 import UIKit
 import MapKit
 import SDWebImage
+import AVFoundation
 
 class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate {
-    
-    var textEntryView: TextEntryView?
-    var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var mapView: PulseMapView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var accountButton: UIButton!
-    @IBOutlet weak var accountLabel: UILabel!
-    @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var resultsButton: UIView!
-    @IBOutlet weak var resultsCountLabel: UILabel!
-    @IBOutlet weak var resultsLabel: UILabel!
-    @IBOutlet weak var resultsActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var pastTwentyFourLabel: UILabel!
+    @IBOutlet weak var cameraButton: UIImageView!
+    @IBOutlet weak var cameraView: UIView!
     
-    @IBAction func cameraButtonTouchUpInside(_ sender: UIButton) {
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
-    }
+    var captureSession: AVCaptureSession?
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    
+    // MARK: - LIFECYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createResultsButton()
+        createCameraButton()
         mapView.delegate = self
         mapView.showsUserLocation = false
         mapView.isRotateEnabled = false
@@ -63,8 +53,9 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
+    // MARK: - MAP MOVEMENT
+    
     func addPost(_ notification: NSNotification) {
-        setResultsCount()
         if let key = notification.userInfo?["key"] as? String,
             let location = notification.userInfo?["location"] as? CLLocation {
             
@@ -73,15 +64,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     func removePost(_ notification: NSNotification) {
-        setResultsCount()
         if let key = notification.userInfo?["key"] as? String {
             
             mapView.removePin(key: key)
         }
-    }
-    
-    func hidePost(_ notification: NSNotification) {
-        hidePost()
     }
     
     func updateLocation(_ notification: NSNotification) {
@@ -91,37 +77,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     func updateScore(_ notification: NSNotification) {
-        accountLabel.text = String(accountModel!.score)
+//        accountLabel.text = String(accountModel!.score)
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        guard !(annotation is MKUserLocation) else {
-            return nil
-        }
-        
-        let annotationView = MKPostAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
-        annotationView.canShowCallout = true
-
-        return annotationView
-        
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        if let annotation = view.annotation {
-            mapView.deselectAnnotation(annotation, animated: false)
-            
-            if !annotation.isKind(of: MKUserLocation.self) {
-                if let custom = annotation as? MKPointAnnotation,
-                    let key = custom.title {
-                    
-                    showPost(for: key)
-                    
-                }
-            }
-        }
-    }
+    // MARK: - SHOW POST
     
     @objc func showAllPosts(_ sender: UITapGestureRecognizer) {
         showPost(for: nil)
@@ -171,6 +130,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
   
     }
     
+    func hidePost(_ notification: NSNotification) {
+        hidePost()
+    }
+    
     func hidePost() {
 
         scrollView.isHidden = true
@@ -180,8 +143,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
+    // MARK: - MAP DELEGATE
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         firebase.update(mapRegion: mapView.region)
@@ -199,34 +161,61 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         firebase.update(mapRegion: mapView.region)
-        setResultsCount()
-//        showHideResultsViews(isMoving: false)
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        setResultsCount()
-//        showHideResultsViews(isMoving: true)
     }
     
-    func createResultsButton() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showAllPosts(_:)))
-        resultsButton.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    func showHideResultsViews(isMoving: Bool) {
-        resultsActivityIndicator.isHidden = !isMoving
-        resultsLabel.isHidden = isMoving
-        resultsCountLabel.isHidden = isMoving
-        pastTwentyFourLabel.isHidden = isMoving
-    }
-    
-    func setResultsCount() {
-        resultsCountLabel.text = String(firebase.posts.count)
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if firebase.posts.count != 0 {
-            pastTwentyFourLabel.text = "from the past 24 hours"
-        } else {
-            pastTwentyFourLabel.text = "try moving the map"
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        
+        let annotationView = MKPostAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
+        annotationView.canShowCallout = true
+        
+        return annotationView
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        if let annotation = view.annotation {
+            mapView.deselectAnnotation(annotation, animated: false)
+            
+            if !annotation.isKind(of: MKUserLocation.self) {
+                if let custom = annotation as? MKPointAnnotation,
+                    let key = custom.title {
+                    
+                    showPost(for: key)
+                    
+                }
+            }
+        }
+    }
+    
+    // MARK: - CAMERA
+    
+    func createCameraButton() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(cameraButtonTouchUpInside))
+        cameraButton.addGestureRecognizer(tap)
+        cameraButton.isUserInteractionEnabled = true
+    }
+    
+    func cameraButtonTouchUpInside() {
+        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        do {
+            let input = try AVCaptureDeviceInput(device: captureDevice)
+            captureSession = AVCaptureSession()
+            captureSession?.addInput(input)
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+            videoPreviewLayer?.frame = view.layer.bounds
+            cameraView.layer.addSublayer(videoPreviewLayer!)
+            captureSession?.startRunning()
+        } catch {
+            print(error)
         }
     }
     
