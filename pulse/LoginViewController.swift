@@ -33,6 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         loginButton.backgroundColor = UIColor.lightGray
         usernameTextField.setBottomBorder()
+        usernameTextField.becomeFirstResponder()
         usernameTextField.delegate = self
         usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         passwordTextField.setBottomBorder()
@@ -44,6 +45,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        UIApplication.shared.isStatusBarHidden = true
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,6 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             print("# LOGIN - Attempting login with \(email) / \(password).")
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                 print("# LOGIN - Logged in...")
+                self.navigationController?.dismiss(animated: false, completion: nil)
             }
         }
     }
