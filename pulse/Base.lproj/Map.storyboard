@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -26,9 +31,41 @@
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9th-0b-4Gw" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pulse-icon" translatesAutoresizingMaskIntoConstraints="NO" id="igJ-Ho-jgy" userLabel="Pulse Logo">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="x2r-SE-3SA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pi-GU-tpC" userLabel="Score Label">
+                                        <rect key="frame" x="105" y="13" width="45" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBH-fN-yhT" userLabel="Count Label">
+                                        <rect key="frame" x="310" y="13" width="45" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Ahe-5F-LRE">
+                                        <rect key="frame" x="335" y="15" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="0pi-GU-tpC" firstAttribute="leading" secondItem="igJ-Ho-jgy" secondAttribute="trailing" constant="5" id="2cp-KL-ebS"/>
+                                    <constraint firstItem="Ahe-5F-LRE" firstAttribute="centerY" secondItem="9th-0b-4Gw" secondAttribute="centerY" id="AuQ-Hh-4Lb"/>
+                                    <constraint firstItem="rBH-fN-yhT" firstAttribute="centerY" secondItem="9th-0b-4Gw" secondAttribute="centerY" id="HRJ-nz-kep"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ahe-5F-LRE" secondAttribute="trailing" constant="20" id="KiA-Hk-nNo"/>
+                                    <constraint firstItem="0pi-GU-tpC" firstAttribute="centerY" secondItem="9th-0b-4Gw" secondAttribute="centerY" id="Ppl-Yr-g1i"/>
+                                    <constraint firstAttribute="trailing" secondItem="rBH-fN-yhT" secondAttribute="trailing" constant="20" id="RIC-Z9-4kO"/>
+                                    <constraint firstItem="igJ-Ho-jgy" firstAttribute="leading" secondItem="9th-0b-4Gw" secondAttribute="leading" id="YN9-NX-G4g"/>
                                     <constraint firstAttribute="height" constant="50" id="b4a-9f-RcE"/>
+                                    <constraint firstAttribute="bottom" secondItem="igJ-Ho-jgy" secondAttribute="bottom" id="cd5-ur-xqh"/>
+                                    <constraint firstItem="igJ-Ho-jgy" firstAttribute="top" secondItem="9th-0b-4Gw" secondAttribute="top" id="zxs-xZ-3nY"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzO-ui-8rf" userLabel="Camera View">
@@ -43,7 +80,7 @@
                                 </constraints>
                             </imageView>
                             <scrollView hidden="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-dA-Z5P">
-                                <rect key="frame" x="20" y="50" width="335" height="617"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                             </scrollView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXU-bB-qma" userLabel="Loading View" customClass="LoadingView" customModule="pulse" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -57,13 +94,13 @@
                             <constraint firstItem="9th-0b-4Gw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="69S-ke-2wk"/>
                             <constraint firstItem="iXU-bB-qma" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7kf-TH-12J"/>
                             <constraint firstAttribute="trailing" secondItem="iXU-bB-qma" secondAttribute="trailing" id="G3x-01-Ki1"/>
-                            <constraint firstItem="pfv-dA-Z5P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="GYi-Eg-0m4"/>
+                            <constraint firstItem="pfv-dA-Z5P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GYi-Eg-0m4"/>
                             <constraint firstItem="3Ho-Nj-XEg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jfi-Nn-84j"/>
                             <constraint firstAttribute="trailing" secondItem="9th-0b-4Gw" secondAttribute="trailing" id="JjD-7r-H63"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pfv-dA-Z5P" secondAttribute="bottom" id="Lf1-Vy-rHa"/>
                             <constraint firstAttribute="bottom" secondItem="yzO-ui-8rf" secondAttribute="bottom" id="PCS-F0-DM8"/>
                             <constraint firstItem="BYh-Dp-cvI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Yyz-1g-wLg"/>
-                            <constraint firstAttribute="trailing" secondItem="pfv-dA-Z5P" secondAttribute="trailing" constant="20" id="ZX0-Xu-Iz6"/>
+                            <constraint firstAttribute="trailing" secondItem="pfv-dA-Z5P" secondAttribute="trailing" id="ZX0-Xu-Iz6"/>
                             <constraint firstAttribute="trailing" secondItem="BYh-Dp-cvI" secondAttribute="trailing" id="bep-gE-ndF"/>
                             <constraint firstItem="yzO-ui-8rf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dLh-dK-LXi"/>
                             <constraint firstItem="yzO-ui-8rf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dYg-oh-1Rq"/>
@@ -76,10 +113,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Ahe-5F-LRE" id="zu6-n7-RDM"/>
                         <outlet property="cameraButton" destination="3Ho-Nj-XEg" id="UZt-6N-HPr"/>
                         <outlet property="cameraView" destination="yzO-ui-8rf" id="jDx-vb-kzh"/>
+                        <outlet property="countLabel" destination="rBH-fN-yhT" id="Ukz-ce-F81"/>
+                        <outlet property="headerView" destination="9th-0b-4Gw" id="uy0-BS-aja"/>
                         <outlet property="loadingView" destination="iXU-bB-qma" id="6zU-lw-t7F"/>
                         <outlet property="mapView" destination="BYh-Dp-cvI" id="VRX-ja-aNv"/>
+                        <outlet property="scoreLabel" destination="0pi-GU-tpC" id="Wka-dL-Usm"/>
                         <outlet property="scrollView" destination="pfv-dA-Z5P" id="DbL-jF-jkd"/>
                     </connections>
                 </viewController>
@@ -90,5 +131,6 @@
     </scenes>
     <resources>
         <image name="camera-button" width="188" height="188"/>
+        <image name="pulse-icon" width="379" height="225"/>
     </resources>
 </document>

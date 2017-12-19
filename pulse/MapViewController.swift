@@ -11,9 +11,13 @@ import MapKit
 import SDWebImage
 import AVFoundation
 
-class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var mapView: PulseMapView!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var cameraButton: UIImageView!
@@ -28,6 +32,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         super.viewDidLoad()
         
         createCameraButton()
+        scrollView.delegate = self
         mapView.delegate = self
         mapView.showsUserLocation = false
         mapView.isRotateEnabled = false
@@ -56,6 +61,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             let location = notification.userInfo?["location"] as? CLLocation {
             
             mapView.addPin(key: key, location: location)
+            countLabel.text = "\(firebase.posts.count)"
         }
     }
     
@@ -63,6 +69,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         if let key = notification.userInfo?["key"] as? String {
             
             mapView.removePin(key: key)
+            countLabel.text = "\(firebase.posts.count)"
         }
     }
     
@@ -73,7 +80,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     func updateScore(_ notification: NSNotification) {
-//        accountLabel.text = String(accountModel!.score)
+        scoreLabel.text = String(accountModel!.score)
     }
     
     // MARK: - SHOW POST
@@ -86,10 +93,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         
         guard firebase.posts.count > 0 else { return }
         
-        var frame: CGRect = CGRect(x: 10,
-                                   y: 20,
-                                   width: scrollView.frame.width - 20,
-                                   height: scrollView.frame.height - 40)
+        var frame: CGRect = CGRect(x: 0,
+                                   y: 0,
+                                   width: scrollView.frame.width,
+                                   height: scrollView.frame.height)
         
         func createPostView(for viewModel: PostViewModel) {
             let postView = PostView.instanceFromNib()
@@ -100,7 +107,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             postView.clipsToBounds = true
             postView.frame = frame
             
-            frame.origin.x = frame.origin.x + frame.width + 20
+            frame.origin.x = frame.origin.x + frame.width
             
             scrollView.addSubview(postView)
         }
@@ -123,7 +130,8 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         scrollView.contentSize = content.size
         scrollView.scrollTo(direction: .left, animated: false)
         scrollView.isHidden = false
-  
+        countLabel.text = "1 of \(firebase.posts.count)"
+        mapView.alpha = 0
     }
     
     func hidePost(_ notification: NSNotification) {
@@ -133,10 +141,17 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     func hidePost() {
 
         scrollView.isHidden = true
+        countLabel.text = "\(firebase.posts.count)"
+        mapView.alpha = 1
         
         for subview in scrollView.subviews {
             subview.removeFromSuperview()
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = Int(round(scrollView.contentOffset.x/scrollView.frame.width))
+        countLabel.text = "\(page + 1) of \(firebase.posts.count)"
     }
     
     // MARK: - MAP DELEGATE
@@ -157,9 +172,13 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         firebase.update(mapRegion: mapView.region)
+        activityIndicator.isHidden = true
+        countLabel.isHidden = false
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        activityIndicator.isHidden = false
+        countLabel.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -210,6 +229,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             videoPreviewLayer?.frame = view.layer.bounds
             cameraView.layer.addSublayer(videoPreviewLayer!)
             captureSession?.startRunning()
+            cameraView.isHidden = false
         } catch {
             print(error)
         }
