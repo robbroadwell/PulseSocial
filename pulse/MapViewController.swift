@@ -12,7 +12,6 @@ import SDWebImage
 
 class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
-    let user = UserLocation()
     var textEntryView: TextEntryView?
     var imagePicker: UIImagePickerController!
     
@@ -87,7 +86,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     func updateLocation(_ notification: NSNotification) {
         if mapView != nil {
-            mapView.moveTo(location: user.currentLocation)
+            mapView.moveTo(location: userLocation!.currentLocation)
         }
     }
     

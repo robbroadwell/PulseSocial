@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
                 self.showLogin()
             } else {
                 self.showMap()
+                userLocation = UserLocation()
                 accountModel = AccountModel()
             }
         }
