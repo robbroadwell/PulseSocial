@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import SDWebImage
 
-class MapViewController: AuthenticatedViewController, UINavigationControllerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
     let user = UserLocation()
     var textEntryView: TextEntryView?
@@ -38,7 +38,6 @@ class MapViewController: AuthenticatedViewController, UINavigationControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createAuthStateListener()
         createResultsButton()
         mapView.delegate = self
         mapView.showsUserLocation = false

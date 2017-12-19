@@ -1,98 +1,87 @@
 //
 //  LoginViewController.swift
-//  firebase-storyboards
+//  pulse
 //
-//  Created by Rob Broadwell on 5/1/17.
+//  Created by Rob Broadwell on 12/18/17.
 //  Copyright © 2017 Rob Broadwell LTD. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    enum mode {
-        case login
-        case register
-    }
-    
-    var activeMode = mode.login
-    
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var registerButton: UIButton!
-    
-    @IBAction func loginButtonWasPressed(_ sender: Any) {
-        loginButton.setTitleColor(UIColor.black, for: .normal)
-        registerButton.setTitleColor(UIColor.blue, for: .normal)
-        activeMode = .login
-    }
-    
-    @IBAction func registerButtonWasPressed(_ sender: Any) {
-        loginButton.setTitleColor(UIColor.blue, for: .normal)
-        registerButton.setTitleColor(UIColor.black, for: .normal)
-        activeMode = .register
+    @IBAction func pop(_ sender: Any) {
+        self.navigationController?.dismiss(animated: false, completion: nil)
     }
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButtonBottomConstraint: NSLayoutConstraint!
     
-    @IBAction func submitButtonWasPressed(_ sender: Any) {
+    @IBAction func forgotPasswordTouchUpInside(_ sender: UIButton) {
         
-        if activeMode == .login {
-            login()
-        }
-        
-        if activeMode == .register {
-            register()
-        }
     }
     
-    var handle: AuthStateDidChangeListenerHandle?
-    
-    override func viewWillAppear(_ animated: Bool) {
+    @IBAction func loginTouchUpInside(_ sender: UIButton) {
         
-        handle = Auth.auth().addStateDidChangeListener() { (auth, user) in
-            if Auth.auth().currentUser != nil {
-                self.dismiss(animated: true, completion: nil)
-            } else {
-
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        loginButton.backgroundColor = UIColor.lightGray
+        usernameTextField.setBottomBorder()
+        usernameTextField.delegate = self
+        usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+        passwordTextField.setBottomBorder()
+        passwordTextField.delegate = self
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: 
+            UIControlEvents.editingChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShowNotification(_ notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotification(notification)
+    }
+    
+    func keyboardWillHideNotification(_ notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotification(notification)
+    }
+    
+    func updateBottomLayoutConstraintWithNotification(_ notification: NSNotification) {
+        let userInfo = notification.userInfo!
         
-    }
-    
-    func login() {
-        if let email = usernameTextField.text,
-            let password = passwordTextField.text {
-            
-            print("# LOGIN - Attempting login with \(email) / \(password).")
-            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                print("# LOGIN - Logged in...")
-            }
+        if let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+            let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let rawAnimationCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue
+            {
+                
+                let animationCurve = UIViewAnimationOptions.init(rawValue: UInt(rawAnimationCurve))
+                let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
+                
+                loginButtonBottomConstraint.constant = (view.bounds.maxY - convertedKeyboardEndFrame.minY) + 30
+                
+                UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve], animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+                
         }
     }
     
-    func register() {
-        if let email = usernameTextField.text,
-            let password = passwordTextField.text {
-            
-            print("# REGISTER - Attempting register with \(email) / \(password).")
-            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-                print("# REGISTER - Logged in...")
-            }
+    @objc func textFieldDidChange() {
+        if usernameTextField.text != "" && passwordTextField.text != "" {
+            loginButton.backgroundColor = UIColor.red
+        } else {
+            loginButton.backgroundColor = UIColor.lightGray
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true) // hide keyboard
-    }
 }
