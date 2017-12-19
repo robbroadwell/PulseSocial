@@ -13,6 +13,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var termsLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var registerButtonBottonConstraint: NSLayoutConstraint!
     @IBAction func registerButtonTouchUpInside(_ sender: UIButton) {
@@ -35,6 +36,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for:
             UIControlEvents.editingChanged)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(termsPressed))
+        tap.numberOfTapsRequired = 1
+        termsLabel.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +73,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    func termsPressed() {
+        print("terms pressed")
     }
     
     func keyboardWillShowNotification(_ notification: NSNotification) {

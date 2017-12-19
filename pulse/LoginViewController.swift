@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButtonBottomConstraint: NSLayoutConstraint!
     
     @IBAction func forgotPasswordTouchUpInside(_ sender: UIButton) {
-        
+        print("forgot password pressed")
     }
     
     @IBAction func loginTouchUpInside(_ sender: UIButton) {
