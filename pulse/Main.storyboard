@@ -18,13 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-RJ-2lv" userLabel="Map VC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-background" translatesAutoresizingMaskIntoConstraints="NO" id="8ag-mN-pjn" userLabel="Default Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-RJ-2lv" userLabel="Map VC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="rSE-mX-QkT" kind="embed" id="zmK-v3-VtY"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc4-vv-F7P" userLabel="Login VC">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc4-vv-F7P" userLabel="Login VC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="6z4-W8-RdK" kind="embed" id="vZ6-Kq-TyR"/>
@@ -33,14 +36,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8ag-mN-pjn" firstAttribute="top" secondItem="Wti-D3-zkn" secondAttribute="top" id="5Fq-0G-oWd"/>
+                            <constraint firstItem="WI6-UR-C84" firstAttribute="trailing" secondItem="8ag-mN-pjn" secondAttribute="trailing" id="Aka-le-kiz"/>
                             <constraint firstItem="Bc4-vv-F7P" firstAttribute="bottom" secondItem="WI6-UR-C84" secondAttribute="bottom" id="EJ6-kn-iwU"/>
                             <constraint firstItem="Bc4-vv-F7P" firstAttribute="trailing" secondItem="WI6-UR-C84" secondAttribute="trailing" id="SNU-Xe-Btz"/>
                             <constraint firstItem="e9S-RJ-2lv" firstAttribute="top" secondItem="Wti-D3-zkn" secondAttribute="top" id="SQ2-7y-hk8"/>
+                            <constraint firstItem="8ag-mN-pjn" firstAttribute="leading" secondItem="WI6-UR-C84" secondAttribute="leading" id="VPR-0a-qqQ"/>
                             <constraint firstItem="Bc4-vv-F7P" firstAttribute="top" secondItem="Wti-D3-zkn" secondAttribute="top" id="b3Q-x4-Ld5"/>
                             <constraint firstItem="e9S-RJ-2lv" firstAttribute="leading" secondItem="WI6-UR-C84" secondAttribute="leading" id="d7p-h6-ghq"/>
                             <constraint firstItem="WI6-UR-C84" firstAttribute="trailing" secondItem="e9S-RJ-2lv" secondAttribute="trailing" id="dzB-3L-ZAX"/>
                             <constraint firstItem="WI6-UR-C84" firstAttribute="bottom" secondItem="e9S-RJ-2lv" secondAttribute="bottom" id="ssk-kg-vG3"/>
                             <constraint firstItem="Bc4-vv-F7P" firstAttribute="leading" secondItem="WI6-UR-C84" secondAttribute="leading" id="ulN-YK-5pD"/>
+                            <constraint firstItem="WI6-UR-C84" firstAttribute="bottom" secondItem="8ag-mN-pjn" secondAttribute="bottom" id="ykM-RN-Z6Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WI6-UR-C84"/>
                     </view>
@@ -70,4 +77,7 @@
             <point key="canvasLocation" x="486" y="222"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="login-background" width="758" height="1342"/>
+    </resources>
 </document>

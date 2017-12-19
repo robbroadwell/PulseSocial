@@ -200,12 +200,12 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         firebase.update(mapRegion: mapView.region)
         setResultsCount()
-        showHideResultsViews(isMoving: false)
+//        showHideResultsViews(isMoving: false)
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         setResultsCount()
-        showHideResultsViews(isMoving: true)
+//        showHideResultsViews(isMoving: true)
     }
     
     func createResultsButton() {

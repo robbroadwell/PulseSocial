@@ -25,25 +25,4 @@ class WelcomeViewController: UIViewController {
         return true
     }
     
-//    func login() {
-//        if let email = usernameTextField.text,
-//            let password = passwordTextField.text {
-//            
-//            print("# LOGIN - Attempting login with \(email) / \(password).")
-//            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-//                print("# LOGIN - Logged in...")
-//            }
-//        }
-//    }
-//    
-//    func register() {
-//        if let email = usernameTextField.text,
-//            let password = passwordTextField.text {
-//            
-//            print("# REGISTER - Attempting register with \(email) / \(password).")
-//            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-//                print("# REGISTER - Logged in...")
-//            }
-//        }
-//    }
 }
