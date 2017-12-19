@@ -23,7 +23,12 @@ class PostView: UIView, PostViewDelegate {
             let time = viewModel.time,
             let favorite = viewModel.isFavorite else { return }
         
-        imageView.sd_setImage(with: URL(string: imageURL))
+        if viewModel.image != nil {
+            imageView.image = viewModel.image
+        } else {
+            imageView.sd_setImage(with: URL(string: imageURL))
+        }
+        
         scoreLabel.text = String(score)
         upvoteButton.setImage(favorite ? #imageLiteral(resourceName: "favorite") : #imageLiteral(resourceName: "ic_favorite_border"), for: .normal)
         

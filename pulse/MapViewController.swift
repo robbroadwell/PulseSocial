@@ -93,6 +93,34 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         showPost(for: nil)
     }
     
+    func showSinglePost(key: String, image: UIImage) {
+        let frame: CGRect = CGRect(x: 0,
+                                   y: 0,
+                                   width: scrollView.frame.width,
+                                   height: scrollView.frame.height)
+
+        let postView = PostView.instanceFromNib()
+        
+        postView.viewModel = PostViewModel(key: key)
+        postView.viewModel.image = image
+        postView.viewModel.delegate = postView
+        postView.updateUI()
+        postView.clipsToBounds = true
+        postView.frame = frame
+            
+        scrollView.addSubview(postView)
+        
+        let content = CGRect(x: 0, y: 0,
+                             width: scrollView.frame.width,
+                             height: scrollView.frame.height)
+        
+        scrollView.contentSize = content.size
+        scrollView.scrollTo(direction: .left, animated: false)
+        scrollView.isHidden = false
+        mapView.alpha = 0
+        
+    }
+    
     func showPost(for key: String?) {
         
         guard firebase.posts.count > 0 else { return }
@@ -243,10 +271,13 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     @IBAction func previewSendTouchUpInside(_ sender: UIButton) {
-        firebase.newPost(atLocation: (userLocation?.currentLocation.coordinate)!, withImage: cameraPreviewImage.image!, withComment: "")
-        cameraView.isHidden = true
-        cameraCloseButton.isHidden = true
-        cameraPreview.isHidden = true
+        firebase.newPost(atLocation: (userLocation?.currentLocation.coordinate)!, withImage: cameraPreviewImage.image!, withComment: "") { (key) in
+            
+            self.cameraView.isHidden = true
+            self.cameraCloseButton.isHidden = true
+            self.cameraPreview.isHidden = true
+            self.showSinglePost(key: key, image: self.cameraPreviewImage.image!)
+        }
     }
 }
 

@@ -90,7 +90,7 @@ class Firebase {
     
     // MARK: - Create Post
     
-    func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String) {
+    func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String, completionHandler: @escaping (String) -> ()) {
         
         let key = Hash.generate()
         
@@ -102,6 +102,8 @@ class Firebase {
             self.createPost(key: key, message: comment, imageURL: imageURL)
             self.createGeoPost(key: key, latitude: coordinate.latitude, longitude: coordinate.longitude)
             self.createUserPost(key: key)
+            
+            completionHandler(key)
             
         }
     }

@@ -80,9 +80,11 @@ func timeAgoSinceDate(date:NSDate, numericDates:Bool) -> (String, Bool) {
         } else {
             return ("A minute ago", true)
         }
-    } else if (components.second! >= 3) {
-        return ("\(components.second!) seconds ago", true)
-    } else {
+    }
+//    else if (components.second! >= 3) {
+//        return ("\(components.second!) seconds ago", true)
+//    }
+    else {
         return ("Just now", true)
     }
     
