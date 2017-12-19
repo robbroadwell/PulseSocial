@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 
+var userLocation: UserLocation?
+
 class UserLocation: NSObject, CLLocationManagerDelegate {
     
     var launchLocationSet = false

@@ -8,10 +8,11 @@
 
 import Foundation
 
+var accountModel: AccountModel?
+
 class AccountModel {
     
     var score: Int!
-    var delegate: AccountDelegate?
     
     init() {
         createObserver()
@@ -23,12 +24,9 @@ class AccountModel {
             let value = snapshot.value as? NSDictionary
             
             self.score = self.getUserScore(from: value)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateScore"), object: nil, userInfo: nil)
             
-            self.delegate?.updateUI()
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        })
         
     }
     
