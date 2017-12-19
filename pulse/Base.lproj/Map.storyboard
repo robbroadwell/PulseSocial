@@ -24,6 +24,13 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BYh-Dp-cvI" customClass="PulseMapView" customModule="pulse" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9th-0b-4Gw" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="b4a-9f-RcE"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzO-ui-8rf" userLabel="Camera View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -35,8 +42,8 @@
                                     <constraint firstAttribute="width" constant="100" id="btM-Qj-98S"/>
                                 </constraints>
                             </imageView>
-                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-dA-Z5P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView hidden="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-dA-Z5P">
+                                <rect key="frame" x="20" y="50" width="335" height="617"/>
                             </scrollView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXU-bB-qma" userLabel="Loading View" customClass="LoadingView" customModule="pulse" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -47,22 +54,25 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yzO-ui-8rf" secondAttribute="trailing" id="16p-lF-7xX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BYh-Dp-cvI" secondAttribute="bottom" id="2R7-tQ-NQY"/>
+                            <constraint firstItem="9th-0b-4Gw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="69S-ke-2wk"/>
                             <constraint firstItem="iXU-bB-qma" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7kf-TH-12J"/>
                             <constraint firstAttribute="trailing" secondItem="iXU-bB-qma" secondAttribute="trailing" id="G3x-01-Ki1"/>
-                            <constraint firstItem="pfv-dA-Z5P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GYi-Eg-0m4"/>
+                            <constraint firstItem="pfv-dA-Z5P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="GYi-Eg-0m4"/>
                             <constraint firstItem="3Ho-Nj-XEg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jfi-Nn-84j"/>
+                            <constraint firstAttribute="trailing" secondItem="9th-0b-4Gw" secondAttribute="trailing" id="JjD-7r-H63"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pfv-dA-Z5P" secondAttribute="bottom" id="Lf1-Vy-rHa"/>
                             <constraint firstAttribute="bottom" secondItem="yzO-ui-8rf" secondAttribute="bottom" id="PCS-F0-DM8"/>
                             <constraint firstItem="BYh-Dp-cvI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Yyz-1g-wLg"/>
-                            <constraint firstAttribute="trailing" secondItem="pfv-dA-Z5P" secondAttribute="trailing" id="ZX0-Xu-Iz6"/>
+                            <constraint firstAttribute="trailing" secondItem="pfv-dA-Z5P" secondAttribute="trailing" constant="20" id="ZX0-Xu-Iz6"/>
                             <constraint firstAttribute="trailing" secondItem="BYh-Dp-cvI" secondAttribute="trailing" id="bep-gE-ndF"/>
                             <constraint firstItem="yzO-ui-8rf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dLh-dK-LXi"/>
                             <constraint firstItem="yzO-ui-8rf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dYg-oh-1Rq"/>
                             <constraint firstAttribute="bottom" secondItem="3Ho-Nj-XEg" secondAttribute="bottom" constant="50" id="eLK-IH-Aj7"/>
+                            <constraint firstItem="9th-0b-4Gw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f5f-DQ-wKq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iXU-bB-qma" secondAttribute="bottom" id="gBm-hc-T6Z"/>
                             <constraint firstItem="BYh-Dp-cvI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ra5-td-HgD"/>
                             <constraint firstItem="iXU-bB-qma" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="scX-IN-aA4"/>
-                            <constraint firstItem="pfv-dA-Z5P" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yfa-2R-7Qo"/>
+                            <constraint firstItem="pfv-dA-Z5P" firstAttribute="top" secondItem="9th-0b-4Gw" secondAttribute="bottom" id="yfa-2R-7Qo"/>
                         </constraints>
                     </view>
                     <connections>
