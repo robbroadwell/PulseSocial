@@ -17,6 +17,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var postsLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loadingView: UIView!
@@ -162,7 +163,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         scrollView.contentSize = content.size
         scrollView.scrollTo(direction: .left, animated: false)
         scrollView.isHidden = false
-        countLabel.text = "1 of \(firebase.posts.count)"
+
         mapView.alpha = 0
     }
     
@@ -181,10 +182,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = Int(round(scrollView.contentOffset.x/scrollView.frame.width))
-        countLabel.text = "\(page + 1) of \(firebase.posts.count)"
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let page = Int(round(scrollView.contentOffset.x/scrollView.frame.width))
+//        countLabel.text = "\(page + 1) of \(firebase.posts.count)"
+//    }
     
     // MARK: - MAP DELEGATE
     
@@ -203,14 +204,18 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        countLabel.text = "\(firebase.posts.count)"
         firebase.update(mapRegion: mapView.region)
         activityIndicator.isHidden = true
         countLabel.isHidden = false
+        postsLabel.isHidden = false
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        countLabel.text = "\(firebase.posts.count)"
         activityIndicator.isHidden = false
         countLabel.isHidden = true
+        postsLabel.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
