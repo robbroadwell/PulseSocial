@@ -13,8 +13,11 @@ import AVFoundation
 
 class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate {
     
-    @IBOutlet weak var mapView: PulseMapView!
     @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var mapView: PulseMapView!
+    @IBOutlet weak var accountButton: UIButton!
+    @IBOutlet weak var resultsButton: UIButton!
+    
     @IBOutlet weak var cameraButton: UIImageView!
     @IBOutlet weak var cameraCloseButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
@@ -61,7 +64,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             
             // a new post entered the map region
             mapView.addPin(key: key, location: location)
-//            countLabel.text = "\(firebase.posts.count)"
+//               results = "\(firebase.posts.count)"
         }
     }
     

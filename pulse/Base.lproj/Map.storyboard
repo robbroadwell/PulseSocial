@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UP-Lb-fzN" userLabel="Account Button">
-                                <rect key="frame" x="36" y="40" width="30" height="30"/>
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nxZ-gL-0FL"/>
                                     <constraint firstAttribute="width" constant="30" id="obk-FO-gMX"/>
@@ -37,15 +36,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJJ-cw-eee" userLabel="Results Button">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="324.5" y="20" width="30.5" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="TTJ-cH-eP0"/>
+                                    <constraint firstAttribute="height" constant="30" id="MjO-v9-9OZ"/>
+                                    <constraint firstAttribute="width" constant="30" id="vT6-zH-YkQ"/>
                                 </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="5"/>
                                 <connections>
-                                    <segue destination="Q6t-u5-8cx" kind="show" id="Cpk-Oh-zGQ"/>
+                                    <segue destination="Q6t-u5-8cx" kind="show" animates="NO" id="Cpk-Oh-zGQ"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzO-ui-8rf" userLabel="Camera View">
@@ -124,15 +124,12 @@
                             <constraint firstItem="69o-DW-BEz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0si-ml-bTf"/>
                             <constraint firstAttribute="trailing" secondItem="yzO-ui-8rf" secondAttribute="trailing" id="16p-lF-7xX"/>
                             <constraint firstAttribute="bottom" secondItem="BYh-Dp-cvI" secondAttribute="bottom" id="2R7-tQ-NQY"/>
-                            <constraint firstItem="VJJ-cw-eee" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Bf-RF-vDk"/>
                             <constraint firstItem="iXU-bB-qma" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7kf-TH-12J"/>
-                            <constraint firstAttribute="trailing" secondItem="VJJ-cw-eee" secondAttribute="trailing" id="8wI-J6-rj1"/>
-                            <constraint firstItem="0UP-Lb-fzN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="9wc-FW-j52"/>
-                            <constraint firstAttribute="bottom" secondItem="VJJ-cw-eee" secondAttribute="bottom" id="CUM-gw-ucj"/>
+                            <constraint firstItem="0UP-Lb-fzN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="9wc-FW-j52"/>
                             <constraint firstAttribute="trailing" secondItem="iXU-bB-qma" secondAttribute="trailing" id="G3x-01-Ki1"/>
                             <constraint firstItem="3Ho-Nj-XEg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jfi-Nn-84j"/>
                             <constraint firstItem="kYd-KO-tzJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="KRc-NM-0zy"/>
-                            <constraint firstItem="0UP-Lb-fzN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="KgJ-Pr-98B"/>
+                            <constraint firstItem="0UP-Lb-fzN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="KgJ-Pr-98B"/>
                             <constraint firstAttribute="bottom" secondItem="yzO-ui-8rf" secondAttribute="bottom" id="PCS-F0-DM8"/>
                             <constraint firstItem="69o-DW-BEz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Rak-wH-TGl"/>
                             <constraint firstItem="BYh-Dp-cvI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Yyz-1g-wLg"/>
@@ -142,13 +139,16 @@
                             <constraint firstAttribute="bottom" secondItem="3Ho-Nj-XEg" secondAttribute="bottom" constant="50" id="eLK-IH-Aj7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iXU-bB-qma" secondAttribute="bottom" id="gBm-hc-T6Z"/>
                             <constraint firstAttribute="trailing" secondItem="69o-DW-BEz" secondAttribute="trailing" id="gxu-J6-lRS"/>
+                            <constraint firstAttribute="trailing" secondItem="VJJ-cw-eee" secondAttribute="trailing" constant="20" id="iEY-h4-7wn"/>
                             <constraint firstAttribute="bottom" secondItem="69o-DW-BEz" secondAttribute="bottom" id="kbK-tj-QCc"/>
                             <constraint firstItem="BYh-Dp-cvI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ra5-td-HgD"/>
                             <constraint firstItem="iXU-bB-qma" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="scX-IN-aA4"/>
+                            <constraint firstItem="VJJ-cw-eee" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="w6U-oT-Kmj"/>
                             <constraint firstItem="kYd-KO-tzJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="z5E-hU-5dK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accountButton" destination="0UP-Lb-fzN" id="GUc-um-5Jz"/>
                         <outlet property="cameraButton" destination="3Ho-Nj-XEg" id="UZt-6N-HPr"/>
                         <outlet property="cameraCloseButton" destination="kYd-KO-tzJ" id="Uk0-vt-SLb"/>
                         <outlet property="cameraPreview" destination="69o-DW-BEz" id="Plc-7g-k7I"/>
@@ -156,6 +156,7 @@
                         <outlet property="cameraView" destination="yzO-ui-8rf" id="jDx-vb-kzh"/>
                         <outlet property="loadingView" destination="iXU-bB-qma" id="6zU-lw-t7F"/>
                         <outlet property="mapView" destination="BYh-Dp-cvI" id="VRX-ja-aNv"/>
+                        <outlet property="resultsButton" destination="VJJ-cw-eee" id="qsg-fm-bkz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -168,7 +169,7 @@
                 <viewControllerPlaceholder storyboardName="Account" id="Vd9-2h-VcB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WsY-n5-3f9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="577" y="84"/>
+            <point key="canvasLocation" x="503" y="114"/>
         </scene>
         <!--Post-->
         <scene sceneID="hse-8q-Oxg">
@@ -176,7 +177,7 @@
                 <viewControllerPlaceholder storyboardName="Post" id="Q6t-u5-8cx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVY-5D-lhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="576" y="203"/>
+            <point key="canvasLocation" x="485" y="158"/>
         </scene>
     </scenes>
     <resources>

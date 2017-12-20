@@ -9,16 +9,55 @@
 import Foundation
 import UIKit
 
-class PostViewController: UIViewController {
+class PostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var tableData = [PostViewModel]()
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        let postView = PostView.instanceFromNib()
+        
+        postView.viewModel = tableData[indexPath.row]
+        postView.viewModel.delegate = postView
+        postView.updateUI()
+        postView.clipsToBounds = true
+        postView.frame = cell.frame
+        
+        cell.addSubview(postView)
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 500
+    }
+    
+    func getData() {
+        for post in firebase.posts {
+            tableData.append(post.value)
+        }
+    }
     
     override func viewDidLoad() {
+        getData()
+        tableView.delegate = self
+        tableView.dataSource = self
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         showPost(key: nil)
     }
     
