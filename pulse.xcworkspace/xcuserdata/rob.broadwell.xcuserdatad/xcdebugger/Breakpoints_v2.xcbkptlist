@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/MapViewController.swift"
-            timestampString = "535435664.335236"
+            timestampString = "535444709.667756"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "showPost(for:)"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "postsButtonTouchUpInside()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
