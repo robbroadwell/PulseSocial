@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cpq-g6-OtF">
-                    <rect key="frame" x="10" y="10" width="355" height="647"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lU-vs-m6L">
-                    <rect key="frame" x="321" y="613" width="24" height="24"/>
+                    <rect key="frame" x="331" y="623" width="24" height="24"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" image="ic_favorite_border"/>
                     <connections>
@@ -27,19 +27,19 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABE-4H-kaz" userLabel="Time Label">
-                    <rect key="frame" x="30" y="616" width="42" height="21"/>
+                    <rect key="frame" x="20" y="626" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-rC-iHb" userLabel="Score Label">
-                    <rect key="frame" x="329" y="592" width="8" height="21"/>
+                    <rect key="frame" x="339" y="602" width="8" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wud-rQ-TgJ">
-                    <rect key="frame" x="331" y="20" width="24" height="24"/>
+                    <rect key="frame" x="341" y="10" width="24" height="24"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" image="ic_close"/>
                     <connections>
@@ -50,16 +50,16 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="trailing" secondItem="3lU-vs-m6L" secondAttribute="trailing" constant="20" id="5pC-7b-dzG"/>
-                <constraint firstItem="cpq-g6-OtF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="9HD-vs-xUe"/>
+                <constraint firstItem="cpq-g6-OtF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9HD-vs-xUe"/>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="trailing" secondItem="Wud-rQ-TgJ" secondAttribute="trailing" constant="10" id="9Ve-5a-i3I"/>
-                <constraint firstItem="cpq-g6-OtF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="F96-B9-H4K"/>
+                <constraint firstItem="cpq-g6-OtF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="F96-B9-H4K"/>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="bottom" secondItem="3lU-vs-m6L" secondAttribute="bottom" constant="20" id="Hwo-ah-rCQ"/>
                 <constraint firstItem="Wud-rQ-TgJ" firstAttribute="top" secondItem="cpq-g6-OtF" secondAttribute="top" constant="10" id="Isj-1i-Mdv"/>
                 <constraint firstItem="3lU-vs-m6L" firstAttribute="top" secondItem="cmr-rC-iHb" secondAttribute="bottom" id="YqS-3L-lnK"/>
                 <constraint firstItem="ABE-4H-kaz" firstAttribute="leading" secondItem="cpq-g6-OtF" secondAttribute="leading" constant="20" id="aDb-6R-LKj"/>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="bottom" secondItem="ABE-4H-kaz" secondAttribute="bottom" constant="20" id="bhE-Co-szb"/>
-                <constraint firstAttribute="bottom" secondItem="cpq-g6-OtF" secondAttribute="bottom" constant="10" id="enO-wS-7nZ"/>
-                <constraint firstAttribute="trailing" secondItem="cpq-g6-OtF" secondAttribute="trailing" constant="10" id="niC-3v-31x"/>
+                <constraint firstAttribute="bottom" secondItem="cpq-g6-OtF" secondAttribute="bottom" id="enO-wS-7nZ"/>
+                <constraint firstAttribute="trailing" secondItem="cpq-g6-OtF" secondAttribute="trailing" id="niC-3v-31x"/>
                 <constraint firstItem="cmr-rC-iHb" firstAttribute="centerX" secondItem="3lU-vs-m6L" secondAttribute="centerX" id="oB8-sz-B9S"/>
             </constraints>
             <connections>
