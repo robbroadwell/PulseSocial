@@ -23,8 +23,6 @@
 		0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19D1FCF83F4008E72E8 /* Firebase.swift */; };
 		0E69C1A31FCF8A39008E72E8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1A21FCF8A39008E72E8 /* ImagePicker.swift */; };
 		0E6EBFBA1FEAD8A7005805A1 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFB91FEAD8A7005805A1 /* PostViewController.swift */; };
-		0E6EBFBC1FEAD8CE005805A1 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6EBFBB1FEAD8CE005805A1 /* Post.storyboard */; };
-		0E962B531FEA0920009AD2AD /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E962B521FEA0920009AD2AD /* Account.storyboard */; };
 		0E962B551FEA09B5009AD2AD /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E962B541FEA09B5009AD2AD /* AccountViewController.swift */; };
 		0EAB28911FE04A220080C95C /* ScorePin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB28901FE04A220080C95C /* ScorePin.xib */; };
 		0EAB28931FE04A300080C95C /* ScorePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB28921FE04A300080C95C /* ScorePin.swift */; };
@@ -64,8 +62,6 @@
 		0E69C19D1FCF83F4008E72E8 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		0E69C1A21FCF8A39008E72E8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0E6EBFB91FEAD8A7005805A1 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		0E6EBFBB1FEAD8CE005805A1 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
-		0E962B521FEA0920009AD2AD /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		0E962B541FEA09B5009AD2AD /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		0EAB28901FE04A220080C95C /* ScorePin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScorePin.xib; sourceTree = "<group>"; };
 		0EAB28921FE04A300080C95C /* ScorePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePin.swift; sourceTree = "<group>"; };
@@ -110,8 +106,6 @@
 				0E2035CC1FE88CA70024B3BF /* Main.storyboard */,
 				548DED981ED7B59C0072CC2C /* Login.storyboard */,
 				545C5ADB1ED5165700CE6FFB /* Map.storyboard */,
-				0E962B521FEA0920009AD2AD /* Account.storyboard */,
-				0E6EBFBB1FEAD8CE005805A1 /* Post.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -314,14 +308,12 @@
 				0EAB28911FE04A220080C95C /* ScorePin.xib in Resources */,
 				0E2035CD1FE88CA70024B3BF /* Main.storyboard in Resources */,
 				545C5AE21ED5165700CE6FFB /* LaunchScreen.storyboard in Resources */,
-				0E6EBFBC1FEAD8CE005805A1 /* Post.storyboard in Resources */,
 				541F4DE81ED8AA3A004C1BB1 /* PostView.xib in Resources */,
 				545C5ADF1ED5165700CE6FFB /* Assets.xcassets in Resources */,
 				548DED991ED7B59C0072CC2C /* Login.storyboard in Resources */,
 				545C5ADD1ED5165700CE6FFB /* Map.storyboard in Resources */,
 				0EBBFAAA1FE8557F00E56932 /* LoadingView.xib in Resources */,
 				546FC1D31EE72BBE00C41B8C /* GoogleService-Info.plist in Resources */,
-				0E962B531FEA0920009AD2AD /* Account.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

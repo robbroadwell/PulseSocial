@@ -264,11 +264,14 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             setupCamera()
             cameraView.isHidden = false
             cameraCloseButton.isHidden = false
+            tabBarController?.tabBar.isHidden = true
         }
     }
     @IBAction func cameraCloseButtonTouchUpInside(_ sender: UIButton) {
         cameraView.isHidden = true
         cameraCloseButton.isHidden = true
+        tabBarController?.tabBar.isHidden = false
+
     }
     
     @IBAction func previewCloseTouchUpInside(_ sender: UIButton) {
