@@ -28,18 +28,10 @@ class PostView: UIView, PostViewDelegate {
         } else {
             imageView.sd_setImage(with: URL(string: imageURL))
         }
-        
+
         scoreLabel.text = String(score)
         upvoteButton.setImage(favorite ? #imageLiteral(resourceName: "favorite") : #imageLiteral(resourceName: "ic_favorite_border"), for: .normal)
-        
-        let timeAgo = timeAgoSinceDate(unix: time)
-        timeLabel.text = timeAgo.string
-        
-        if timeAgo.isRecent {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                self.updateUI()
-            }
-        }
+        timeLabel.text = timeAgoSinceDate(unix: time)
     }
     
     @IBOutlet weak var imageView: UIImageView!
