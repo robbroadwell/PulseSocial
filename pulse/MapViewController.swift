@@ -15,17 +15,20 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     @IBOutlet weak var mapView: PulseMapView!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var postsLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var headerCloseButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var settingsView: UIView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var cameraButton: UIImageView!
     @IBOutlet weak var cameraCloseButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var cameraPreview: UIView!
     @IBOutlet weak var cameraPreviewImage: UIImageView!
+    @IBOutlet weak var pulseButton: UIImageView!
+    @IBOutlet weak var postsButton: UIView!
     
     var captureSession: AVCaptureSession?
     var cameraOutput = AVCapturePhotoOutput()
@@ -36,7 +39,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createCameraButton()
+        createCustomButtons()
         scrollView.delegate = self
         mapView.delegate = self
         mapView.showsUserLocation = false
@@ -85,7 +88,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     func updateScore(_ notification: NSNotification) {
-        scoreLabel.text = String(accountModel!.score)
+//        scoreLabel.text = String(accountModel!.score)
     }
     
     // MARK: - SHOW POST
@@ -249,10 +252,37 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     // MARK: - CAMERA
     
-    func createCameraButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(cameraButtonTouchUpInside))
-        cameraButton.addGestureRecognizer(tap)
+    func createCustomButtons() {
+        let pulseTap = UITapGestureRecognizer(target: self, action: #selector(pulseButtonTouchUpInside))
+        pulseButton.addGestureRecognizer(pulseTap)
+        pulseButton.isUserInteractionEnabled = true
+        
+        let postsTap = UITapGestureRecognizer(target: self, action: #selector(postsButtonTouchUpInside))
+        postsButton.addGestureRecognizer(postsTap)
+        postsButton.isUserInteractionEnabled = true
+        
+        let cameraTap = UITapGestureRecognizer(target: self, action: #selector(cameraButtonTouchUpInside))
+        cameraButton.addGestureRecognizer(cameraTap)
         cameraButton.isUserInteractionEnabled = true
+    
+    }
+    
+    func pulseButtonTouchUpInside() {
+        settingsView.isHidden = false
+        headerCloseButton.isHidden = false
+        postsLabel.isHidden = true
+        countLabel.isHidden = true
+    }
+    
+    func postsButtonTouchUpInside() {
+        if settingsView.isHidden {
+            showPost(for: nil)
+        } else {
+            settingsView.isHidden = true
+            headerCloseButton.isHidden = true
+            postsLabel.isHidden = false
+            countLabel.isHidden = false
+        }
     }
     
     func cameraButtonTouchUpInside() {
