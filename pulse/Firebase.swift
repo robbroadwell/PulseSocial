@@ -65,10 +65,10 @@ class Firebase {
                 if let key = key,
                     let location = location {
                     
+                    self.posts[key] = PostViewModel(key: key)
+                    
                     let dict: [String : Any] = ["key": key, "location": location]
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
-                    
-                    self.posts[key] = PostViewModel(key: key)
                 }
             })
             
@@ -76,10 +76,10 @@ class Firebase {
             regionQuery?.observe(.keyExited, with: { (key, location) in // observer of deletion of post objects in region
                 if let key = key {
                     
+                    self.posts.removeValue(forKey: key)
+                    
                     let dict: [String : Any] = ["key": key]
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removePost"), object: nil, userInfo: dict)
-                    
-                    self.posts.removeValue(forKey: key)
                 }
             })
             
@@ -90,7 +90,7 @@ class Firebase {
     
     // MARK: - Create Post
     
-    func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String) {
+    func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String, completionHandler: @escaping (String) -> ()) {
         
         let key = Hash.generate()
         
@@ -102,6 +102,8 @@ class Firebase {
             self.createPost(key: key, message: comment, imageURL: imageURL)
             self.createGeoPost(key: key, latitude: coordinate.latitude, longitude: coordinate.longitude)
             self.createUserPost(key: key)
+            
+            completionHandler(key)
             
         }
     }

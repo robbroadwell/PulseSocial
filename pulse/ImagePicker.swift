@@ -12,10 +12,10 @@ import UIKit
 extension MapViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        firebase.newPost(atLocation: userLocation!.currentLocation.coordinate, withImage: image, withComment: "")
-        mapView.moveTo(location: userLocation!.currentLocation, animated: true, spanDelta: 0.001)
+//        imagePicker.dismiss(animated: true, completion: nil)
+//        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        firebase.newPost(atLocation: userLocation!.currentLocation.coordinate, withImage: image, withComment: "")
+//        mapView.moveTo(location: userLocation!.currentLocation, animated: true, spanDelta: 0.001)
     }
 
 }

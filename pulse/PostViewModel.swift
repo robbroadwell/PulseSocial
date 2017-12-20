@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PostViewModel {
     
@@ -19,6 +20,8 @@ class PostViewModel {
     var user: String?
     var message: String?
     var isFavorite: Bool?
+    
+    var image: UIImage?
     
     init(key: String) {
         self.key = key
