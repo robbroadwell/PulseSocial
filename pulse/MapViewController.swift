@@ -15,9 +15,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var mapView: PulseMapView!
-    @IBOutlet weak var accountButton: UIButton!
-    @IBOutlet weak var resultsButton: UIButton!
-    
     @IBOutlet weak var cameraButton: UIImageView!
     @IBOutlet weak var cameraCloseButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
@@ -34,26 +31,32 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         super.viewDidLoad()
         
         createCustomButtons()
+        setupTabBar()
+        self.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.isRotateEnabled = false
     }
+    
+    func setupTabBar() {
+        if let items = tabBarController?.tabBar.items {
+            for item in items {
+                item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+            }
+        }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(self.addPost(_:)), name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removePost(_:)), name: NSNotification.Name(rawValue: "removePost"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.hidePost(_:)), name: NSNotification.Name(rawValue: "hidePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateLocation(_:)), name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateScore(_:)), name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "hidePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
     // MARK: - MAP MOVEMENT
@@ -62,131 +65,23 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         if let key = notification.userInfo?["key"] as? String,
             let location = notification.userInfo?["location"] as? CLLocation {
             
-            // a new post entered the map region
             mapView.addPin(key: key, location: location)
-//               results = "\(firebase.posts.count)"
         }
     }
     
     func removePost(_ notification: NSNotification) {
         if let key = notification.userInfo?["key"] as? String {
             
-            // a post left the map region
             mapView.removePin(key: key)
-//            countLabel.text = "\(firebase.posts.count)"
         }
     }
     
     func updateLocation(_ notification: NSNotification) {
         if mapView != nil {
             
-            // move the map to the user location
             mapView.moveTo(location: userLocation!.currentLocation)
         }
     }
-    
-//    // MARK: - SHOW POST
-//
-//    @objc func showAllPosts(_ sender: UITapGestureRecognizer) {
-//        showPost(key: nil)
-//    }
-//
-//    func createPostView(inScrollView scrollView: UIScrollView, withFrame frame: CGRect, andViewModel viewModel: PostViewModel) {
-//        let postView = PostView.instanceFromNib()
-//
-//        postView.viewModel = viewModel
-//        postView.viewModel.delegate = postView
-//        postView.updateUI()
-//        postView.clipsToBounds = true
-//        postView.frame = frame
-//
-//        scrollView.addSubview(postView)
-//    }
-//
-//    func showSinglePost(key: String, image: UIImage) {
-//        let frame: CGRect = CGRect(x: 0,
-//                                   y: 0,
-//                                   width: scrollView.frame.width,
-//                                   height: scrollView.frame.height)
-//
-//        createPostView(inScrollView: scrollView, withFrame: frame, andViewModel: PostViewModel(key: key))
-//
-//        scrollView.contentSize = frame.size
-//        scrollView.scrollTo(direction: .left, animated: false)
-//        scrollView.isHidden = false
-//        mapView.alpha = 0
-//    }
-//
-//    func showPost(key: String?) {
-//
-//        guard firebase.posts.count > 0 else { return }
-//
-//        var frame: CGRect = CGRect(x: 0,
-//                                   y: 0,
-//                                   width: scrollView.frame.width,
-//                                   height: scrollView.frame.height)
-//
-//        if let key = key,
-//            let first = firebase.posts[key] {
-//
-//            createPostView(inScrollView: scrollView, withFrame: frame, andViewModel: first)
-//            frame.origin.x = frame.origin.x + frame.width
-//
-//        }
-//
-//        for (this, viewModel) in firebase.posts {
-//            if this != key {
-//
-//                createPostView(inScrollView: scrollView, withFrame: frame, andViewModel: viewModel)
-//                frame.origin.x = frame.origin.x + frame.width
-//
-//            }
-//        }
-//
-//        let content = CGRect(x: 0, y: 0,
-//                             width: scrollView.frame.width * CGFloat(firebase.posts.count),
-//                             height: scrollView.frame.height)
-//
-//        scrollView.contentSize = content.size
-//        scrollView.scrollTo(direction: .left, animated: false)
-//        scrollView.isHidden = false
-//
-////        countLabel.text = "1 / \(firebase.posts.count)"
-//        countLabel.textColor = UIColor.black
-//        postsLabel.textColor = UIColor.black
-//        whiteView.isHidden = false
-//
-//        mapView.alpha = 0
-//    }
-//
-//    func hidePost(_ notification: NSNotification) {
-//        hidePost()
-//    }
-//
-//    func hidePost() {
-//
-//        scrollView.isHidden = true
-//
-//        countLabel.text = "\(firebase.posts.count)"
-//        countLabel.textColor = UIColor.white
-//        postsLabel.textColor = UIColor.white
-//        whiteView.isHidden = true
-//
-//        mapView.alpha = 1
-//
-//        for subview in scrollView.subviews {
-//            subview.removeFromSuperview()
-//        }
-//    }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let page = Float(round(scrollView.contentOffset.x/scrollView.frame.width))
-//        let total = Float(firebase.posts.count - 1)
-//        progressView.setProgress(page/total, animated: false)
-//        print(page)
-//    }
-    
-    // MARK: - MAP DELEGATE
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         firebase.update(mapRegion: mapView.region)
@@ -204,11 +99,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         firebase.update(mapRegion: mapView.region)
-        // update count
-    }
-    
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        // start spinning
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -249,10 +139,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         cameraButton.addGestureRecognizer(cameraTap)
         cameraButton.isUserInteractionEnabled = true
     
-    }
-    
-    func tabBarTouchUpInside() {
-        
     }
     
     func cameraButtonTouchUpInside() {
@@ -338,13 +224,5 @@ extension MapViewController: AVCapturePhotoCaptureDelegate {
                 print(error)
             }
         }
-    }
-}
-
-// MARK: - Depricated
-
-extension MapViewController {
-    func updateScore(_ notification: NSNotification) {
-        //        scoreLabel.text = String(accountModel!.score)
     }
 }

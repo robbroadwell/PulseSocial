@@ -39,10 +39,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.isStatusBarHidden = true
     }

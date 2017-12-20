@@ -45,6 +45,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         logout()
+        tabBarController?.selectedIndex = 0
     }
     
     func logout() {
