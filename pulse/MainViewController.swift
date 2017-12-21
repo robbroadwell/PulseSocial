@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
             } else {
                 self.showMap()
                 userLocation = UserLocation()
-                accountModel = AccountModel()
+                firebase.initializeUserObservers()
             }
         }
     }

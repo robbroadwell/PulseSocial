@@ -15,8 +15,11 @@ import GeoFire
 let firebase = Firebase()
 
 class Firebase {
-    
-    var posts = [String : PostViewModel]()
+
+    public var score: Int { return getUserScore() }
+    public var visiblePosts = [String : PostViewModel]()
+    public var userPosts = [String : PostViewModel]()
+    public var favoritePosts = [String : PostViewModel]()
     
     // Realtime Database
     var firebaseRef: DatabaseReference!
@@ -36,6 +39,21 @@ class Firebase {
     init() {
         initializeRealtimeDatabase()
         initializeCloudStorage()
+    }
+    
+    public func initializeUserObservers() {
+        // user posts
+        firebase.usersRef.child(uid).child("posts").observe(.value, with: { (snapshot) in
+            guard let snapshot = snapshot.value as? NSDictionary else { return }
+            self.userPosts = self.getPosts(fromSnapshot: snapshot)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateUserScore"), object: nil, userInfo: nil)
+        })
+        
+        // user favorites
+        firebase.usersRef.child(uid).child("favorites").observe(.value, with: { (snapshot) in
+            guard let snapshot = snapshot.value as? NSDictionary else { return }
+            self.favoritePosts = self.getPosts(fromSnapshot: snapshot)
+        })
     }
     
     private func initializeRealtimeDatabase() {
@@ -65,7 +83,7 @@ class Firebase {
                 if let key = key,
                     let location = location {
                     
-                    self.posts[key] = PostViewModel(key: key)
+                    self.visiblePosts[key] = PostViewModel(key: key)
                     
                     let dict: [String : Any] = ["key": key, "location": location]
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
@@ -77,7 +95,7 @@ class Firebase {
             regionQuery?.observe(.keyExited, with: { (key, location) in // observer of deletion of post objects in region
                 if let key = key {
                     
-                    self.posts.removeValue(forKey: key)
+                    self.visiblePosts.removeValue(forKey: key)
                     
                     let dict: [String : Any] = ["key": key]
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removePost"), object: nil, userInfo: dict)
@@ -146,6 +164,41 @@ class Firebase {
                        "score": 1,
                        "image": imageURL,
                        "user": uid])
+    }
+    
+    private func getPosts(fromSnapshot snapshot: NSDictionary) -> [String : PostViewModel] {
+        var dict = [String : PostViewModel]()
+        
+        for (key, value) in snapshot {
+            if let x = value as? NSDictionary,
+                let y = key as? String,
+                let score = x["score"] as? Int,
+                let time = x["time"] as? Float,
+                let imageURL = x["image"] as? String,
+                let user = x["user"] as? String,
+                let message = x["message"] as? String {
+                
+                dict[y] = PostViewModel(key: y, score: score, time: time, imageURL: imageURL, user: user, message: message)
+                
+            }
+        }
+        
+        return dict
+    }
+    
+    private func getUserScore() -> Int {
+        
+        var score: Int = 0
+        
+        for (_, value) in self.userPosts {
+            
+            if let this = value.score {
+                score = score + this
+            }
+            
+        }
+        
+        return score
     }
     
 }

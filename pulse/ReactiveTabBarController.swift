@@ -32,14 +32,13 @@ class ReactiveTabBarController: UITabBarController {
     
     func updateResults(_ notification: NSNotification) {
         if let viewControllers = self.viewControllers {
-            viewControllers[1].title = "\(firebase.posts.count) Results"
+            viewControllers[1].title = "\(firebase.visiblePosts.count) Results"
         }
     }
     
     func updateUserScore(_ notification: NSNotification) {
-        if let viewControllers = self.viewControllers,
-            let score = accountModel?.score {
-            viewControllers[4].title = "\(score)"
+        if let viewControllers = self.viewControllers {
+            viewControllers[4].title = "\(firebase.score)"
         }
     }
 }

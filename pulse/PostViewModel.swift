@@ -101,7 +101,6 @@ class PostViewModel {
     }
     
     deinit {
-        // destroy observer
         firebase.postsRef.child(key).removeAllObservers()
     }
     

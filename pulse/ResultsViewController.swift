@@ -23,7 +23,7 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.isStatusBarHidden = true
-        self.title = "\(firebase.posts.count) Results"
+        self.title = "\(firebase.visiblePosts.count) Results"
         getData()
     }
     
@@ -31,7 +31,7 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableData = nil
         tableData = [PostViewModel]()
         
-        for post in firebase.posts {
+        for post in firebase.visiblePosts {
             tableData?.append(post.value)
         }
         

@@ -27,12 +27,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func getData() {
-        guard let favorites = accountModel?.favorites else { return }
+        guard firebase.favoritePosts.count != 0 else { return }
         
         tableData = nil
         tableData = [PostViewModel]()
         
-        for post in favorites {
+        for post in firebase.favoritePosts {
             tableData?.append(post.value)
         }
         

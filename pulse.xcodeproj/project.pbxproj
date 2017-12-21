@@ -10,18 +10,17 @@
 		0E03E34F1FE89C6C00D57C9D /* TextFieldBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03E34E1FE89C6C00D57C9D /* TextFieldBottomBorder.swift */; };
 		0E1066851FE24CA8008775E8 /* Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1066841FE24CA8008775E8 /* Public.swift */; };
 		0E10CB601FEC35A600140360 /* ReactiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10CB5F1FEC35A600140360 /* ReactiveTabBarController.swift */; };
+		0E10CB631FEC596400140360 /* ReactiveTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10CB621FEC596300140360 /* ReactiveTabBar.swift */; };
 		0E1BB7021FE2326300F8F7B5 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */; };
 		0E2035CD1FE88CA70024B3BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E2035CC1FE88CA70024B3BF /* Main.storyboard */; };
 		0E2035CF1FE88E250024B3BF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2035CE1FE88E250024B3BF /* MainViewController.swift */; };
 		0E2035D41FE898DF0024B3BF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2035D31FE898DF0024B3BF /* LoginViewController.swift */; };
 		0E2035D61FE898E70024B3BF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2035D51FE898E70024B3BF /* RegisterViewController.swift */; };
 		0E49A6F71FE37A6D004BB37E /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */; };
-		0E622B651FE5BFF9004DE2CB /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E622B641FE5BFF9004DE2CB /* AccountModel.swift */; };
 		0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C1991FCF8292008E72E8 /* UserLocation.swift */; };
 		0E69C19C1FCF8393008E72E8 /* PulseMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19B1FCF8393008E72E8 /* PulseMapView.swift */; };
 		0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19D1FCF83F4008E72E8 /* Firebase.swift */; };
 		0E6EBFBA1FEAD8A7005805A1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFB91FEAD8A7005805A1 /* ResultsViewController.swift */; };
-		0E6EBFBE1FEB1D16005805A1 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFBD1FEB1D16005805A1 /* CustomTabBar.swift */; };
 		0E6EBFC01FEB1DF7005805A1 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFBF1FEB1DF7005805A1 /* FavoritesViewController.swift */; };
 		0E6EBFC31FEB1E59005805A1 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFC21FEB1E59005805A1 /* LeaderboardViewController.swift */; };
 		0E962B551FEA09B5009AD2AD /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E962B541FEA09B5009AD2AD /* AccountViewController.swift */; };
@@ -50,18 +49,17 @@
 		0E03E34E1FE89C6C00D57C9D /* TextFieldBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBottomBorder.swift; sourceTree = "<group>"; };
 		0E1066841FE24CA8008775E8 /* Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public.swift; sourceTree = "<group>"; };
 		0E10CB5F1FEC35A600140360 /* ReactiveTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveTabBarController.swift; sourceTree = "<group>"; };
+		0E10CB621FEC596300140360 /* ReactiveTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTabBar.swift; sourceTree = "<group>"; };
 		0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		0E2035CC1FE88CA70024B3BF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0E2035CE1FE88E250024B3BF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0E2035D31FE898DF0024B3BF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E2035D51FE898E70024B3BF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
-		0E622B641FE5BFF9004DE2CB /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		0E69C1991FCF8292008E72E8 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		0E69C19B1FCF8393008E72E8 /* PulseMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseMapView.swift; sourceTree = "<group>"; };
 		0E69C19D1FCF83F4008E72E8 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		0E6EBFB91FEAD8A7005805A1 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		0E6EBFBD1FEB1D16005805A1 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		0E6EBFBF1FEB1DF7005805A1 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0E6EBFC21FEB1E59005805A1 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		0E962B541FEA09B5009AD2AD /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +124,16 @@
 			name = Xibs;
 			sourceTree = "<group>";
 		};
+		0E10CB641FEC59A700140360 /* Shell */ = {
+			isa = PBXGroup;
+			children = (
+				0E2035CE1FE88E250024B3BF /* MainViewController.swift */,
+				0E10CB5F1FEC35A600140360 /* ReactiveTabBarController.swift */,
+				0E10CB621FEC596300140360 /* ReactiveTabBar.swift */,
+			);
+			name = Shell;
+			sourceTree = "<group>";
+		};
 		0E2035D21FE898D20024B3BF /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +159,6 @@
 			children = (
 				0E69C19D1FCF83F4008E72E8 /* Firebase.swift */,
 				0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */,
-				0E622B641FE5BFF9004DE2CB /* AccountModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -159,8 +166,7 @@
 		0E69C1951FCF7DC2008E72E8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0E2035CE1FE88E250024B3BF /* MainViewController.swift */,
-				0E10CB5F1FEC35A600140360 /* ReactiveTabBarController.swift */,
+				0E10CB641FEC59A700140360 /* Shell */,
 				0E2035D21FE898D20024B3BF /* Login */,
 				0E6EBFC11FEB1E26005805A1 /* Root */,
 			);
@@ -177,7 +183,6 @@
 				0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */,
 				0EBBFAAD1FE856C300E56932 /* LoadNib.swift */,
 				0E03E34E1FE89C6C00D57C9D /* TextFieldBottomBorder.swift */,
-				0E6EBFBD1FEB1D16005805A1 /* CustomTabBar.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -387,7 +392,6 @@
 				0E2035CF1FE88E250024B3BF /* MainViewController.swift in Sources */,
 				0E6EBFC01FEB1DF7005805A1 /* FavoritesViewController.swift in Sources */,
 				0E69C19C1FCF8393008E72E8 /* PulseMapView.swift in Sources */,
-				0E6EBFBE1FEB1D16005805A1 /* CustomTabBar.swift in Sources */,
 				0E03E34F1FE89C6C00D57C9D /* TextFieldBottomBorder.swift in Sources */,
 				0E1066851FE24CA8008775E8 /* Public.swift in Sources */,
 				548DED971ED7B5550072CC2C /* WelcomeViewController.swift in Sources */,
@@ -397,6 +401,7 @@
 				0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */,
 				0E10CB601FEC35A600140360 /* ReactiveTabBarController.swift in Sources */,
 				0E49A6F71FE37A6D004BB37E /* TimeAgo.swift in Sources */,
+				0E10CB631FEC596400140360 /* ReactiveTabBar.swift in Sources */,
 				54C7D3D81EEDD014000F58D0 /* MKPostAnnotationView.swift in Sources */,
 				0E2035D41FE898DF0024B3BF /* LoginViewController.swift in Sources */,
 				545C5ADA1ED5165700CE6FFB /* MapViewController.swift in Sources */,
@@ -409,7 +414,6 @@
 				0E6EBFC31FEB1E59005805A1 /* LeaderboardViewController.swift in Sources */,
 				543F63051ED8F30E00F7521D /* Containment.swift in Sources */,
 				0E2035D61FE898E70024B3BF /* RegisterViewController.swift in Sources */,
-				0E622B651FE5BFF9004DE2CB /* AccountModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
