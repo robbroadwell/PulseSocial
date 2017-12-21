@@ -30,7 +30,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createCustomButtons()
+//        createCustomButtons()
         
         mapView.delegate = self
         mapView.showsUserLocation = true
@@ -41,12 +41,15 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         NotificationCenter.default.addObserver(self, selector: #selector(self.addPost(_:)), name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.removePost(_:)), name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateLocation(_:)), name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.moveToUserPost(_:)), name: NSNotification.Name(rawValue: "moveToUserPost"), object: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "addPost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "moveToUserPost"), object: nil)
     }
     
     // MARK: - MAP MOVEMENT
@@ -70,6 +73,16 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         if mapView != nil {
             
             mapView.moveTo(location: userLocation.currentLocation)
+        }
+    }
+    
+    func moveToUserPost(_ notification: NSNotification) {
+        if let key = notification.userInfo?["key"] as? String,
+            let location = notification.userInfo?["location"] as? CLLocation {
+            
+            mapView.addPin(key: key, location: location)
+            mapView.moveTo(location: location)
+            
         }
     }
     
@@ -121,98 +134,99 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    // MARK: - CAMERA
-    
-    func createCustomButtons() {
-        
-        let cameraTap = UITapGestureRecognizer(target: self, action: #selector(cameraButtonTouchUpInside))
-        cameraButton.addGestureRecognizer(cameraTap)
-        cameraButton.isUserInteractionEnabled = true
-    
-    }
-    
-    func cameraButtonTouchUpInside() {
-        
-        if !cameraView.isHidden {
-            snapPhoto()
-            
-        } else {
-            setupCamera()
-            cameraView.isHidden = false
-            cameraCloseButton.isHidden = false
-            tabBarController?.tabBar.isHidden = true
-        }
-    }
-    @IBAction func cameraCloseButtonTouchUpInside(_ sender: UIButton) {
-        cameraView.isHidden = true
-        cameraCloseButton.isHidden = true
-        tabBarController?.tabBar.isHidden = false
-
-    }
-    
-    @IBAction func previewCloseTouchUpInside(_ sender: UIButton) {
-        cameraPreview.isHidden = true
-    }
-    
-    @IBAction func previewSendTouchUpInside(_ sender: UIButton) {
-        firebase.newPost(atLocation: userLocation.currentLocation.coordinate, withImage: cameraPreviewImage.image!, withComment: "") { (key) in
-            
-            self.cameraView.isHidden = true
-            self.cameraCloseButton.isHidden = true
-            self.cameraPreview.isHidden = true
-//            self.showSinglePost(key: key, image: self.cameraPreviewImage.image!)
-        }
-    }
+//    // MARK: - CAMERA
+//    
+//    func createCustomButtons() {
+//        
+//        let cameraTap = UITapGestureRecognizer(target: self, action: #selector(cameraButtonTouchUpInside))
+//        cameraButton.addGestureRecognizer(cameraTap)
+//        cameraButton.isUserInteractionEnabled = true
+//    
+//    }
+//    
+//    func cameraButtonTouchUpInside() {
+//        
+//        if !cameraView.isHidden {
+//            snapPhoto()
+//            
+//        } else {
+//            setupCamera()
+//            cameraView.isHidden = false
+//            cameraCloseButton.isHidden = false
+//            tabBarController?.tabBar.isHidden = true
+//        }
+//    }
+//    @IBAction func cameraCloseButtonTouchUpInside(_ sender: UIButton) {
+//        cameraView.isHidden = true
+//        cameraCloseButton.isHidden = true
+//        tabBarController?.tabBar.isHidden = false
+//
+//    }
+//    
+//    @IBAction func previewCloseTouchUpInside(_ sender: UIButton) {
+//        cameraPreview.isHidden = true
+//    }
+//    
+//    @IBAction func previewSendTouchUpInside(_ sender: UIButton) {
+//        firebase.newPost(atLocation: userLocation.currentLocation.coordinate, withImage: cameraPreviewImage.image!, withComment: "") { (key) in
+//            
+//            self.cameraView.isHidden = true
+//            self.cameraCloseButton.isHidden = true
+//            self.cameraPreview.isHidden = true
+////            self.showSinglePost(key: key, image: self.cameraPreviewImage.image!)
+//        }
+//    }
 }
+//
+//extension MapViewController: AVCapturePhotoCaptureDelegate {
+//
+//    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+//
+//        if let error = error {
+//            print(error.localizedDescription)
+//        }
+//
+//        if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
+//            if let image = UIImage(data: dataImage) {
+//                cameraPreview.isHidden = false
+//                cameraPreviewImage.image = image
+//            }
+//
+//        }
+//
+//    }
+//
+//    func snapPhoto() {
+//
+//        let settings = AVCapturePhotoSettings()
+//        let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
+//        let previewFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
+//                             kCVPixelBufferWidthKey as String: 160,
+//                             kCVPixelBufferHeightKey as String: 160]
+//        settings.previewPhotoFormat = previewFormat
+//        self.cameraOutput.capturePhoto(with: settings, delegate: self)
+//
+//    }
+//
+//    func setupCamera() {
+//
+//        if captureSession == nil {
+//            let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+//            do {
+//                let input = try AVCaptureDeviceInput(device: captureDevice)
+//                captureSession = AVCaptureSession()
+//                captureSession?.addInput(input)
+//                captureSession?.addOutput(cameraOutput)
+//                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+//                videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+//                videoPreviewLayer?.frame = view.layer.bounds
+//                cameraView.layer.addSublayer(videoPreviewLayer!)
+//                captureSession?.startRunning()
+//
+//            } catch {
+//                print(error)
+//            }
+//        }
+//    }
+//}
 
-extension MapViewController: AVCapturePhotoCaptureDelegate {
-    
-    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
-        
-        if let error = error {
-            print(error.localizedDescription)
-        }
-        
-        if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
-            if let image = UIImage(data: dataImage) {
-                cameraPreview.isHidden = false
-                cameraPreviewImage.image = image
-            }
-
-        }
-        
-    }
-    
-    func snapPhoto() {
-        
-        let settings = AVCapturePhotoSettings()
-        let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
-        let previewFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
-                             kCVPixelBufferWidthKey as String: 160,
-                             kCVPixelBufferHeightKey as String: 160]
-        settings.previewPhotoFormat = previewFormat
-        self.cameraOutput.capturePhoto(with: settings, delegate: self)
-    
-    }
-
-    func setupCamera() {
-        
-        if captureSession == nil {
-            let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-            do {
-                let input = try AVCaptureDeviceInput(device: captureDevice)
-                captureSession = AVCaptureSession()
-                captureSession?.addInput(input)
-                captureSession?.addOutput(cameraOutput)
-                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-                videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-                videoPreviewLayer?.frame = view.layer.bounds
-                cameraView.layer.addSublayer(videoPreviewLayer!)
-                captureSession?.startRunning()
-                
-            } catch {
-                print(error)
-            }
-        }
-    }
-}

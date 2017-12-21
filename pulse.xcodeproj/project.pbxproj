@@ -22,7 +22,7 @@
 		0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E69C19D1FCF83F4008E72E8 /* Firebase.swift */; };
 		0E6EBFBA1FEAD8A7005805A1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFB91FEAD8A7005805A1 /* ResultsViewController.swift */; };
 		0E6EBFC01FEB1DF7005805A1 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFBF1FEB1DF7005805A1 /* FavoritesViewController.swift */; };
-		0E6EBFC31FEB1E59005805A1 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFC21FEB1E59005805A1 /* LeaderboardViewController.swift */; };
+		0E6EBFC31FEB1E59005805A1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6EBFC21FEB1E59005805A1 /* CameraViewController.swift */; };
 		0E962B551FEA09B5009AD2AD /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E962B541FEA09B5009AD2AD /* AccountViewController.swift */; };
 		0EAB28911FE04A220080C95C /* ScorePin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB28901FE04A220080C95C /* ScorePin.xib */; };
 		0EAB28931FE04A300080C95C /* ScorePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB28921FE04A300080C95C /* ScorePin.swift */; };
@@ -61,7 +61,7 @@
 		0E69C19D1FCF83F4008E72E8 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		0E6EBFB91FEAD8A7005805A1 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		0E6EBFBF1FEB1DF7005805A1 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		0E6EBFC21FEB1E59005805A1 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		0E6EBFC21FEB1E59005805A1 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0E962B541FEA09B5009AD2AD /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		0EAB28901FE04A220080C95C /* ScorePin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScorePin.xib; sourceTree = "<group>"; };
 		0EAB28921FE04A300080C95C /* ScorePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePin.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 			children = (
 				545C5AD91ED5165700CE6FFB /* MapViewController.swift */,
 				0E6EBFB91FEAD8A7005805A1 /* ResultsViewController.swift */,
-				0E6EBFC21FEB1E59005805A1 /* LeaderboardViewController.swift */,
+				0E6EBFC21FEB1E59005805A1 /* CameraViewController.swift */,
 				0E6EBFBF1FEB1DF7005805A1 /* FavoritesViewController.swift */,
 				0E962B541FEA09B5009AD2AD /* AccountViewController.swift */,
 			);
@@ -411,7 +411,7 @@
 				545C5AD81ED5165700CE6FFB /* AppDelegate.swift in Sources */,
 				0E69C19A1FCF8292008E72E8 /* UserLocation.swift in Sources */,
 				0EAB28931FE04A300080C95C /* ScorePin.swift in Sources */,
-				0E6EBFC31FEB1E59005805A1 /* LeaderboardViewController.swift in Sources */,
+				0E6EBFC31FEB1E59005805A1 /* CameraViewController.swift in Sources */,
 				543F63051ED8F30E00F7521D /* Containment.swift in Sources */,
 				0E2035D61FE898E70024B3BF /* RegisterViewController.swift in Sources */,
 			);

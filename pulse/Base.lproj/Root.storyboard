@@ -41,7 +41,7 @@
                                     <action selector="cameraCloseButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="02z-by-OBS"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-button" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-Nj-XEg">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-button" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-Nj-XEg">
                                 <rect key="frame" x="137.5" y="492" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="G9O-lp-QFR"/>
@@ -193,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="1018" y="403"/>
         </scene>
-        <!--Leaderboard View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="UjB-f8-voV">
             <objects>
-                <viewController id="k2m-Mi-qfW" customClass="LeaderboardViewController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k2m-Mi-qfW" customClass="CameraViewController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b2l-wf-Th7"/>
                         <viewControllerLayoutGuide type="bottom" id="Luo-ge-Ueo"/>
@@ -204,9 +204,99 @@
                     <view key="view" contentMode="scaleToFill" id="GP4-wC-dpB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-zW-SX4" userLabel="Camera View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seE-1p-m8z" userLabel="Camera Close Button">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="G6e-Vf-TJL"/>
+                                    <constraint firstAttribute="width" constant="30" id="gtp-90-MPJ"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="cameraCloseButtonTouchUpInside:" destination="k2m-Mi-qfW" eventType="touchUpInside" id="Zys-Ie-PsJ"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-button" translatesAutoresizingMaskIntoConstraints="NO" id="ceE-6m-IOy" userLabel="Camera Button">
+                                <rect key="frame" x="137" y="507" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="6Fa-lZ-uVs"/>
+                                    <constraint firstAttribute="width" constant="100" id="AF1-lO-4gf"/>
+                                </constraints>
+                            </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLG-ge-Avj" userLabel="Camera Preview">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CTH-YH-8wF" userLabel="Camera Preview Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZS-4B-64y" userLabel="Preview Close Button">
+                                        <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hxU-wo-DoK"/>
+                                            <constraint firstAttribute="width" constant="30" id="igz-PT-59D"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="ic_close"/>
+                                        <connections>
+                                            <action selector="previewCloseTouchUpInside:" destination="k2m-Mi-qfW" eventType="touchUpInside" id="102-1i-OVK"/>
+                                            <action selector="previewCloseTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EZq-Ck-Krr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU4-7Y-Xaw" userLabel="Preview Send Button">
+                                        <rect key="frame" x="305" y="597" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="3UJ-6j-gFp"/>
+                                            <constraint firstAttribute="height" constant="50" id="54Y-08-lCq"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="ic_send"/>
+                                        <connections>
+                                            <action selector="previewSendTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vp9-Ov-hke"/>
+                                            <action selector="previewSendTouchUpInside:" destination="k2m-Mi-qfW" eventType="touchUpInside" id="yxM-nJ-igF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="CTH-YH-8wF" firstAttribute="leading" secondItem="pLG-ge-Avj" secondAttribute="leading" id="P3n-9j-skx"/>
+                                    <constraint firstItem="CTH-YH-8wF" firstAttribute="top" secondItem="pLG-ge-Avj" secondAttribute="top" id="T6j-U2-gBa"/>
+                                    <constraint firstItem="aZS-4B-64y" firstAttribute="top" secondItem="pLG-ge-Avj" secondAttribute="top" constant="20" id="Wgz-Xs-50E"/>
+                                    <constraint firstAttribute="bottom" secondItem="CTH-YH-8wF" secondAttribute="bottom" id="bwq-sn-Yht"/>
+                                    <constraint firstAttribute="trailing" secondItem="DU4-7Y-Xaw" secondAttribute="trailing" constant="20" id="leo-Vi-hhT"/>
+                                    <constraint firstItem="aZS-4B-64y" firstAttribute="leading" secondItem="pLG-ge-Avj" secondAttribute="leading" constant="20" id="qQK-YG-Yao"/>
+                                    <constraint firstAttribute="trailing" secondItem="CTH-YH-8wF" secondAttribute="trailing" id="vOd-Cb-SIe"/>
+                                    <constraint firstAttribute="bottom" secondItem="DU4-7Y-Xaw" secondAttribute="bottom" constant="20" id="zPq-Vr-eGH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pLG-ge-Avj" firstAttribute="leading" secondItem="GP4-wC-dpB" secondAttribute="leading" id="6Kh-Ix-JOF"/>
+                            <constraint firstAttribute="trailing" secondItem="R9a-zW-SX4" secondAttribute="trailing" id="APb-qb-tBD"/>
+                            <constraint firstItem="seE-1p-m8z" firstAttribute="leading" secondItem="GP4-wC-dpB" secondAttribute="leading" constant="20" id="Kdt-8E-LIx"/>
+                            <constraint firstItem="R9a-zW-SX4" firstAttribute="leading" secondItem="GP4-wC-dpB" secondAttribute="leading" id="M7G-wI-eI6"/>
+                            <constraint firstItem="R9a-zW-SX4" firstAttribute="top" secondItem="GP4-wC-dpB" secondAttribute="top" id="PF1-0M-r29"/>
+                            <constraint firstAttribute="bottom" secondItem="ceE-6m-IOy" secondAttribute="bottom" constant="60" id="U5D-GT-L7l"/>
+                            <constraint firstItem="seE-1p-m8z" firstAttribute="top" secondItem="GP4-wC-dpB" secondAttribute="top" constant="20" id="ZA4-9D-60Y"/>
+                            <constraint firstAttribute="trailing" secondItem="pLG-ge-Avj" secondAttribute="trailing" id="bDk-gZ-s1q"/>
+                            <constraint firstAttribute="bottom" secondItem="pLG-ge-Avj" secondAttribute="bottom" id="cjN-5P-Ikq"/>
+                            <constraint firstAttribute="bottom" secondItem="R9a-zW-SX4" secondAttribute="bottom" id="eQq-Of-agH"/>
+                            <constraint firstItem="pLG-ge-Avj" firstAttribute="top" secondItem="GP4-wC-dpB" secondAttribute="top" id="vhm-JD-Bdr"/>
+                            <constraint firstItem="ceE-6m-IOy" firstAttribute="centerX" secondItem="GP4-wC-dpB" secondAttribute="centerX" id="wwf-hZ-4Vo"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_trending_up" id="EDt-Gr-UPw"/>
+                    <tabBarItem key="tabBarItem" title="" image="ic_photo_camera" id="EDt-Gr-UPw"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="ceE-6m-IOy" id="uvr-7a-F4O"/>
+                        <outlet property="cameraPreview" destination="pLG-ge-Avj" id="Fgb-sl-NyD"/>
+                        <outlet property="cameraPreviewImage" destination="CTH-YH-8wF" id="ImZ-ep-v0k"/>
+                        <outlet property="cameraView" destination="R9a-zW-SX4" id="fTT-hZ-Jou"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k31-wY-fwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,8 +431,8 @@
         <image name="ic_close" width="24" height="24"/>
         <image name="ic_home" width="24" height="24"/>
         <image name="ic_person" width="24" height="24"/>
+        <image name="ic_photo_camera" width="24" height="24"/>
         <image name="ic_search" width="24" height="24"/>
         <image name="ic_send" width="24" height="24"/>
-        <image name="ic_trending_up" width="24" height="24"/>
     </resources>
 </document>

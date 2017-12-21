@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ReactiveTabBarController: UITabBarController {
+class ReactiveTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     enum tab: Int {
         case home = 0
@@ -19,15 +19,28 @@ class ReactiveTabBarController: UITabBarController {
         case account = 4
     }
     
+    var previousTab: Int = 0
+    
     override func viewDidLoad() {
+        self.delegate = self
         adjustInsets()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.returnToPreviousTab(_:)), name: NSNotification.Name(rawValue: "returnToPreviousTab"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateResults(_:)), name: NSNotification.Name(rawValue: "updateResults"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUserScore(_:)), name: NSNotification.Name(rawValue: "updateUserScore"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.moveToUserPost(_:)), name: NSNotification.Name(rawValue: "moveToUserPost"), object: nil)
     }
     
     deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "returnToPreviousTab"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateResults"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateUserScore"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "moveToUserPost"), object: nil)
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if !viewController.isKind(of: CameraViewController.self) {
+            previousTab = tabBarController.selectedIndex
+        }
     }
     
     func adjustInsets() {
@@ -45,6 +58,10 @@ class ReactiveTabBarController: UITabBarController {
         }
     }
     
+    func returnToPreviousTab(_ notification: NSNotification) {
+        self.selectedIndex = previousTab
+    }
+    
     func updateResults(_ notification: NSNotification) {
         if let viewControllers = self.viewControllers {
             viewControllers[tab.results.rawValue].title = "\(firebase.visiblePosts.count) Results"
@@ -55,5 +72,9 @@ class ReactiveTabBarController: UITabBarController {
         if let viewControllers = self.viewControllers {
             viewControllers[tab.account.rawValue].title = "\(firebase.score)"
         }
+    }
+    
+    func moveToUserPost(_ notification: NSNotification) {
+        self.selectedIndex = 0
     }
 }
