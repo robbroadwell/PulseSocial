@@ -43,10 +43,6 @@ class PostView: UIView, PostViewDelegate {
         viewModel.favorite()
     }
     
-    @IBAction func closeWasPressed(_ sender: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidePost"), object: nil, userInfo: nil)
-    }
-    
     class func instanceFromNib() -> PostView {
         return UINib(nibName: "PostView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PostView
     }

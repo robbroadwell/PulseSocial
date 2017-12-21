@@ -34,7 +34,7 @@
 		543F63051ED8F30E00F7521D /* Containment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F63041ED8F30E00F7521D /* Containment.swift */; };
 		545C5AD81ED5165700CE6FFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545C5AD71ED5165700CE6FFB /* AppDelegate.swift */; };
 		545C5ADA1ED5165700CE6FFB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545C5AD91ED5165700CE6FFB /* MapViewController.swift */; };
-		545C5ADD1ED5165700CE6FFB /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545C5ADB1ED5165700CE6FFB /* Map.storyboard */; };
+		545C5ADD1ED5165700CE6FFB /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545C5ADB1ED5165700CE6FFB /* Root.storyboard */; };
 		545C5ADF1ED5165700CE6FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 545C5ADE1ED5165700CE6FFB /* Assets.xcassets */; };
 		545C5AE21ED5165700CE6FFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545C5AE01ED5165700CE6FFB /* LaunchScreen.storyboard */; };
 		546FC1D31EE72BBE00C41B8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546FC1D21EE72BBE00C41B8C /* GoogleService-Info.plist */; };
@@ -75,7 +75,7 @@
 		545C5AD41ED5165700CE6FFB /* pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545C5AD71ED5165700CE6FFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		545C5AD91ED5165700CE6FFB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		545C5ADC1ED5165700CE6FFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
+		545C5ADC1ED5165700CE6FFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Root.storyboard; sourceTree = "<group>"; };
 		545C5ADE1ED5165700CE6FFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		545C5AE11ED5165700CE6FFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		545C5AE31ED5165700CE6FFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 			children = (
 				0E2035CC1FE88CA70024B3BF /* Main.storyboard */,
 				548DED981ED7B59C0072CC2C /* Login.storyboard */,
-				545C5ADB1ED5165700CE6FFB /* Map.storyboard */,
+				545C5ADB1ED5165700CE6FFB /* Root.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -129,7 +129,6 @@
 			children = (
 				0E2035CE1FE88E250024B3BF /* MainViewController.swift */,
 				0E10CB5F1FEC35A600140360 /* ReactiveTabBarController.swift */,
-				0E10CB621FEC596300140360 /* ReactiveTabBar.swift */,
 			);
 			name = Shell;
 			sourceTree = "<group>";
@@ -148,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				0E69C19B1FCF8393008E72E8 /* PulseMapView.swift */,
+				0E10CB621FEC596300140360 /* ReactiveTabBar.swift */,
 				0E1066831FE24BC6008775E8 /* Xibs */,
 				0E1066821FE24BC0008775E8 /* Storyboards */,
 			);
@@ -327,7 +327,7 @@
 				541F4DE81ED8AA3A004C1BB1 /* PostView.xib in Resources */,
 				545C5ADF1ED5165700CE6FFB /* Assets.xcassets in Resources */,
 				548DED991ED7B59C0072CC2C /* Login.storyboard in Resources */,
-				545C5ADD1ED5165700CE6FFB /* Map.storyboard in Resources */,
+				545C5ADD1ED5165700CE6FFB /* Root.storyboard in Resources */,
 				0EBBFAAA1FE8557F00E56932 /* LoadingView.xib in Resources */,
 				546FC1D31EE72BBE00C41B8C /* GoogleService-Info.plist in Resources */,
 			);
@@ -420,12 +420,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		545C5ADB1ED5165700CE6FFB /* Map.storyboard */ = {
+		545C5ADB1ED5165700CE6FFB /* Root.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				545C5ADC1ED5165700CE6FFB /* Base */,
 			);
-			name = Map.storyboard;
+			name = Root.storyboard;
 			sourceTree = "<group>";
 		};
 		545C5AE01ED5165700CE6FFB /* LaunchScreen.storyboard */ = {

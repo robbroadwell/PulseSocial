@@ -38,23 +38,13 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wud-rQ-TgJ">
-                    <rect key="frame" x="341" y="10" width="24" height="24"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="ic_close"/>
-                    <connections>
-                        <action selector="closeWasPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="BOm-h9-LcU"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="trailing" secondItem="3lU-vs-m6L" secondAttribute="trailing" constant="20" id="5pC-7b-dzG"/>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9HD-vs-xUe"/>
-                <constraint firstItem="cpq-g6-OtF" firstAttribute="trailing" secondItem="Wud-rQ-TgJ" secondAttribute="trailing" constant="10" id="9Ve-5a-i3I"/>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="F96-B9-H4K"/>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="bottom" secondItem="3lU-vs-m6L" secondAttribute="bottom" constant="20" id="Hwo-ah-rCQ"/>
-                <constraint firstItem="Wud-rQ-TgJ" firstAttribute="top" secondItem="cpq-g6-OtF" secondAttribute="top" constant="10" id="Isj-1i-Mdv"/>
                 <constraint firstItem="3lU-vs-m6L" firstAttribute="top" secondItem="cmr-rC-iHb" secondAttribute="bottom" id="YqS-3L-lnK"/>
                 <constraint firstItem="ABE-4H-kaz" firstAttribute="leading" secondItem="cpq-g6-OtF" secondAttribute="leading" constant="20" id="aDb-6R-LKj"/>
                 <constraint firstItem="cpq-g6-OtF" firstAttribute="bottom" secondItem="ABE-4H-kaz" secondAttribute="bottom" constant="20" id="bhE-Co-szb"/>
@@ -72,7 +62,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_close" width="24" height="24"/>
         <image name="ic_favorite_border" width="24" height="24"/>
     </resources>
 </document>

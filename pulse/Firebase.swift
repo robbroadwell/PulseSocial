@@ -173,16 +173,16 @@ class Firebase {
     private func getPosts(fromSnapshot snapshot: NSDictionary) -> [String : PostViewModel] {
         var dict = [String : PostViewModel]()
         
-        for (key, value) in snapshot {
-            if let x = value as? NSDictionary,
-                let y = key as? String,
-                let score = x["score"] as? Int,
-                let time = x["time"] as? Float,
-                let imageURL = x["image"] as? String,
-                let user = x["user"] as? String,
-                let message = x["message"] as? String {
+        for (x, y) in snapshot {
+            if let key = x as? String,
+                let value = y as? NSDictionary,
+                let score = value["score"] as? Int,
+                let time = value["time"] as? Float,
+                let imageURL = value["image"] as? String,
+                let user = value["user"] as? String,
+                let message = value["message"] as? String {
                 
-                dict[y] = PostViewModel(key: y, score: score, time: time, imageURL: imageURL, user: user, message: message)
+                dict[key] = PostViewModel(key: key, score: score, time: time, imageURL: imageURL, user: user, message: message)
                 
             }
         }
@@ -199,7 +199,6 @@ class Firebase {
             if let this = value.score {
                 score = score + this
             }
-            
         }
         
         return score
