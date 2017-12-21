@@ -1,5 +1,5 @@
 //
-//  CustomTabBar.swift
+//  ReactiveTabBar.swift
 //  pulse
 //
 //  Created by Rob Broadwell on 12/20/17.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CustomTabBar: UITabBar {
+class ReactiveTabBar: UITabBar {
     @IBInspectable var height: CGFloat = 0.0
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {

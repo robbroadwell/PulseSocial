@@ -12,6 +12,7 @@ import UIKit
 class ReactiveTabBarController: UITabBarController {
     
     override func viewDidLoad() {
+        adjustInsets()
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateResults(_:)), name: NSNotification.Name(rawValue: "updateResults"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateUserScore(_:)), name: NSNotification.Name(rawValue: "updateUserScore"), object: nil)
     }
@@ -19,6 +20,14 @@ class ReactiveTabBarController: UITabBarController {
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateResults"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateUserScore"), object: nil)
+    }
+    
+    func adjustInsets() {
+        if let items = self.tabBar.items {
+            for item in items {
+                item.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+            }
+        }
     }
     
     func updateResults(_ notification: NSNotification) {
@@ -33,5 +42,4 @@ class ReactiveTabBarController: UITabBarController {
             viewControllers[4].title = "\(score)"
         }
     }
-    
 }
