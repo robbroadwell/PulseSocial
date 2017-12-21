@@ -101,7 +101,7 @@ class Firebase {
             
             self.createPost(key: key, message: comment, imageURL: imageURL)
             self.createGeoPost(key: key, latitude: coordinate.latitude, longitude: coordinate.longitude)
-            self.createUserPost(key: key)
+            self.createUserPost(key: key, message: comment, imageURL: imageURL)
             
             completionHandler(key)
             
@@ -136,10 +136,14 @@ class Firebase {
         geoFire.setLocation(CLLocation(latitude: latitude, longitude: longitude), forKey: key)
     }
     
-    private func createUserPost(key: String) {
+    private func createUserPost(key: String, message: String, imageURL: String) {
         let user = usersRef.child(uid).child("posts")
         let post = user.child(key)
-        post.setValue(["score": 1])
+        post.setValue(["message": message,
+                       "time": timestamp,
+                       "score": 1,
+                       "image": imageURL,
+                       "user": uid])
     }
     
 }

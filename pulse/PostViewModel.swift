@@ -28,6 +28,16 @@ class PostViewModel {
         createObserver()
     }
     
+    init(key: String, score: Int, time: Float, imageURL: String, user: String, message: String) {
+        self.key = key
+        self.score = score
+        self.time = time
+        self.imageURL = imageURL
+        self.user = user
+        self.message = message
+        self.isFavorite = true
+    }
+    
     func createObserver() {
         
         firebase.postsRef.child(key).observe(.value, with: { (snapshot) in
@@ -66,10 +76,20 @@ class PostViewModel {
         }
         
         postRef.updateChildValues(["score": score! + 1])
-        userRef.updateChildValues(["score": score! + 1])
-        favoritesRef.setValue(["time": timestamp])
+        
+        userRef.updateChildValues(["message": message ?? "",
+                                   "time": timestamp,
+                                   "score": score! + 1,
+                                   "image": imageURL ?? "",
+                                   "user": uid])
+        
         favoritedByRef.setValue(["time": timestamp])
         
+        favoritesRef.setValue(["message": message ?? "",
+                               "time": timestamp,
+                               "score": score! + 1,
+                               "image": imageURL ?? "",
+                               "user": uid])
     }
     
     func checkIsFavorite(from dictionary: NSDictionary?) -> Bool {

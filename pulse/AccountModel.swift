@@ -12,7 +12,12 @@ var accountModel: AccountModel?
 
 class AccountModel {
     
-    var score: Int!
+    var score: Int {
+        return getUserScore()
+    }
+    
+    var favorites = [String : PostViewModel]()
+    var posts = [String : PostViewModel]()
     
     init() {
         createObserver()
@@ -20,29 +25,50 @@ class AccountModel {
     
     func createObserver() {
         
+        // user posts
         firebase.usersRef.child(uid).child("posts").observe(.value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            
-            self.score = self.getUserScore(from: value)
+            guard let snapshot = snapshot.value as? NSDictionary else { return }
+            self.posts = self.getPosts(fromSnapshot: snapshot)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateScore"), object: nil, userInfo: nil)
-            
         })
         
+        // user favorites
+        firebase.usersRef.child(uid).child("favorites").observe(.value, with: { (snapshot) in
+            guard let snapshot = snapshot.value as? NSDictionary else { return }
+            self.favorites = self.getPosts(fromSnapshot: snapshot)
+        })
     }
     
-    func getUserScore(from dictionary: NSDictionary?) -> Int {
+    private func getPosts(fromSnapshot snapshot: NSDictionary) -> [String : PostViewModel] {
+        var dict = [String : PostViewModel]()
         
-        var score = 0
-        
-        if let dict = dictionary {
-            for post in dict {
+        for (key, value) in snapshot {
+            if let x = value as? NSDictionary,
+                let y = key as? String,
+                let score = x["score"] as? Int,
+                let time = x["time"] as? Float,
+                let imageURL = x["image"] as? String,
+                let user = x["user"] as? String,
+                let message = x["message"] as? String {
                 
-                if let x = post.value as? NSDictionary,
-                    let y = x["score"] as? Int {
-                    
-                    score = score + y
-                }
+                dict[y] = PostViewModel(key: y, score: score, time: time, imageURL: imageURL, user: user, message: message)
+                
             }
+        }
+        
+        return dict
+    }
+    
+    private func getUserScore() -> Int {
+        
+        var score: Int = 0
+        
+        for (_, value) in self.posts {
+            
+            if let this = value.score {
+                score = score + this
+            }
+
         }
         
         return score

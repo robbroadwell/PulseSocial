@@ -23,7 +23,7 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.isStatusBarHidden = true
-        tableView.scrollToTop()
+        self.title = "\(firebase.posts.count) Results"
         getData()
     }
     
