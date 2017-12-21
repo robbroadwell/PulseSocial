@@ -21,24 +21,39 @@ class Firebase {
     public var userPosts = [String : PostViewModel]()
     public var favoritePosts = [String : PostViewModel]()
     
-    // Realtime Database
-    var firebaseRef: DatabaseReference!
-    var postsRef: DatabaseReference!
-    var geoPostsRef: DatabaseReference!
-    var usersRef: DatabaseReference!
+    // Realtime DB
+    public var firebaseRef: DatabaseReference!
+    public var postsRef: DatabaseReference!
+    public var geoPostsRef: DatabaseReference!
+    public var usersRef: DatabaseReference!
     
     // Cloud Storage
-    var storage = Storage.storage()
-    var storageRef: StorageReference!
-    var imagesRef: StorageReference!
+    private var storage = Storage.storage()
+    private var storageRef: StorageReference!
+    private var imagesRef: StorageReference!
     
     // Geofire
-    var geoFire: GeoFire!
-    var regionQuery: GFRegionQuery?
+    private var geoFire: GeoFire!
+    private var regionQuery: GFRegionQuery?
+    
+    // MARK: - Initialization
     
     init() {
         initializeRealtimeDatabase()
         initializeCloudStorage()
+    }
+    
+    private func initializeRealtimeDatabase() {
+        firebaseRef = Database.database().reference()
+        postsRef = firebaseRef.child("posts")
+        geoPostsRef = firebaseRef.child("geoPosts")
+        usersRef = firebaseRef.child("users")
+        geoFire = GeoFire(firebaseRef: geoPostsRef)
+    }
+    
+    private func initializeCloudStorage() {
+        storageRef = storage.reference()
+        imagesRef = storageRef.child("images")
     }
     
     public func initializeUserObservers() {
@@ -54,19 +69,6 @@ class Firebase {
             guard let snapshot = snapshot.value as? NSDictionary else { return }
             self.favoritePosts = self.getPosts(fromSnapshot: snapshot)
         })
-    }
-    
-    private func initializeRealtimeDatabase() {
-        firebaseRef = Database.database().reference()
-        postsRef = firebaseRef.child("posts")
-        geoPostsRef = firebaseRef.child("geoPosts")
-        usersRef = firebaseRef.child("users")
-        geoFire = GeoFire(firebaseRef: geoPostsRef)
-    }
-    
-    private func initializeCloudStorage() {
-        storageRef = storage.reference()
-        imagesRef = storageRef.child("images")
     }
     
     // MARK: - Update Region
@@ -165,6 +167,8 @@ class Firebase {
                        "image": imageURL,
                        "user": uid])
     }
+    
+    // MARK: - Get Posts
     
     private func getPosts(fromSnapshot snapshot: NSDictionary) -> [String : PostViewModel] {
         var dict = [String : PostViewModel]()
