@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-var userLocation: UserLocation?
+let userLocation = UserLocation()
 
 class UserLocation: NSObject, CLLocationManagerDelegate {
     
@@ -17,19 +17,18 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
     
     override init() {
         super.init()
-        setupLocationManager()
     }
     
     public var currentLocation: CLLocation!
     
-    private var locationManager = CLLocationManager()
-    
-    private func setupLocationManager() {
+    public func setupLocationManager() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
     }
+    
+    private var locationManager = CLLocationManager()
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last! as CLLocation!
@@ -41,11 +40,11 @@ class UserLocation: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func currentLatitude() -> CLLocationDegrees {
+    private func currentLatitude() -> CLLocationDegrees {
         return currentLocation.coordinate.latitude
     }
     
-    func currentLongitude() -> CLLocationDegrees {
+    private func currentLongitude() -> CLLocationDegrees {
         return currentLocation.coordinate.longitude
     }
 }

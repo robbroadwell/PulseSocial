@@ -22,9 +22,10 @@ class MainViewController: UIViewController {
         handle = Auth.auth().addStateDidChangeListener() { (auth, user) in
             if Auth.auth().currentUser == nil {
                 self.showLogin()
+                
             } else {
                 self.showMap()
-                userLocation = UserLocation()
+                userLocation.setupLocationManager()
                 firebase.initializeUserObservers()
             }
         }

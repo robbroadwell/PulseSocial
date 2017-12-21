@@ -69,7 +69,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     func updateLocation(_ notification: NSNotification) {
         if mapView != nil {
             
-            mapView.moveTo(location: userLocation!.currentLocation)
+            mapView.moveTo(location: userLocation.currentLocation)
         }
     }
     
@@ -155,7 +155,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     @IBAction func previewSendTouchUpInside(_ sender: UIButton) {
-        firebase.newPost(atLocation: (userLocation?.currentLocation.coordinate)!, withImage: cameraPreviewImage.image!, withComment: "") { (key) in
+        firebase.newPost(atLocation: userLocation.currentLocation.coordinate, withImage: cameraPreviewImage.image!, withComment: "") { (key) in
             
             self.cameraView.isHidden = true
             self.cameraCloseButton.isHidden = true
