@@ -66,7 +66,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             let location = notification.userInfo?["location"] as? CLLocation {
             
             mapView.addPin(key: key, location: location)
-            updateScore()
         }
     }
     
@@ -74,7 +73,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         if let key = notification.userInfo?["key"] as? String {
             
             mapView.removePin(key: key)
-            updateScore()
         }
     }
     
@@ -82,13 +80,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         if mapView != nil {
             
             mapView.moveTo(location: userLocation!.currentLocation)
-        }
-    }
-    
-    func updateScore() {
-        if let tabBarController = self.tabBarController,
-            let viewControllers = tabBarController.viewControllers {
-            viewControllers[1].title = "\(firebase.posts.count) Results"
         }
     }
     

@@ -29,7 +29,7 @@ class AccountModel {
         firebase.usersRef.child(uid).child("posts").observe(.value, with: { (snapshot) in
             guard let snapshot = snapshot.value as? NSDictionary else { return }
             self.posts = self.getPosts(fromSnapshot: snapshot)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateScore"), object: nil, userInfo: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateUserScore"), object: nil, userInfo: nil)
         })
         
         // user favorites

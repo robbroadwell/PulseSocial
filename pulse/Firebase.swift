@@ -60,7 +60,7 @@ class Firebase {
             // Update region on GeoFire query
             regionQuery = geoFire.query(with: mapRegion)
             
-            // Create listener for posts entering the screen region
+            // Create listener for posts entering the screen region 
             regionQuery?.observe(.keyEntered, with: { (key, location) in // observer of new post objects in region
                 if let key = key,
                     let location = location {
@@ -69,6 +69,7 @@ class Firebase {
                     
                     let dict: [String : Any] = ["key": key, "location": location]
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPost"), object: nil, userInfo: dict)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateResults"), object: nil, userInfo: dict)
                 }
             })
             
@@ -80,6 +81,7 @@ class Firebase {
                     
                     let dict: [String : Any] = ["key": key]
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "removePost"), object: nil, userInfo: dict)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateResults"), object: nil, userInfo: dict)
                 }
             })
             

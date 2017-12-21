@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E03E34F1FE89C6C00D57C9D /* TextFieldBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03E34E1FE89C6C00D57C9D /* TextFieldBottomBorder.swift */; };
 		0E1066851FE24CA8008775E8 /* Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1066841FE24CA8008775E8 /* Public.swift */; };
+		0E10CB601FEC35A600140360 /* ReactiveTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E10CB5F1FEC35A600140360 /* ReactiveTabBarController.swift */; };
 		0E1BB7021FE2326300F8F7B5 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */; };
 		0E2035CD1FE88CA70024B3BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E2035CC1FE88CA70024B3BF /* Main.storyboard */; };
 		0E2035CF1FE88E250024B3BF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2035CE1FE88E250024B3BF /* MainViewController.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		0E03E34E1FE89C6C00D57C9D /* TextFieldBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBottomBorder.swift; sourceTree = "<group>"; };
 		0E1066841FE24CA8008775E8 /* Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public.swift; sourceTree = "<group>"; };
+		0E10CB5F1FEC35A600140360 /* ReactiveTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveTabBarController.swift; sourceTree = "<group>"; };
 		0E1BB7011FE2326300F8F7B5 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		0E2035CC1FE88CA70024B3BF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0E2035CE1FE88E250024B3BF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				0E2035CE1FE88E250024B3BF /* MainViewController.swift */,
+				0E10CB5F1FEC35A600140360 /* ReactiveTabBarController.swift */,
 				0E2035D21FE898D20024B3BF /* Login */,
 				0E6EBFC11FEB1E26005805A1 /* Root */,
 			);
@@ -392,6 +395,7 @@
 				0E962B551FEA09B5009AD2AD /* AccountViewController.swift in Sources */,
 				548DEDDE1ED7E55B0072CC2C /* Hash.swift in Sources */,
 				0E69C19E1FCF83F4008E72E8 /* Firebase.swift in Sources */,
+				0E10CB601FEC35A600140360 /* ReactiveTabBarController.swift in Sources */,
 				0E49A6F71FE37A6D004BB37E /* TimeAgo.swift in Sources */,
 				54C7D3D81EEDD014000F58D0 /* MKPostAnnotationView.swift in Sources */,
 				0E2035D41FE898DF0024B3BF /* LoginViewController.swift in Sources */,
