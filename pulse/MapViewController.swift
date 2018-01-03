@@ -111,7 +111,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         scrollView.contentSize = frame.size
         scrollView.scrollTo(direction: .left, animated: false)
         scrollView.isHidden = false
-        mapView.alpha = 0
+        mapView.isHidden = true
     }
     
     func showPost(key: String?) {
