@@ -43,7 +43,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         NotificationCenter.default.addObserver(self, selector: #selector(self.removePost(_:)), name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.hidePost(_:)), name: NSNotification.Name(rawValue: "hidePost"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateLocation(_:)), name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateScore(_:)), name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -132,24 +131,24 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             
         }
         
-        for (this, viewModel) in firebase.posts {
-            if this != key {
-                
-                createPostView(withFrame: frame, andViewModel: viewModel)
-                frame.origin.x = frame.origin.x + frame.width
-                
-            }
-        }
+//        for (this, viewModel) in firebase.posts {
+//            if this != key {
+//
+//                createPostView(withFrame: frame, andViewModel: viewModel)
+//                frame.origin.x = frame.origin.x + frame.width
+//
+//            }
+//        }
         
         let content = CGRect(x: 0, y: 0,
-                             width: scrollView.frame.width * CGFloat(firebase.posts.count),
+//                             width: scrollView.frame.width * CGFloat(firebase.posts.count),
+                             width: scrollView.frame.width,
                              height: scrollView.frame.height)
         
         scrollView.contentSize = content.size
         scrollView.scrollTo(direction: .left, animated: false)
         scrollView.isHidden = false
-        
-        mapView.alpha = 0
+        mapView.isHidden = true
     }
     
     func hidePost(_ notification: NSNotification) {
@@ -159,8 +158,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     func hidePost() {
 
         scrollView.isHidden = true
-        
-        mapView.alpha = 1
+        mapView.isHidden = false
         
         for subview in scrollView.subviews {
             subview.removeFromSuperview()
