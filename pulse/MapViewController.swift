@@ -251,6 +251,9 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             self.cameraCloseButton.isHidden = true
             self.cameraPreview.isHidden = true
             self.showSinglePost(key: key, image: self.cameraPreviewImage.image!)
+            if let location = self.mapView.userLocation.location {
+                self.mapView.moveTo(location: location, animated: false, spanDelta: 0.01)
+            }
         }
     }
 }
