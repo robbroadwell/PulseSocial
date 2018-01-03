@@ -14,22 +14,9 @@ import AVFoundation
 class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var mapView: PulseMapView!
-    @IBOutlet weak var settingsView: UIView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var whiteView: UIView!
-    @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var postsLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    @IBOutlet weak var headerCloseButton: UIButton!
     @IBOutlet weak var cameraButton: UIImageView!
-    @IBOutlet weak var pulseButton: UIImageView!
-    @IBOutlet weak var postsButton: UIView!
-    
     @IBOutlet weak var cameraCloseButton: UIButton!
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var cameraPreview: UIView!
@@ -75,7 +62,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             
             // a new post entered the map region
             mapView.addPin(key: key, location: location)
-            countLabel.text = "\(firebase.posts.count)"
+            
         }
     }
     
@@ -84,7 +71,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             
             // a post left the map region
             mapView.removePin(key: key)
-            countLabel.text = "\(firebase.posts.count)"
+            
         }
     }
     
@@ -161,11 +148,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         scrollView.contentSize = content.size
         scrollView.scrollTo(direction: .left, animated: false)
         scrollView.isHidden = false
-
-//        countLabel.text = "1 / \(firebase.posts.count)"
-        countLabel.textColor = UIColor.black
-        postsLabel.textColor = UIColor.black
-        whiteView.isHidden = false
         
         mapView.alpha = 0
     }
@@ -178,23 +160,11 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
 
         scrollView.isHidden = true
         
-        countLabel.text = "\(firebase.posts.count)"
-        countLabel.textColor = UIColor.white
-        postsLabel.textColor = UIColor.white
-        whiteView.isHidden = true
-        
         mapView.alpha = 1
         
         for subview in scrollView.subviews {
             subview.removeFromSuperview()
         }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = Float(round(scrollView.contentOffset.x/scrollView.frame.width))
-        let total = Float(firebase.posts.count - 1)
-        progressView.setProgress(page/total, animated: false)
-        print(page)
     }
     
     // MARK: - MAP DELEGATE
@@ -214,18 +184,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        countLabel.text = "\(firebase.posts.count)"
         firebase.update(mapRegion: mapView.region)
-        activityIndicator.isHidden = true
-        countLabel.isHidden = false
-        postsLabel.isHidden = false
-    }
-    
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        countLabel.text = "\(firebase.posts.count)"
-        activityIndicator.isHidden = false
-        countLabel.isHidden = true
-        postsLabel.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -260,40 +219,11 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     // MARK: - CAMERA
     
     func createCustomButtons() {
-        let pulseTap = UITapGestureRecognizer(target: self, action: #selector(pulseButtonTouchUpInside))
-        pulseButton.addGestureRecognizer(pulseTap)
-        pulseButton.isUserInteractionEnabled = true
-        
-        let postsTap = UITapGestureRecognizer(target: self, action: #selector(postsButtonTouchUpInside))
-        postsButton.addGestureRecognizer(postsTap)
-        postsButton.isUserInteractionEnabled = true
         
         let cameraTap = UITapGestureRecognizer(target: self, action: #selector(cameraButtonTouchUpInside))
         cameraButton.addGestureRecognizer(cameraTap)
         cameraButton.isUserInteractionEnabled = true
     
-    }
-    
-    func pulseButtonTouchUpInside() {
-        settingsView.isHidden = false
-        headerCloseButton.isHidden = false
-        postsLabel.isHidden = true
-        countLabel.isHidden = true
-    }
-    
-    func postsButtonTouchUpInside() {
-        if settingsView.isHidden {
-            if scrollView.isHidden {
-                showPost(key: nil)
-            } else {
-                hidePost()
-            }
-        } else {
-            settingsView.isHidden = true
-            headerCloseButton.isHidden = true
-            postsLabel.isHidden = false
-            countLabel.isHidden = false
-        }
     }
     
     func cameraButtonTouchUpInside() {
@@ -376,13 +306,5 @@ extension MapViewController: AVCapturePhotoCaptureDelegate {
                 print(error)
             }
         }
-    }
-}
-
-// MARK: - Depricated
-
-extension MapViewController {
-    func updateScore(_ notification: NSNotification) {
-        //        scoreLabel.text = String(accountModel!.score)
     }
 }
