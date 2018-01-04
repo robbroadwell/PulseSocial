@@ -8,7 +8,7 @@
 
 import Foundation
 
-func timeAgoSinceDate(unix: Float) -> String {
+func timeAgoSinceDate(unix: Double) -> String {
     let date = NSDate(timeIntervalSince1970: TimeInterval(unix))
     return timeAgoSinceDate(date: date, numericDates: true)
 }

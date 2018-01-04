@@ -15,7 +15,7 @@ class PostViewModel {
     
     var key: String
     var score: Int?
-    var time: Float?
+    var time: Double?
     var imageURL: String?
     var user: String?
     var message: String?
@@ -28,13 +28,22 @@ class PostViewModel {
         createObserver()
     }
     
+    init(key: String, image: UIImage, score: Int, time: Double) {
+        self.key = key
+        self.image = image
+        self.score = score
+        self.time = time
+        delegate?.updateUI()
+        createObserver()
+    }
+    
     func createObserver() {
         
         firebase.postsRef.child(key).observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             
             self.score = value?["score"] as? Int ?? 1
-            self.time = value?["time"] as? Float ?? 1.0
+            self.time = value?["time"] as? Double ?? NSDate().timeIntervalSince1970
             self.imageURL = value?["image"] as? String ?? ""
             self.user = value?["user"] as? String ?? ""
             self.message = value?["message"] as? String ?? ""
@@ -67,8 +76,10 @@ class PostViewModel {
         
         postRef.updateChildValues(["score": score! + 1])
         userRef.updateChildValues(["score": score! + 1])
-        favoritesRef.setValue(["time": timestamp])
-        favoritedByRef.setValue(["time": timestamp])
+        
+        let time = NSDate().timeIntervalSince1970
+        favoritesRef.setValue(["time": time])
+        favoritedByRef.setValue(["time": time])
         
     }
     

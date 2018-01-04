@@ -90,20 +90,16 @@ class Firebase {
     
     // MARK: - Create Post
     
-    func newPost(atLocation coordinate: CLLocationCoordinate2D, withImage image: UIImage, withComment comment: String, completionHandler: @escaping (String) -> ()) {
-        
-        let key = Hash.generate()
+    func newPost(key: String, coordinate: CLLocationCoordinate2D, image: UIImage, comment: String, time: Double) {
         
         var imageData = Data()
         imageData = UIImageJPEGRepresentation(image, 0)!
         
         uploadImage(key: key, data: imageData) { (imageURL) in
             
-            self.createPost(key: key, message: comment, imageURL: imageURL)
-            self.createUserPost(key: key, message: comment, imageURL: imageURL)
+            self.createPost(key: key, message: comment, imageURL: imageURL, time: time)
+            self.createUserPost(key: key, message: comment, imageURL: imageURL, time: time)
             self.createGeoPost(key: key, latitude: coordinate.latitude, longitude: coordinate.longitude)
-            
-            completionHandler(key)
             
         }
     }
@@ -123,20 +119,20 @@ class Firebase {
         }
     }
     
-    private func createPost(key: String, message: String, imageURL: String) {
+    private func createPost(key: String, message: String, imageURL: String, time: Double) {
         let post = postsRef.child(key)
         post.setValue(["message": message,
-                       "time": timestamp,
+                       "time": time,
                        "score": 1,
                        "image": imageURL,
                        "user": uid])
     }
     
-    private func createUserPost(key: String, message: String, imageURL: String) {
+    private func createUserPost(key: String, message: String, imageURL: String, time: Double) {
         let user = usersRef.child(uid).child("posts")
         let post = user.child(key)
         post.setValue(["message": message,
-                       "time": timestamp,
+                       "time": time,
                        "score": 1,
                        "image": imageURL,
                        "user": uid])

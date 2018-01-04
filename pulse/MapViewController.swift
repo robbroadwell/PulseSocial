@@ -100,18 +100,23 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         scrollView.addSubview(postView)
     }
     
-    func showSinglePost(key: String, image: UIImage) {
+    func showSinglePost(key: String, image: UIImage, time: Double) {
+
         let frame: CGRect = CGRect(x: 0,
                                    y: 0,
                                    width: scrollView.frame.width,
                                    height: scrollView.frame.height)
         
-        createPostView(withFrame: frame, andViewModel: PostViewModel(key: key))
+        createPostView(withFrame: frame, andViewModel: PostViewModel(key: key, image: image, score: 1, time: time))
         
         scrollView.contentSize = frame.size
         scrollView.scrollTo(direction: .left, animated: false)
         scrollView.isHidden = false
         mapView.isHidden = true
+        cameraView.isHidden = true
+        cameraCloseButton.isHidden = true
+        cameraPreview.isHidden = true
+        
     }
     
     func showPost(key: String?) {
@@ -245,15 +250,19 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     @IBAction func previewSendTouchUpInside(_ sender: UIButton) {
-        firebase.newPost(atLocation: (userLocation?.currentLocation.coordinate)!, withImage: cameraPreviewImage.image!, withComment: "") { (key) in
+        
+        if let location = userLocation?.currentLocation {
             
-            self.cameraView.isHidden = true
-            self.cameraCloseButton.isHidden = true
-            self.cameraPreview.isHidden = true
-            self.showSinglePost(key: key, image: self.cameraPreviewImage.image!)
-            if let location = self.mapView.userLocation.location {
-                self.mapView.moveTo(location: location, animated: false, spanDelta: 0.01)
-            }
+            let key = Hash.generate()
+            let time = NSDate().timeIntervalSince1970
+            
+            mapView.moveTo(location: location, animated: false, spanDelta: 0.01)
+            showSinglePost(key: key, image: cameraPreviewImage.image!, time: time)
+            firebase.newPost(key: key,
+                             coordinate: location.coordinate,
+                             image: cameraPreviewImage.image!,
+                             comment: "",
+                             time: time)
         }
     }
 }

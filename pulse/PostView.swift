@@ -18,14 +18,24 @@ class PostView: UIView, PostViewDelegate {
     
     func updateUI() {
         
+        // initial post
+        if let image = viewModel.image,
+            let score = viewModel.score,
+            let time = viewModel.time {
+    
+            imageView.image = image
+            scoreLabel.text = String(score)
+            timeLabel.text = timeAgoSinceDate(unix: time)
+            
+        }
+        
+        // updates
         guard let score = viewModel.score,
             let imageURL = viewModel.imageURL,
             let time = viewModel.time,
             let favorite = viewModel.isFavorite else { return }
         
-        if viewModel.image != nil {
-            imageView.image = viewModel.image
-        } else {
+        if imageView.image == nil {
             imageView.sd_setImage(with: URL(string: imageURL))
         }
 

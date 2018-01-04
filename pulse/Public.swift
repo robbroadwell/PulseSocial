@@ -11,6 +11,6 @@ import Firebase
 import UIKit
 
 public var uid: String { return Auth.auth().currentUser!.uid }
-public var timestamp: TimeInterval { return NSDate().timeIntervalSince1970 }
+//public var timestamp: TimeInterval { return NSDate().timeIntervalSince1970 }
 public var screenWidth: CGFloat { return UIScreen.main.bounds.width }
 public var screenHeight: CGFloat { return UIScreen.main.bounds.height }
