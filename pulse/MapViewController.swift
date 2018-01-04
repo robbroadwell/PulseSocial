@@ -50,7 +50,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "hidePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateScore"), object: nil)
     }
     
     // MARK: - MAP MOVEMENT
@@ -84,10 +83,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     // MARK: - SHOW POST
     
-    @objc func showAllPosts(_ sender: UITapGestureRecognizer) {
-        showPost(key: nil)
-    }
-    
     func createPostView(withFrame frame: CGRect, andViewModel viewModel: PostViewModel) {
         let postView = PostView.instanceFromNib()
         
@@ -100,7 +95,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         scrollView.addSubview(postView)
     }
     
-    func showSinglePost(key: String, image: UIImage, time: Double) {
+    func showNewPost(key: String, image: UIImage, time: Double) {
 
         let frame: CGRect = CGRect(x: 0,
                                    y: 0,
@@ -113,6 +108,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         scrollView.scrollTo(direction: .left, animated: false)
         scrollView.isHidden = false
         mapView.isHidden = true
+        
         cameraView.isHidden = true
         cameraCloseButton.isHidden = true
         cameraPreview.isHidden = true
@@ -257,7 +253,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             let time = NSDate().timeIntervalSince1970
             
             mapView.moveTo(location: location, animated: false, spanDelta: 0.01)
-            showSinglePost(key: key, image: cameraPreviewImage.image!, time: time)
+            showNewPost(key: key, image: cameraPreviewImage.image!, time: time)
             firebase.newPost(key: key,
                              coordinate: location.coordinate,
                              image: cameraPreviewImage.image!,
