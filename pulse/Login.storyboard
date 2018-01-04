@@ -41,7 +41,7 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fp-wO-zln" userLabel="Register Button">
                                         <rect key="frame" x="0.0" y="592" width="375" height="75"/>
-                                        <color key="backgroundColor" red="0.5490196078431373" green="0.027450980392156862" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.054901960784313725" green="0.023529411764705882" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="UJv-zh-eF8"/>
                                         </constraints>
@@ -54,7 +54,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yB-YO-3c2" userLabel="Login Button">
                                         <rect key="frame" x="0.0" y="516" width="375" height="75"/>
-                                        <color key="backgroundColor" red="0.40000000000000002" green="0.023529411764705882" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.031372549019607843" green="0.015686274509803921" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="Kex-uX-vfE"/>
                                         </constraints>
@@ -398,7 +398,7 @@
     </scenes>
     <resources>
         <image name="ic_keyboard_arrow_left" width="24" height="24"/>
-        <image name="login-background" width="758" height="1342"/>
+        <image name="login-background" width="1516" height="2684"/>
         <image name="pulse-icon" width="379" height="225"/>
     </resources>
 </document>

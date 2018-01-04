@@ -109,7 +109,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldDidChange() {
         if textEntered {
-            registerButton.backgroundColor = UIColor.red
+            registerButton.backgroundColor = UIColor.init(red: 14/255,
+                                                          green: 6/255,
+                                                          blue: 118/255, alpha: 1)
         } else {
             registerButton.backgroundColor = UIColor.lightGray
         }

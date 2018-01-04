@@ -99,7 +99,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldDidChange() {
         if textEntered {
-            loginButton.backgroundColor = UIColor.red
+            loginButton.backgroundColor = UIColor.init(red: 14/255,
+                                                       green: 6/255,
+                                                       blue: 118/255, alpha: 1)
         } else {
             loginButton.backgroundColor = UIColor.lightGray
         }

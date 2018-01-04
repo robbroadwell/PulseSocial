@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/PostView.swift"
-            timestampString = "536734782.034682"
+            timestampString = "536735886.075365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -26,7 +26,7 @@
                   moduleName = "pulse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostView.swift"
-                  timestampString = "536734783.289163"
+                  timestampString = "536735546.155284"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -41,7 +41,7 @@
                   moduleName = "pulse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostView.swift"
-                  timestampString = "536734783.290592"
+                  timestampString = "536735546.156663"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -56,7 +56,7 @@
                   moduleName = "pulse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostView.swift"
-                  timestampString = "536734783.291868"
+                  timestampString = "536735546.15799"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -71,7 +71,7 @@
                   moduleName = "pulse"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostView.swift"
-                  timestampString = "536734783.293214"
+                  timestampString = "536735546.159319"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -88,7 +88,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/PostViewModel.swift"
-            timestampString = "536734782.034775"
+            timestampString = "536735886.075462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -104,12 +104,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/PostViewModel.swift"
-            timestampString = "536734782.034834"
+            timestampString = "536735886.075525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
             landmarkName = "createObserver()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "pulse/MapViewController.swift"
+            timestampString = "536735886.075582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "showPost(key:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
