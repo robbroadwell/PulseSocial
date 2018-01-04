@@ -34,7 +34,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         createCustomButtons()
         scrollView.delegate = self
         mapView.delegate = self
-        mapView.showsUserLocation = true
+        mapView.showsUserLocation = false
         mapView.isRotateEnabled = false
     }
 
