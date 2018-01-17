@@ -285,12 +285,12 @@
 				TargetAttributes = {
 					545C5AD31ED5165700CE6FFB = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = K8N3R74ABR;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 425S6F2787;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
-			buildConfigurationList = 545C5ACF1ED5165700CE6FFB /* Build configuration list for PBXProject "pulse" */;
+			buildConfigurationList = 545C5ACF1ED5165700CE6FFB /* Build configuration list for PBXProject "Pulse" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -527,15 +527,16 @@
 			baseConfigurationReference = 38DBB766CB84F5025C217475 /* Pods-pulse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K8N3R74ABR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 425S6F2787;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.robbroadwell.pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = io.jetlag.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "b8dde61f-2886-4958-bc9d-3eb4387bc997";
+				PROVISIONING_PROFILE_SPECIFIER = "Pulse Distribution";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -545,15 +546,16 @@
 			baseConfigurationReference = 9EDFC03E38294585E935493D /* Pods-pulse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K8N3R74ABR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 425S6F2787;
 				INFOPLIST_FILE = pulse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.robbroadwell.pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = io.jetlag.pulse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "b8dde61f-2886-4958-bc9d-3eb4387bc997";
+				PROVISIONING_PROFILE_SPECIFIER = "Pulse Distribution";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -561,7 +563,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		545C5ACF1ED5165700CE6FFB /* Build configuration list for PBXProject "pulse" */ = {
+		545C5ACF1ED5165700CE6FFB /* Build configuration list for PBXProject "Pulse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				545C5AE41ED5165700CE6FFB /* Debug */,
