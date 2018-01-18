@@ -10,6 +10,8 @@ import UIKit
 
 class TermsViewController: UIViewController {
     
+    @IBOutlet weak var termsScrollView: UIScrollView!
+    
     @IBAction func pop(_ sender: Any) {
         self.navigationController?.dismiss(animated: false, completion: nil)
     }
