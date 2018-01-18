@@ -62,15 +62,25 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             
             print("# REGISTER - Attempting register with \(email) / \(password).")
             Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-                print("# REGISTER - Account registered.")
-                Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                    if error == nil {
-                        print("# LOGIN - Logged in...")
-                        self.navigationController?.dismiss(animated: false, completion: nil)
-                    } else {
-                        print("# LOGIN - Something went wrong...")
+                
+                if error == nil {
+                    print("# REGISTER - Account registered.")
+                    Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                        if error == nil {
+                            print("# LOGIN - Logged in...")
+                            self.navigationController?.dismiss(animated: false, completion: nil)
+                        } else {
+                            print("# LOGIN - Something went wrong...")
+                        }
                     }
+                    
+                } else {
+                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "Try Again", style: .cancel)
+                    alertController.addAction(cancel)
+                    self.present(alertController, animated: true, completion: nil)
                 }
+                
             }
         }
     }

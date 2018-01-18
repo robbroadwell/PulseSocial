@@ -62,8 +62,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             print("# LOGIN - Attempting login with \(email) / \(password).")
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                print("# LOGIN - Logged in...")
-                self.navigationController?.dismiss(animated: false, completion: nil)
+                
+                if error == nil {
+                    print("# LOGIN - Logged in...")
+                    self.navigationController?.dismiss(animated: false, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "Login Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "Try Again", style: .cancel)
+                    alertController.addAction(cancel)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
             }
         }
     }
