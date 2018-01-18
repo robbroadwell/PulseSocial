@@ -538,6 +538,7 @@
 				PROVISIONING_PROFILE = "b8dde61f-2886-4958-bc9d-3eb4387bc997";
 				PROVISIONING_PROFILE_SPECIFIER = "Pulse Distribution";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -557,6 +558,7 @@
 				PROVISIONING_PROFILE = "b8dde61f-2886-4958-bc9d-3eb4387bc997";
 				PROVISIONING_PROFILE_SPECIFIER = "Pulse Distribution";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
