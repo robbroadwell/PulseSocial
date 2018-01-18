@@ -11,15 +11,14 @@ import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    @IBAction func pop(_ sender: Any) {
-        self.navigationController?.dismiss(animated: false, completion: nil)
-    }
-    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginButtonBottomConstraint: NSLayoutConstraint!
     
+    @IBAction func dismiss(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBAction func forgotPasswordTouchUpInside(_ sender: UIButton) {
         print("forgot password pressed")
     }

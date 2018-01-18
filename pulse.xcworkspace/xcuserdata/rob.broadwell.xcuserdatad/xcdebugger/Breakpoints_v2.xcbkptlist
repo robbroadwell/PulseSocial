@@ -17,68 +17,6 @@
             endingLineNumber = "38"
             landmarkName = "updateUI()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "pulse.PostView.upvoteButton.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIButton&gt;"
-                  moduleName = "pulse"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostView.swift"
-                  timestampString = "536735546.155284"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "78">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "pulse.PostView.upvoteButton.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIButton&gt;"
-                  moduleName = "pulse"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostView.swift"
-                  timestampString = "536735546.156663"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "86">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "pulse.PostView.init(frame: __C.CGRect) -&gt; pulse.PostView"
-                  moduleName = "pulse"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostView.swift"
-                  timestampString = "536735546.15799"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "348">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "pulse.PostView.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;pulse.PostView&gt;"
-                  moduleName = "pulse"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rob.broadwell/nomadic-pulse/pulse/PostView.swift"
-                  timestampString = "536735546.159319"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "265">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -88,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/PostViewModel.swift"
-            timestampString = "536735886.075462"
+            timestampString = "537922831.432804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -104,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/PostViewModel.swift"
-            timestampString = "536735886.075525"
+            timestampString = "537922831.4359159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
