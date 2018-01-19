@@ -26,7 +26,7 @@ class PostView: UIView, PostViewDelegate, UITableViewDelegate, UITableViewDataSo
             imageView.image = image
             scoreLabel.text = String(score)
             timeLabel.text = timeAgoSinceDate(unix: time)
-            
+            setupReporting()
         }
         
         // updates
@@ -125,15 +125,24 @@ class PostView: UIView, PostViewDelegate, UITableViewDelegate, UITableViewDataSo
         let cell = tableView.cellForRow(at: indexPath)
         cell?.setSelected(false, animated: true)
         
+        var userInfoDict = [String : Any]()
+        
         if indexPath.row == 0 {
             hidePost()
+            userInfoDict["title"] = reportTableData[indexPath.row]
+            userInfoDict["message"] = "The post has been hidden."
         } else if indexPath.row == 1 {
-            hideUser()
+            hidePost()
+            userInfoDict["title"] = reportTableData[indexPath.row]
+            userInfoDict["message"] = "Posts from this user have been hidden."
         } else {
-            reportPost()
+            hidePost()
+            viewModel.flag()
+            userInfoDict["title"] = reportTableData[indexPath.row]
+            userInfoDict["message"] = "This user has been reported and you will no longer see posts from them. Depending on the severity of the offense you may be contacted via email by Pulse support."
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidePost"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hidePost"), object: nil, userInfo: userInfoDict)
     
     }
     
@@ -151,10 +160,12 @@ class PostView: UIView, PostViewDelegate, UITableViewDelegate, UITableViewDataSo
     
     func hideUser() {
         
+    
     }
     
     func reportPost() {
-        hideUser()
+        
+        
     }
     
     class func instanceFromNib() -> PostView {

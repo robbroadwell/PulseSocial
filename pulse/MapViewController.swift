@@ -34,7 +34,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         createCustomButtons()
         scrollView.delegate = self
         mapView.delegate = self
-        mapView.showsUserLocation = true
+        mapView.showsUserLocation = false
         mapView.isRotateEnabled = false
     }
 
@@ -154,6 +154,16 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     func hidePost(_ notification: NSNotification) {
         hidePost()
+        
+        if let message = notification.userInfo?["message"] as? String,
+            let title = notification.userInfo?["title"] as? String {
+            
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Okay", style: .cancel)
+            alertController.addAction(cancel)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func hidePost() {

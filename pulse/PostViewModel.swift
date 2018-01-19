@@ -91,6 +91,11 @@ class PostViewModel {
         return false
     }
     
+    func flag() {
+        let ref = firebase.postsRef.child(key).child("flaggedBy")
+        ref.updateChildValues([uid: time!])
+    }
+    
     deinit {
         // destroy observer
         firebase.postsRef.child(key).removeAllObservers()
