@@ -19,13 +19,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;In order to take pictures to post to Pulse, we must have access to your camera. Is that alright?&quot;</string>
+	<string>"In order to take pictures to post to Pulse, we must have access to your camera. Is that alright?"</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;To show you the most relevant results and posts, we must have access to your location. Is that alright?&quot;</string>
+	<string>"To show you the most relevant results and posts, we must have access to your location. Is that alright?"</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,6 +41,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 </dict>
 </plist>
