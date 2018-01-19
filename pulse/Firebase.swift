@@ -65,6 +65,12 @@ class Firebase {
                 if let key = key,
                     let location = location {
                     
+                    if let hidden = UserDefaults.standard.dictionary(forKey: "hiddenPosts") {
+                        if hidden[key] != nil {
+                            return
+                        }
+                    }
+                    
                     self.posts[key] = PostViewModel(key: key)
                     
                     let dict: [String : Any] = ["key": key, "location": location]

@@ -55,7 +55,7 @@ class PulseMapView: MKMapView {
         }
     }
     
-    func moveTo(location: CLLocation, animated: Bool = true, spanDelta: CLLocationDegrees = 0.1) {
+    func moveTo(location: CLLocation, animated: Bool = true, spanDelta: CLLocationDegrees = 1) {
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: spanDelta, longitudeDelta: spanDelta))
         self.setRegion(region, animated: animated)

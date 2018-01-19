@@ -15,6 +15,7 @@
 		0E2035D11FE8937B0024B3BF /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2035D01FE8937B0024B3BF /* PushNoAnimationSegue.swift */; };
 		0E2035D41FE898DF0024B3BF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2035D31FE898DF0024B3BF /* LoginViewController.swift */; };
 		0E2035D61FE898E70024B3BF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2035D51FE898E70024B3BF /* RegisterViewController.swift */; };
+		0E38B1F6201171350083AD93 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E38B1F5201171350083AD93 /* Blur.swift */; };
 		0E49A6F51FE35D93004BB37E /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49A6F41FE35D93004BB37E /* ScrollView.swift */; };
 		0E49A6F71FE37A6D004BB37E /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */; };
 		0E622B651FE5BFF9004DE2CB /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E622B641FE5BFF9004DE2CB /* AccountModel.swift */; };
@@ -55,6 +56,7 @@
 		0E2035D01FE8937B0024B3BF /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
 		0E2035D31FE898DF0024B3BF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E2035D51FE898E70024B3BF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0E38B1F5201171350083AD93 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		0E49A6F41FE35D93004BB37E /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		0E49A6F61FE37A6D004BB37E /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 		0E622B641FE5BFF9004DE2CB /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				546FC1D21EE72BBE00C41B8C /* GoogleService-Info.plist */,
 				545C5AE31ED5165700CE6FFB /* Info.plist */,
 				545C5ADE1ED5165700CE6FFB /* Assets.xcassets */,
+				0E38B1F5201171350083AD93 /* Blur.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				0E2035D11FE8937B0024B3BF /* PushNoAnimationSegue.swift in Sources */,
 				0E03E34F1FE89C6C00D57C9D /* TextFieldBottomBorder.swift in Sources */,
 				0E1066851FE24CA8008775E8 /* Public.swift in Sources */,
+				0E38B1F6201171350083AD93 /* Blur.swift in Sources */,
 				548DED971ED7B5550072CC2C /* WelcomeViewController.swift in Sources */,
 				0EBBFAAC1FE855DE00E56932 /* LoadingView.swift in Sources */,
 				0E962B551FEA09B5009AD2AD /* SettingsViewController.swift in Sources */,
