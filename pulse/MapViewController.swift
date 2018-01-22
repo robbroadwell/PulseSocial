@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import SDWebImage
 import AVFoundation
+import Firebase
 
 class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate, UIScrollViewDelegate {
     
@@ -21,6 +22,9 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var cameraPreview: UIView!
     @IBOutlet weak var cameraPreviewImage: UIImageView!
+    @IBOutlet weak var accountDarkView: UIView!
+    @IBOutlet weak var accountContentView: UIView!
+    @IBOutlet weak var accountContentViewBottomContraint: NSLayoutConstraint!
     
     var captureSession: AVCaptureSession?
     var cameraOutput = AVCapturePhotoOutput()
@@ -50,6 +54,49 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "removePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "hidePost"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateLocation"), object: nil)
+    }
+    
+    // MARK: - BUTTONS
+    
+    @IBAction func accountButtonPressed(_ sender: UIButton) {
+        if accountDarkView.isHidden {
+            accountDarkView.isHidden = false
+            accountContentViewBottomContraint.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.accountDarkView.alpha = 1
+                self.view.layoutIfNeeded()
+            })
+        } else {
+            accountContentViewBottomContraint.constant = -225
+            UIView.animate(withDuration: 0.3, animations: {
+                self.accountDarkView.alpha = 0
+                self.view.layoutIfNeeded()
+            }, completion: { (_) in
+                self.accountDarkView.isHidden = true
+            })
+        }
+    }
+    
+    @IBAction func nearButtonPressed(_ sender: UIButton) {
+        mapView.showsUserLocation = true
+        mapView.moveTo(location: userLocation!.currentLocation)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.mapView.showsUserLocation = false
+        }
+    }
+    
+    @IBAction func reportProblemPressed(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func logoutPressed(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        accountButtonPressed(UIButton())
     }
     
     // MARK: - MAP MOVEMENT

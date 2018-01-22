@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pulse/MapViewController.swift"
-            timestampString = "538024624.329542"
+            timestampString = "538272506.0013241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "hidePost(_:)"
             landmarkType = "7">
          </BreakpointContent>
