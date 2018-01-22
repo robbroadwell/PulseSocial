@@ -29,72 +29,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BYh-Dp-cvI" customClass="PulseMapView" customModule="pulse" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzO-ui-8rf" userLabel="Camera View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYd-KO-tzJ" userLabel="Camera Close Button">
-                                <rect key="frame" x="20" y="20" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="Btw-7c-exC"/>
-                                    <constraint firstAttribute="height" constant="30" id="Eiu-z3-Z0r"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_close"/>
-                                <connections>
-                                    <action selector="cameraCloseButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="02z-by-OBS"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-button" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-Nj-XEg">
-                                <rect key="frame" x="137.5" y="517" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="G9O-lp-QFR"/>
-                                    <constraint firstAttribute="width" constant="100" id="btM-Qj-98S"/>
-                                </constraints>
-                            </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69o-DW-BEz" userLabel="Camera Preview">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xRN-ti-1pO" userLabel="Camera Preview Image">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLG-Jv-7oz" userLabel="Preview Close Button">
-                                        <rect key="frame" x="20" y="20" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="Iab-b3-FV4"/>
-                                            <constraint firstAttribute="height" constant="30" id="fda-9y-Wmd"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="ic_close"/>
-                                        <connections>
-                                            <action selector="previewCloseTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6gR-jV-aZM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urz-jS-kGx" userLabel="Preview Send Button">
-                                        <rect key="frame" x="305" y="597" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="1Cc-7Q-m1y"/>
-                                            <constraint firstAttribute="width" constant="50" id="LA9-rG-U87"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="ic_send"/>
-                                        <connections>
-                                            <action selector="previewSendTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k7U-5b-5Zq"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="xRN-ti-1pO" firstAttribute="leading" secondItem="69o-DW-BEz" secondAttribute="leading" id="IJN-2G-jMH"/>
-                                    <constraint firstItem="zLG-Jv-7oz" firstAttribute="leading" secondItem="69o-DW-BEz" secondAttribute="leading" constant="20" id="IT8-SA-hYF"/>
-                                    <constraint firstItem="zLG-Jv-7oz" firstAttribute="top" secondItem="69o-DW-BEz" secondAttribute="top" constant="20" id="R2J-VC-eMa"/>
-                                    <constraint firstAttribute="bottom" secondItem="urz-jS-kGx" secondAttribute="bottom" constant="20" id="SMa-Gn-UER"/>
-                                    <constraint firstAttribute="trailing" secondItem="xRN-ti-1pO" secondAttribute="trailing" id="TU8-KU-iSU"/>
-                                    <constraint firstAttribute="bottom" secondItem="xRN-ti-1pO" secondAttribute="bottom" id="Tyw-br-0dK"/>
-                                    <constraint firstItem="xRN-ti-1pO" firstAttribute="top" secondItem="69o-DW-BEz" secondAttribute="top" id="U9b-T2-iba"/>
-                                    <constraint firstAttribute="trailing" secondItem="urz-jS-kGx" secondAttribute="trailing" constant="20" id="hWQ-Il-nHp"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ho-8v-bsl" userLabel="Near Button">
                                 <rect key="frame" x="267" y="547" width="40" height="40"/>
                                 <constraints>
@@ -177,6 +111,72 @@
                                     <action selector="accountButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e1j-83-UGe"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yzO-ui-8rf" userLabel="Camera View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYd-KO-tzJ" userLabel="Camera Close Button">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Btw-7c-exC"/>
+                                    <constraint firstAttribute="height" constant="30" id="Eiu-z3-Z0r"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="cameraCloseButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="02z-by-OBS"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-button" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-Nj-XEg">
+                                <rect key="frame" x="137" y="517" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="G9O-lp-QFR"/>
+                                    <constraint firstAttribute="width" constant="100" id="btM-Qj-98S"/>
+                                </constraints>
+                            </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69o-DW-BEz" userLabel="Camera Preview">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xRN-ti-1pO" userLabel="Camera Preview Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLG-Jv-7oz" userLabel="Preview Close Button">
+                                        <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Iab-b3-FV4"/>
+                                            <constraint firstAttribute="height" constant="30" id="fda-9y-Wmd"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="ic_close"/>
+                                        <connections>
+                                            <action selector="previewCloseTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6gR-jV-aZM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urz-jS-kGx" userLabel="Preview Send Button">
+                                        <rect key="frame" x="305" y="597" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="1Cc-7Q-m1y"/>
+                                            <constraint firstAttribute="width" constant="50" id="LA9-rG-U87"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="ic_send"/>
+                                        <connections>
+                                            <action selector="previewSendTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k7U-5b-5Zq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xRN-ti-1pO" firstAttribute="leading" secondItem="69o-DW-BEz" secondAttribute="leading" id="IJN-2G-jMH"/>
+                                    <constraint firstItem="zLG-Jv-7oz" firstAttribute="leading" secondItem="69o-DW-BEz" secondAttribute="leading" constant="20" id="IT8-SA-hYF"/>
+                                    <constraint firstItem="zLG-Jv-7oz" firstAttribute="top" secondItem="69o-DW-BEz" secondAttribute="top" constant="20" id="R2J-VC-eMa"/>
+                                    <constraint firstAttribute="bottom" secondItem="urz-jS-kGx" secondAttribute="bottom" constant="20" id="SMa-Gn-UER"/>
+                                    <constraint firstAttribute="trailing" secondItem="xRN-ti-1pO" secondAttribute="trailing" id="TU8-KU-iSU"/>
+                                    <constraint firstAttribute="bottom" secondItem="xRN-ti-1pO" secondAttribute="bottom" id="Tyw-br-0dK"/>
+                                    <constraint firstItem="xRN-ti-1pO" firstAttribute="top" secondItem="69o-DW-BEz" secondAttribute="top" id="U9b-T2-iba"/>
+                                    <constraint firstAttribute="trailing" secondItem="urz-jS-kGx" secondAttribute="trailing" constant="20" id="hWQ-Il-nHp"/>
+                                </constraints>
+                            </view>
                             <scrollView hidden="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfv-dA-Z5P">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>

@@ -1,4 +1,4 @@
-//
+    //
 //  MapViewController.swift
 //  pulse
 //
@@ -64,15 +64,21 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             accountContentViewBottomContraint.constant = 0
             UIView.animate(withDuration: 0.3, animations: {
                 self.accountDarkView.alpha = 1
+                self.cameraButton.alpha = 0
                 self.view.layoutIfNeeded()
+            }, completion: { (_) in
+                self.cameraButton.isHidden = true
             })
         } else {
             accountContentViewBottomContraint.constant = -225
+            cameraButton.isHidden = false
             UIView.animate(withDuration: 0.3, animations: {
                 self.accountDarkView.alpha = 0
+                self.cameraButton.alpha = 1
                 self.view.layoutIfNeeded()
             }, completion: { (_) in
                 self.accountDarkView.isHidden = true
+                self.cameraButton.isHidden = false
             })
         }
     }
