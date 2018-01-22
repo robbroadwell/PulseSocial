@@ -86,7 +86,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     @IBAction func reportProblemPressed(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard.init(name: "Problem", bundle: nil)
+        if let vc = storyboard.instantiateInitialViewController() {
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     @IBAction func logoutPressed(_ sender: UIButton) {
