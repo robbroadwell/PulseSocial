@@ -11,6 +11,7 @@ import MapKit
 import SDWebImage
 import AVFoundation
 import Firebase
+import StoreKit
 
 class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate, UIScrollViewDelegate {
     
@@ -40,6 +41,18 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         mapView.delegate = self
         mapView.showsUserLocation = false
         mapView.isRotateEnabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        reviews()
+    }
+    
+    func reviews() {
+        if UserDefaults.standard.integer(forKey: "numberOfLaunches") > 5 {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                SKStoreReviewController.requestReview()
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
