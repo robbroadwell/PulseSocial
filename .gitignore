@@ -3,3 +3,5 @@ node_modules/
 .DS_Store
 /pulse.xcworkspace/xcuserdata/rob.broadwell.xcuserdatad/UserInterfaceState.xcuserstate
 /pulse.xcworkspace/xcuserdata/rob.broadwell.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+/Pulse.xcodeproj/xcuserdata/rob.xcuserdatad/xcschemes/xcschememanagement.plist
+/Pulse.xcworkspace/contents.xcworkspacedata
