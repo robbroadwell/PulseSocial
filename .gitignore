@@ -5,3 +5,6 @@ node_modules/
 /pulse.xcworkspace/xcuserdata/rob.broadwell.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 /Pulse.xcodeproj/xcuserdata/rob.xcuserdatad/xcschemes/xcschememanagement.plist
 /Pulse.xcworkspace/contents.xcworkspacedata
+/Lambda/package-lock.json
+*.xcuserstate
+/pulse.xcworkspace/xcuserdata/rob.xcuserdatad/UserInterfaceState.xcuserstate
