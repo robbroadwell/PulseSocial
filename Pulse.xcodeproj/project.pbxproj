@@ -212,7 +212,7 @@
 		545C5ACB1ED5165700CE6FFB = {
 			isa = PBXGroup;
 			children = (
-				545C5AD61ED5165700CE6FFB /* pulse */,
+				545C5AD61ED5165700CE6FFB /* Pulse */,
 				545C5AD51ED5165700CE6FFB /* Products */,
 				717BA345F0881E3F82865965 /* Pods */,
 				A4A10ECB6DD12DE108CA61C5 /* Frameworks */,
@@ -227,7 +227,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		545C5AD61ED5165700CE6FFB /* pulse */ = {
+		545C5AD61ED5165700CE6FFB /* Pulse */ = {
 			isa = PBXGroup;
 			children = (
 				0E69C19F1FCF8487008E72E8 /* Common */,
@@ -236,7 +236,7 @@
 				0E69C1951FCF7DC2008E72E8 /* Controller */,
 				0E69C1961FCF7F5F008E72E8 /* Helpers */,
 			);
-			path = pulse;
+			path = Pulse;
 			sourceTree = "<group>";
 		};
 		717BA345F0881E3F82865965 /* Pods */ = {
