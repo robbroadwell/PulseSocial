@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S7j-3u-dWK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="hqO-wA-StO">
+            <objects>
+                <viewController id="S7j-3u-dWK" customClass="MainViewController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wti-D3-zkn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-background" translatesAutoresizingMaskIntoConstraints="NO" id="8ag-mN-pjn" userLabel="Default Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-RJ-2lv" userLabel="Map VC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="rSE-mX-QkT" kind="embed" id="zmK-v3-VtY"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc4-vv-F7P" userLabel="Login VC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="6z4-W8-RdK" kind="embed" id="vZ6-Kq-TyR"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8ag-mN-pjn" firstAttribute="top" secondItem="Wti-D3-zkn" secondAttribute="top" id="5Fq-0G-oWd"/>
+                            <constraint firstItem="WI6-UR-C84" firstAttribute="trailing" secondItem="8ag-mN-pjn" secondAttribute="trailing" id="Aka-le-kiz"/>
+                            <constraint firstItem="Bc4-vv-F7P" firstAttribute="bottom" secondItem="WI6-UR-C84" secondAttribute="bottom" id="EJ6-kn-iwU"/>
+                            <constraint firstItem="Bc4-vv-F7P" firstAttribute="trailing" secondItem="WI6-UR-C84" secondAttribute="trailing" id="SNU-Xe-Btz"/>
+                            <constraint firstItem="e9S-RJ-2lv" firstAttribute="top" secondItem="Wti-D3-zkn" secondAttribute="top" id="SQ2-7y-hk8"/>
+                            <constraint firstItem="8ag-mN-pjn" firstAttribute="leading" secondItem="WI6-UR-C84" secondAttribute="leading" id="VPR-0a-qqQ"/>
+                            <constraint firstItem="Bc4-vv-F7P" firstAttribute="top" secondItem="Wti-D3-zkn" secondAttribute="top" id="b3Q-x4-Ld5"/>
+                            <constraint firstItem="e9S-RJ-2lv" firstAttribute="leading" secondItem="WI6-UR-C84" secondAttribute="leading" id="d7p-h6-ghq"/>
+                            <constraint firstItem="WI6-UR-C84" firstAttribute="trailing" secondItem="e9S-RJ-2lv" secondAttribute="trailing" id="dzB-3L-ZAX"/>
+                            <constraint firstItem="WI6-UR-C84" firstAttribute="bottom" secondItem="e9S-RJ-2lv" secondAttribute="bottom" id="ssk-kg-vG3"/>
+                            <constraint firstItem="Bc4-vv-F7P" firstAttribute="leading" secondItem="WI6-UR-C84" secondAttribute="leading" id="ulN-YK-5pD"/>
+                            <constraint firstItem="WI6-UR-C84" firstAttribute="bottom" secondItem="8ag-mN-pjn" secondAttribute="bottom" id="ykM-RN-Z6Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WI6-UR-C84"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginContainerView" destination="Bc4-vv-F7P" id="hYy-0i-Xtv"/>
+                        <outlet property="mapContainerView" destination="e9S-RJ-2lv" id="7NK-cY-DOs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ozC-m9-1dP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-50.399999999999999" y="198.35082458770617"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="qdk-Bk-CSS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="6z4-W8-RdK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lw7-Og-WTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="487" y="175"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="s8B-1o-vqr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="rSE-mX-QkT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vem-QM-qZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486" y="222"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="login-background" width="758" height="1342"/>
+    </resources>
+</document>

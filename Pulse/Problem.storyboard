@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m81-Mn-MXU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Report a Problem-->
+        <scene sceneID="hiz-Sm-Mhy">
+            <objects>
+                <viewController id="x3c-2z-p4z" customClass="ReportProblemViewController" customModule="pulse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SSb-0N-f59">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ndt-n6-byS">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ndt-n6-byS" firstAttribute="trailing" secondItem="f9U-rc-rKt" secondAttribute="trailing" id="1ki-cb-CP5"/>
+                            <constraint firstItem="ndt-n6-byS" firstAttribute="top" secondItem="f9U-rc-rKt" secondAttribute="top" id="2rh-a4-pHb"/>
+                            <constraint firstItem="ndt-n6-byS" firstAttribute="bottom" secondItem="f9U-rc-rKt" secondAttribute="bottom" id="5A8-5p-FkK"/>
+                            <constraint firstItem="ndt-n6-byS" firstAttribute="leading" secondItem="f9U-rc-rKt" secondAttribute="leading" id="Dtm-Vx-mtm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f9U-rc-rKt"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Report a Problem" id="zhP-0h-JIx">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="V31-fR-rCj">
+                            <connections>
+                                <action selector="cancelPressed:" destination="x3c-2z-p4z" id="HUl-Co-SIB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="xiE-66-j11">
+                            <connections>
+                                <action selector="sendPressed:" destination="x3c-2z-p4z" id="H8i-gV-Zgh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="ndt-n6-byS" id="YWS-Hq-l2P"/>
+                        <outlet property="textViewBottomConstraint" destination="5A8-5p-FkK" id="7hj-4r-A5m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fpi-sf-wg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="352.80000000000001" y="223.53823088455775"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JBi-yl-fww">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m81-Mn-MXU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VuU-7J-Yfu">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="x3c-2z-p4z" kind="relationship" relationship="rootViewController" id="1Sd-lW-syv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IKq-Gr-zLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-332" y="224"/>
+        </scene>
+    </scenes>
+</document>
